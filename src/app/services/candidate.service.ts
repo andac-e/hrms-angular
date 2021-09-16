@@ -14,4 +14,10 @@ export class CandidateService {
   addCandidate(candidate: Candidate): Observable<Candidate> {
     return this.httpClient.post<Candidate>(this.apiUrl + '/add', candidate);
   }
+
+  checkByNationalityId(nationalityId: string) {
+    return this.httpClient.get(
+      this.apiUrl + '/exists/byNatId?nationalityId=' + nationalityId
+    );
+  }
 }

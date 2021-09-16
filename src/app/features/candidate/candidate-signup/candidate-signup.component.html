@@ -12,6 +12,15 @@
           formControlName="email"
         />
         <label for="floatingInput">Email address</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            candidateSignForm.get('email').hasError('required') &&
+            candidateSignForm.get('email').touched
+          "
+        >
+          *Email zorunludur.
+        </small>
       </div>
       <div class="form-floating">
         <input
@@ -22,6 +31,15 @@
           formControlName="password"
         />
         <label for="floatingPassword">Password</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            candidateSignForm.get('password').hasError('required') &&
+            candidateSignForm.get('password').touched
+          "
+        >
+          *Parola zorunludur.
+        </small>
       </div>
 
       <div class="form-floating">
@@ -33,6 +51,15 @@
           formControlName="birthYear"
         />
         <label for="floatingInput">Doğum Yılı</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            candidateSignForm.get('birthYear').hasError('required') &&
+            candidateSignForm.get('birthYear').touched
+          "
+        >
+          *Doğum yılı zorunludur.
+        </small>
       </div>
 
       <div class="form-floating">
@@ -44,6 +71,15 @@
           formControlName="firstName"
         />
         <label for="floatingInput">İsim</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            candidateSignForm.get('firstName').hasError('required') &&
+            candidateSignForm.get('firstName').touched
+          "
+        >
+          *İsim zorunludur.
+        </small>
       </div>
 
       <div class="form-floating">
@@ -55,6 +91,15 @@
           formControlName="lastName"
         />
         <label for="floatingInput">Soyisim</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            candidateSignForm.get('lastName').hasError('required') &&
+            candidateSignForm.get('lastName').touched
+          "
+        >
+          *Soyisim zorunludur.
+        </small>
       </div>
 
       <div class="form-floating">
@@ -66,12 +111,24 @@
           formControlName="nationalityId"
         />
         <label for="floatingInput">TC No</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            candidateSignForm.get('nationalityId').hasError('required') &&
+            candidateSignForm.get('nationalityId').touched
+          "
+        >
+          *TC no zorunludur.
+        </small>
       </div>
 
-      <button (click)="addCandidate()" class="w-100 btn btn-lg btn-primary" type="submit">
+      <button
+        (click)="addCandidate()"
+        class="w-100 btn btn-lg btn-primary mt-3"
+        type="submit"
+      >
         Sign in
       </button>
-      
     </form>
   </main>
 </body>

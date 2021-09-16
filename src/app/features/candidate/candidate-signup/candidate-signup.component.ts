@@ -10,6 +10,7 @@ import { CandidateService } from 'src/app/services/candidate.service';
 })
 export class CandidateSignupComponent implements OnInit {
   candidateSignForm!: FormGroup;
+  checkNatId: boolean = false;
 
   constructor(
     private candidateService: CandidateService,
@@ -33,10 +34,40 @@ export class CandidateSignupComponent implements OnInit {
   }
 
   addCandidate() {
+    this.checkNationalityId();
     if (this.candidateSignForm.valid) {
-      this.candidateService.addCandidate(this.candidateSignForm.value).subscribe(data=>{
-        console.log(data)
-      })
+      if (!this.checkNatId) {
+        this.candidateService
+          .addCandidate(this.candidateSignForm.value)
+          .subscribe(
+            (response: any) => {
+              this.toastrService.success(response.message, 'Başarılı');
+            }
+            // ,
+            // (responseError) => {
+            //   this.toastrService.error(
+            //     JSON.stringify(responseError.error.data.errors),
+            //     'Doğrulama hatası'
+            //   );
+            // }
+          );
+      } else {
+        this.toastrService.error('TC kullanımda');
+      }
+    } else {
+      this.toastrService.error('Formunuz eksik', 'Dikkat!');
     }
+  }
+
+  checkNationalityId() {
+    this.candidateService
+      .checkByNationalityId(this.candidateSignForm.value['nationalityId'])
+      .subscribe((data: any) => {
+        if (data.data == true) {
+          this.checkNatId = true;
+        } else {
+          this.checkNatId = false;
+        }
+      });
   }
 }

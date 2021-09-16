@@ -18,7 +18,7 @@
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/signup">Kayıt Ol</a>
+          <a class="nav-link" routerLink="/candidate-sign">Aday Kaydı</a>
         </li>
         <li class="nav-item dropdown">
           <a
@@ -42,6 +42,17 @@
           <a class="nav-link disabled">Disabled</a>
         </li>
       </ul>
+      <div class="dropdown me-2">
+        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+          Kayıt Ol
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+          <li><a class="dropdown-item" routerLink="/candidate-sign" href="#">Aday Kaydı</a></li>
+          <li><hr class="dropdown-divider" /></li>
+          <li><a class="dropdown-item" routerLink="/employer-sign" href="#">Şirket Kaydı</a></li>
+        </ul>
+      </div>
+
       <form class="d-flex">
         <input
           class="form-control me-2"

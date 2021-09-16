@@ -9,12 +9,14 @@ import { HrmsNaviComponent } from './features/navi/hrms-navi/hrms-navi.component
 import { CandidateSignupComponent } from './features/candidate/candidate-signup/candidate-signup.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
+import { EmployerSignupComponent } from './features/employer/employer-signup/employer-signup.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HrmsNaviComponent,
-    CandidateSignupComponent
+    CandidateSignupComponent,
+    EmployerSignupComponent
   ],
   imports: [
     BrowserModule,

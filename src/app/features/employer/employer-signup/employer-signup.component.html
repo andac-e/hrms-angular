@@ -1,0 +1,114 @@
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="employerSignForm">
+      <h1 class="h3 mb-3 fw-normal">Kayıt olabilirsiniz</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="floatingInput">Email address</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            employerSignForm.get('email').hasError('required') &&
+            employerSignForm.get('email').touched
+          "
+        >
+          *Email zorunludur.
+        </small>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="floatingPassword">Password</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            employerSignForm.get('password').hasError('required') &&
+            employerSignForm.get('password').touched
+          "
+        >
+          *Parola zorunludur.
+        </small>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Şirket ismini giriniz"
+          formControlName="companyName"
+        />
+        <label for="floatingInput">Şirket İsmi</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            employerSignForm.get('companyName').hasError('required') &&
+            employerSignForm.get('companyName').touched
+          "
+        >
+          *Şirket ismi zorunludur.
+        </small>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Websitenizi giriniz"
+          formControlName="website"
+        />
+        <label for="floatingInput">Website</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            employerSignForm.get('website').hasError('required') &&
+            employerSignForm.get('website').touched
+          "
+        >
+          *Website zorunludur.
+        </small>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Soyisminizi giriniz"
+          formControlName="phoneNumber"
+        />
+        <label for="floatingInput">Telefon Numarası</label>
+        <small
+          class="form-text text-danger"
+          *ngIf="
+            employerSignForm.get('phoneNumber').hasError('required') &&
+            employerSignForm.get('phoneNumber').touched
+          "
+        >
+          *Telefon Numarası zorunludur.
+        </small>
+      </div>
+
+      <button
+        (click)="addEmployer()"
+        class="w-100 btn btn-lg btn-primary mt-3"
+        type="submit"
+      >
+        Kayıt ol
+      </button>
+    </form>
+  </main>
+</body>
