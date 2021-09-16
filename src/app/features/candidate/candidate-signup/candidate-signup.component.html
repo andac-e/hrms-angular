@@ -1,0 +1,77 @@
+<body class="text-center">
+  <main class="form-signin">
+    <form [formGroup]="candidateSignForm">
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+      <div class="form-floating">
+        <input
+          type="email"
+          class="form-control"
+          id="floatingInput"
+          placeholder="name@example.com"
+          formControlName="email"
+        />
+        <label for="floatingInput">Email address</label>
+      </div>
+      <div class="form-floating">
+        <input
+          type="password"
+          class="form-control"
+          id="floatingPassword"
+          placeholder="Password"
+          formControlName="password"
+        />
+        <label for="floatingPassword">Password</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="number"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Doğum yılınızı giriniz"
+          formControlName="birthYear"
+        />
+        <label for="floatingInput">Doğum Yılı</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="İsminizi giriniz"
+          formControlName="firstName"
+        />
+        <label for="floatingInput">İsim</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="Soyisminizi giriniz"
+          formControlName="lastName"
+        />
+        <label for="floatingInput">Soyisim</label>
+      </div>
+
+      <div class="form-floating">
+        <input
+          type="text"
+          class="form-control"
+          id="floatingInput"
+          placeholder="TC No giriniz"
+          formControlName="nationalityId"
+        />
+        <label for="floatingInput">TC No</label>
+      </div>
+
+      <button (click)="addCandidate()" class="w-100 btn btn-lg btn-primary" type="submit">
+        Sign in
+      </button>
+      
+    </form>
+  </main>
+</body>
