@@ -33,33 +33,36 @@ export class EmployerSignupComponent implements OnInit {
 
   addEmployer() {
     if (this.employerSignForm.valid) {
-      if (this.emailDomainCheck()) {
-        this.employerService
-          .addEmployer(this.employerSignForm.value)
-          .subscribe((response: any) => {
-            this.toastrService.success('Başarılı');
-          });
-      } else {
-        this.toastrService.error('hata');
-      }
+      this.employerService.addEmployer(this.employerSignForm.value).subscribe(
+        (response: any) => {
+          this.toastrService.success('Başarılı');
+        },
+        (responseError) => {
+          let message = JSON.stringify(responseError.error.data.errors);
+          this.toastrService.error(
+            message.replace(/{|}|"/gi, ''),
+            'Doğrulama hatası'
+          );
+        }
+      );
     } else {
       this.toastrService.error('Formunuz eksik', 'Dikkat!');
     }
   }
 
-  emailDomainCheck() {
-    let url = this.employerSignForm.value['website'];
-    let domain = url.replace('www.', '');
+  // emailDomainCheck() {
+  //   let url = this.employerSignForm.value['website'];
+  //   let domain = url.replace('www.', '');
 
-    let email = this.employerSignForm.value['email'];
-    let res = email.split('@');
-    console.log(res[1]);
-    console.log(domain);
+  //   let email = this.employerSignForm.value['email'];
+  //   let res = email.split('@');
+  //   console.log(res[1]);
+  //   console.log(domain);
 
-    if (domain === res[1]) {
-      return false;
-    } else {
-      return true;
-    }
-  }
+  //   if (domain === res[1]) {
+  //     return false;
+  //   } else {
+  //     return true;
+  //   }
+  // }
 }

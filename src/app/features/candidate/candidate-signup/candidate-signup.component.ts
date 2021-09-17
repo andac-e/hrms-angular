@@ -34,40 +34,36 @@ export class CandidateSignupComponent implements OnInit {
   }
 
   addCandidate() {
-    this.checkNationalityId();
     if (this.candidateSignForm.valid) {
-      if (!this.checkNatId) {
-        this.candidateService
-          .addCandidate(this.candidateSignForm.value)
-          .subscribe(
-            (response: any) => {
-              this.toastrService.success(response.message, 'Başarılı');
-            }
-            // ,
-            // (responseError) => {
-            //   this.toastrService.error(
-            //     JSON.stringify(responseError.error.data.errors),
-            //     'Doğrulama hatası'
-            //   );
-            // }
-          );
-      } else {
-        this.toastrService.error('TC kullanımda');
-      }
+      this.candidateService
+        .addCandidate(this.candidateSignForm.value)
+        .subscribe(
+          (response: any) => {
+            this.toastrService.success(response.message, 'Başarılı');
+          },
+          (responseError) => {
+            let message = JSON.stringify(responseError.error.data.errors);
+            console.log(message);
+            this.toastrService.error(
+              message.replace(/{|}|"/gi, ''),
+              'Doğrulama hatası'
+            );
+          }
+        );
     } else {
       this.toastrService.error('Formunuz eksik', 'Dikkat!');
     }
   }
 
-  checkNationalityId() {
-    this.candidateService
-      .checkByNationalityId(this.candidateSignForm.value['nationalityId'])
-      .subscribe((data: any) => {
-        if (data.data == true) {
-          this.checkNatId = true;
-        } else {
-          this.checkNatId = false;
-        }
-      });
-  }
+  // checkNationalityId() {
+  //   this.candidateService
+  //     .checkByNationalityId(this.candidateSignForm.value['nationalityId'])
+  //     .subscribe((data: any) => {
+  //       if (data.data == true) {
+  //         this.checkNatId = true;
+  //       } else {
+  //         this.checkNatId = false;
+  //       }
+  //     });
+  // }
 }
