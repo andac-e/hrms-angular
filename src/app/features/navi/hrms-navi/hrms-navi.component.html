@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <div class="container-fluid">
+  <div class="container">
     <a class="navbar-brand" href="#">HRMS</a>
     <button
       class="navbar-toggler"
@@ -14,13 +14,42 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
+        <div
+          class="collapse navbar-collapse"
+          *ngIf="checkEmployer()"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/position-add"
+              >Add Position</a
+            >
+          </li>
 
-        <li *ngIf="checkRole(); else candidateUser" class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/position-add">Add Position</a>
-        </li>
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/job-add"
+              >Add Job</a
+            >
+          </li>
+        </div>
+
+        <div
+          class="collapse navbar-collapse"
+          *ngIf="checkCandidate()"
+        >
+          <li class="nav-item">
+            <a
+              class="nav-link active"
+              aria-current="page"
+              routerLink="/resume-add"
+              >Add Resume</a
+            >
+          </li>
+        </div>
       </ul>
 
       <div *ngIf="checkUser(); else notLoginedUser">
@@ -29,8 +58,9 @@
 
       <div>
         <ng-template #notLoginedUser>
-
-          <button class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
+          <button class="btn btn-outline-primary me-2" routerLink="/login">
+            Login
+          </button>
 
           <div class="dropdown me-2">
             <button
@@ -58,11 +88,12 @@
           </div>
         </ng-template>
       </div>
-      
+
       <ng-template #candidateUser>
-        
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Add Cv</a>
+        </li>
       </ng-template>
-      
     </div>
   </div>
 </nav>

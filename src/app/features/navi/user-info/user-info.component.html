@@ -1,2 +1,4 @@
-Hoşgeldin {{getUserInfo().data.email}}
-<button class="btn btn-sm btn-danger" (click)="signOut()">Çıkış Yap</button>
+<div class="nav-item">
+  Welcome <b>{{ getUserInfo().data.email }}</b>
+  <button class="btn btn-sm btn-danger ms-2" (click)="signOut()">Logout</button>
+</div>

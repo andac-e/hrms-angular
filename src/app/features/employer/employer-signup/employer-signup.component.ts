@@ -10,7 +10,7 @@ import { EmployerService } from 'src/app/services/employer.service';
   styleUrls: ['./employer-signup.component.css'],
 })
 export class EmployerSignupComponent implements OnInit {
-  employerSignForm!: FormGroup;
+  employerSignForm: FormGroup;
 
   constructor(
     private employerService: EmployerService,
@@ -49,6 +49,7 @@ export class EmployerSignupComponent implements OnInit {
         },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);
+          console.log(responseError)
           this.toastrService.error(
             message.replace(/{|}|"/gi, ''),
             'Doğrulama hatası'

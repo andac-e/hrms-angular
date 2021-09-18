@@ -18,11 +18,25 @@ export class HrmsNaviComponent implements OnInit {
     }
   }
 
-  checkRole(): boolean {
+  checkEmployer(): boolean {
     if (this.checkUser()) {
       let user = JSON.parse(localStorage.getItem('user'));
       let role = user.message;
       if (role.includes('employer')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  checkCandidate(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('candidate')) {
         return true;
       } else {
         return false;

@@ -1,7 +1,7 @@
 <body class="text-center">
   <main class="form-signin">
     <form [formGroup]="candidateSignForm">
-      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+      <h1 class="h3 mb-3 fw-normal">Sign up as <b>Candidate</b></h1>
 
       <div class="form-floating">
         <input
@@ -19,14 +19,14 @@
             candidateSignForm.get('email').touched
           "
         >
-          *Email zorunludur.
+          *Email is required.
         </small>
 
         <small
           class="form-text text-danger"
           *ngIf="candidateSignForm.get('email').errors?.email"
         >
-          *Lütfen email formatında giriniz.
+          *Please enter a valid email address.
         </small>
       </div>
       <div class="form-floating">
@@ -34,7 +34,7 @@
           type="password"
           class="form-control"
           id="floatingPassword"
-          placeholder="Password"
+          placeholder="Please enter password"
           formControlName="password"
         />
         <label for="floatingPassword">Password</label>
@@ -45,21 +45,21 @@
             candidateSignForm.get('password').touched
           "
         >
-          *Parola zorunludur.
+          *Password is required.
         </small>
 
         <small
           class="form-text text-danger"
           *ngIf="candidateSignForm.get('password').errors?.minlength"
         >
-          *Parola en az 6 basamaklı olmalıdır.
+          *Password must be have at least 6 characters long.
         </small>
 
         <small
           class="form-text text-danger"
           *ngIf="candidateSignForm.get('password').errors?.maxlength"
         >
-          *Parola en fazla 20 basamaklı olmalıdır.
+          *Password must be maximum 20 characters long.
         </small>
       </div>
 
@@ -68,10 +68,10 @@
           type="number"
           class="form-control"
           id="floatingInput"
-          placeholder="Doğum yılınızı giriniz"
+          placeholder="Please enter your birth year"
           formControlName="birthYear"
         />
-        <label for="floatingInput">Doğum Yılı</label>
+        <label for="floatingInput">Birth Year</label>
         <small
           class="form-text text-danger"
           *ngIf="
@@ -79,7 +79,7 @@
             candidateSignForm.get('birthYear').touched
           "
         >
-          *Doğum yılı zorunludur.
+          *Birth year is required.
         </small>
       </div>
 
@@ -88,10 +88,10 @@
           type="text"
           class="form-control"
           id="floatingInput"
-          placeholder="İsminizi giriniz"
+          placeholder="Please enter your first name"
           formControlName="firstName"
         />
-        <label for="floatingInput">İsim</label>
+        <label for="floatingInput">First Name</label>
         <small
           class="form-text text-danger"
           *ngIf="
@@ -99,7 +99,7 @@
             candidateSignForm.get('firstName').touched
           "
         >
-          *İsim zorunludur.
+          *First name is required.
         </small>
       </div>
 
@@ -108,10 +108,10 @@
           type="text"
           class="form-control"
           id="floatingInput"
-          placeholder="Soyisminizi giriniz"
+          placeholder="Please enter your last name"
           formControlName="lastName"
         />
-        <label for="floatingInput">Soyisim</label>
+        <label for="floatingInput">Last Name</label>
         <small
           class="form-text text-danger"
           *ngIf="
@@ -119,7 +119,7 @@
             candidateSignForm.get('lastName').touched
           "
         >
-          *Soyisim zorunludur.
+          *Last name is required.
         </small>
       </div>
 
@@ -128,10 +128,10 @@
           type="text"
           class="form-control"
           id="floatingInput"
-          placeholder="TC No giriniz"
+          placeholder="Please enter your national ID"
           formControlName="nationalityId"
         />
-        <label for="floatingInput">TC No</label>
+        <label for="floatingInput">National ID</label>
         <small
           class="form-text text-danger"
           *ngIf="
@@ -139,16 +139,16 @@
             candidateSignForm.get('nationalityId').touched
           "
         >
-          *TC no zorunludur.
+          *National ID is required.
         </small>
       </div>
 
       <button
         (click)="addCandidate()"
-        class="w-100 btn btn-lg btn-primary mt-3"
+        class="w-100 btn btn-lg btn-success mt-3"
         type="submit"
       >
-        Sign in
+        Sign up
       </button>
     </form>
   </main>

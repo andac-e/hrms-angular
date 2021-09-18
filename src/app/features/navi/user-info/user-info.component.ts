@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { User } from 'src/app/models/user/user';
 
 @Component({
@@ -8,7 +9,7 @@ import { User } from 'src/app/models/user/user';
 })
 export class UserInfoComponent implements OnInit {
   user: any;
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -19,5 +20,6 @@ export class UserInfoComponent implements OnInit {
 
   signOut() {
     localStorage.clear();
+    this.router.navigate(['login']);
   }
 }
