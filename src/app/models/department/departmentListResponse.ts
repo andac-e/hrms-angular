@@ -1,7 +1,4 @@
-import { Department } from "./department";
+import { BaseListResponse } from '../responses/baseListResponse';
+import { Department } from './department';
 
-export interface DepartmentListResponse {
-    success:boolean;
-    message:string;
-    data: Department[];
-}
+export interface DepartmentListResponse extends BaseListResponse<Department> {}

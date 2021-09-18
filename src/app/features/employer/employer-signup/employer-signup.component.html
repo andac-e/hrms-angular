@@ -1,7 +1,7 @@
 <body class="text-center">
   <main class="form-signin">
     <form [formGroup]="employerSignForm">
-      <h1 class="h3 mb-3 fw-normal">Kayıt olabilirsiniz</h1>
+      <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 
       <div class="form-floating">
         <input
@@ -20,6 +20,13 @@
           "
         >
           *Email zorunludur.
+        </small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="employerSignForm.get('email').errors?.email"
+        >
+          *Lütfen email formatında giriniz.
         </small>
       </div>
       <div class="form-floating">
@@ -40,6 +47,19 @@
         >
           *Parola zorunludur.
         </small>
+        <small
+          class="form-text text-danger"
+          *ngIf="employerSignForm.get('password').errors?.minlength"
+        >
+          *Parola en az 6 basamaklı olmalıdır.
+        </small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="employerSignForm.get('password').errors?.maxlength"
+        >
+          *Parola en fazla 20 basamaklı olmalıdır.
+        </small>
       </div>
 
       <div class="form-floating">
@@ -50,7 +70,7 @@
           placeholder="Şirket ismini giriniz"
           formControlName="companyName"
         />
-        <label for="floatingInput">Şirket İsmi</label>
+        <label for="floatingInput">Company name</label>
         <small
           class="form-text text-danger"
           *ngIf="
@@ -90,7 +110,7 @@
           placeholder="Soyisminizi giriniz"
           formControlName="phoneNumber"
         />
-        <label for="floatingInput">Telefon Numarası</label>
+        <label for="floatingInput">Phone number</label>
         <small
           class="form-text text-danger"
           *ngIf="
@@ -107,7 +127,7 @@
         class="w-100 btn btn-lg btn-primary mt-3"
         type="submit"
       >
-        Kayıt ol
+        Sign in
       </button>
     </form>
   </main>

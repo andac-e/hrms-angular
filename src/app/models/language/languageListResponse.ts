@@ -1,7 +1,4 @@
+import { BaseListResponse } from '../responses/baseListResponse';
 import { Language } from './language';
 
-export interface LanguageListResponse {
-  success: boolean;
-  message: string;
-  data: Language[];
-}
+export interface LanguageListResponse extends BaseListResponse<Language> {}

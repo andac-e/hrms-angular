@@ -10,13 +10,21 @@ import { CandidateSignupComponent } from './features/candidate/candidate-signup/
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { EmployerSignupComponent } from './features/employer/employer-signup/employer-signup.component';
+import { HomeComponent } from './features/home/home/home.component';
+import { LoginComponent } from './features/navi/login/login.component';
+import { UserInfoComponent } from './features/navi/user-info/user-info.component';
+import { PositionAddComponent } from './features/employer/position-add/position-add.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HrmsNaviComponent,
     CandidateSignupComponent,
-    EmployerSignupComponent
+    EmployerSignupComponent,
+    HomeComponent,
+    LoginComponent,
+    UserInfoComponent,
+    PositionAddComponent
   ],
   imports: [
     BrowserModule,

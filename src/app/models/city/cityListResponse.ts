@@ -1,7 +1,4 @@
+import { BaseListResponse } from '../responses/baseListResponse';
 import { City } from './city';
 
-export interface CityListResponse {
-  success: boolean;
-  message: string;
-  data: City[];
-}
+export interface CityListResponse extends BaseListResponse<City> {}

@@ -1,7 +1,5 @@
-import { JobAdvertisement } from "./job-advertisement";
+import { BaseListResponse } from '../responses/baseListResponse';
+import { JobAdvertisement } from './job-advertisement';
 
-export interface JobAdvertisementListResponse {
-    success:boolean;
-    message:string;
-    data: JobAdvertisement[];
-}
+export interface JobAdvertisementListResponse
+  extends BaseListResponse<JobAdvertisement> {}

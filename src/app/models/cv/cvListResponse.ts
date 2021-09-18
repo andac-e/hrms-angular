@@ -1,7 +1,4 @@
+import { BaseListResponse } from '../responses/baseListResponse';
 import { Cv } from './cv';
 
-export interface CvListResponse {
-  success: boolean;
-  message: string;
-  data: Cv[];
-}
+export interface CvListResponse extends BaseListResponse<Cv> {}

@@ -21,6 +21,13 @@
         >
           *Email zorunludur.
         </small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="candidateSignForm.get('email').errors?.email"
+        >
+          *Lütfen email formatında giriniz.
+        </small>
       </div>
       <div class="form-floating">
         <input
@@ -39,6 +46,20 @@
           "
         >
           *Parola zorunludur.
+        </small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="candidateSignForm.get('password').errors?.minlength"
+        >
+          *Parola en az 6 basamaklı olmalıdır.
+        </small>
+
+        <small
+          class="form-text text-danger"
+          *ngIf="candidateSignForm.get('password').errors?.maxlength"
+        >
+          *Parola en fazla 20 basamaklı olmalıdır.
         </small>
       </div>
 

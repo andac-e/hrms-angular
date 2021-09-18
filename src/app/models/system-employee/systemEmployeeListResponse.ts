@@ -1,7 +1,5 @@
+import { BaseListResponse } from '../responses/baseListResponse';
 import { SystemEmployee } from './system-employee';
 
-export interface SystemEmployeeListResponse {
-  success: boolean;
-  message: string;
-  data: SystemEmployee[];
-}
+export interface SystemEmployeeListResponse
+  extends BaseListResponse<SystemEmployee> {}

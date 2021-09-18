@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { CandidateService } from 'src/app/services/candidate.service';
 
@@ -15,7 +16,8 @@ export class CandidateSignupComponent implements OnInit {
   constructor(
     private candidateService: CandidateService,
     private toastrService: ToastrService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -25,11 +27,18 @@ export class CandidateSignupComponent implements OnInit {
   createSignForm() {
     this.candidateSignForm = this.formBuilder.group({
       birthYear: ['', Validators.required],
-      email: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]], //email tipinde
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
       nationalityId: ['', Validators.required],
-      password: ['', Validators.required],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20),
+        ],
+      ],
     });
   }
 
@@ -40,6 +49,7 @@ export class CandidateSignupComponent implements OnInit {
         .subscribe(
           (response: any) => {
             this.toastrService.success(response.message, 'Başarılı');
+            this.router.navigate(['home']);
           },
           (responseError) => {
             let message = JSON.stringify(responseError.error.data.errors);
@@ -55,15 +65,5 @@ export class CandidateSignupComponent implements OnInit {
     }
   }
 
-  // checkNationalityId() {
-  //   this.candidateService
-  //     .checkByNationalityId(this.candidateSignForm.value['nationalityId'])
-  //     .subscribe((data: any) => {
-  //       if (data.data == true) {
-  //         this.checkNatId = true;
-  //       } else {
-  //         this.checkNatId = false;
-  //       }
-  //     });
-  // }
+  //kayıt olunca anasayfaya yönlendir..
 }

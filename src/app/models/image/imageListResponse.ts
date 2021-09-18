@@ -1,7 +1,4 @@
-import { Image } from "./image";
+import { BaseListResponse } from '../responses/baseListResponse';
+import { Image } from './image';
 
-export interface ImageListResponse {
-    success:boolean;
-    message:string;
-    data: Image[];
-}
+export interface ImageListResponse extends BaseListResponse<Image> {}

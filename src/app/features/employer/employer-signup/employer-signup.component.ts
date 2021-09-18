@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { EmployerService } from 'src/app/services/employer.service';
 
@@ -14,7 +15,8 @@ export class EmployerSignupComponent implements OnInit {
   constructor(
     private employerService: EmployerService,
     private formBuilder: FormBuilder,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -24,8 +26,15 @@ export class EmployerSignupComponent implements OnInit {
   createSignForm() {
     this.employerSignForm = this.formBuilder.group({
       companyName: ['', Validators.required],
-      email: ['', Validators.required],
-      password: ['', Validators.required],
+      email: ['', [Validators.required, Validators.email]],
+      password: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(6),
+          Validators.maxLength(20),
+        ],
+      ],
       phoneNumber: ['', Validators.required],
       website: ['', Validators.required],
     });
@@ -36,6 +45,7 @@ export class EmployerSignupComponent implements OnInit {
       this.employerService.addEmployer(this.employerSignForm.value).subscribe(
         (response: any) => {
           this.toastrService.success('Başarılı');
+          this.router.navigate(['home']);
         },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);

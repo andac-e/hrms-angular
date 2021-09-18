@@ -1,8 +1,4 @@
-import { Position } from "@angular/compiler";
+import { Position } from '@angular/compiler';
+import { BaseListResponse } from '../responses/baseListResponse';
 
-export interface PositionListResponse {
-    success: boolean;
-    message: string;
-    data: Position[];
-  }
-  
+export interface PositionListResponse extends BaseListResponse<Position> {}

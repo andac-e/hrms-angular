@@ -1,7 +1,5 @@
+import { BaseListResponse } from '../responses/baseListResponse';
 import { CandidateJobExperience } from './candidate-job-experience';
 
-export interface CandidateJobExperienceListResponse {
-  success: boolean;
-  message: string;
-  data: CandidateJobExperience[];
-}
+export interface CandidateJobExperienceListResponse
+  extends BaseListResponse<CandidateJobExperience> {}

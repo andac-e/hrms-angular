@@ -1,7 +1,4 @@
+import { BaseListResponse } from '../responses/baseListResponse';
 import { School } from './school';
 
-export interface SchoolListResponse {
-  success: boolean;
-  message: string;
-  data: School[];
-}
+export interface SchoolListResponse extends BaseListResponse<School> {}

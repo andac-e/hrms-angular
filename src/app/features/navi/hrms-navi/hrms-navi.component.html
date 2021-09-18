@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#">Navbar</a>
+    <a class="navbar-brand" href="#">HRMS</a>
     <button
       class="navbar-toggler"
       type="button"
@@ -17,48 +17,52 @@
         <li class="nav-item">
           <a class="nav-link active" aria-current="page" href="#">Home</a>
         </li>
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Dropdown
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item" href="#">Action</a></li>
-            <li><a class="dropdown-item" href="#">Another action</a></li>
-            <li><hr class="dropdown-divider" /></li>
-            <li><a class="dropdown-item" href="#">Something else here</a></li>
-          </ul>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled">Disabled</a>
+
+        <li *ngIf="checkRole(); else candidateUser" class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/position-add">Add Position</a>
         </li>
       </ul>
-      <div class="dropdown me-2">
-        <button class="btn btn-success dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-          Kayıt Ol
-        </button>
-        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-          <li><a class="dropdown-item" routerLink="/candidate-sign" href="#">Aday Kaydı</a></li>
-          <li><hr class="dropdown-divider" /></li>
-          <li><a class="dropdown-item" routerLink="/employer-sign" href="#">Şirket Kaydı</a></li>
-        </ul>
+
+      <div *ngIf="checkUser(); else notLoginedUser">
+        <app-user-info></app-user-info>
       </div>
 
-      <form class="d-flex">
-        <input
-          class="form-control me-2"
-          type="search"
-          placeholder="Search"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-success" type="submit">Search</button>
-      </form>
+      <div>
+        <ng-template #notLoginedUser>
+
+          <button class="btn btn-outline-primary me-2" routerLink="/login">Login</button>
+
+          <div class="dropdown me-2">
+            <button
+              class="btn btn-success dropdown-toggle"
+              type="button"
+              id="dropdownMenuButton1"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Sign up
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+              <li>
+                <a class="dropdown-item" routerLink="/candidate-sign"
+                  >Sign as candidate</a
+                >
+              </li>
+              <li><hr class="dropdown-divider" /></li>
+              <li>
+                <a class="dropdown-item" routerLink="/employer-sign"
+                  >Sign as employer</a
+                >
+              </li>
+            </ul>
+          </div>
+        </ng-template>
+      </div>
+      
+      <ng-template #candidateUser>
+        
+      </ng-template>
+      
     </div>
   </div>
 </nav>
