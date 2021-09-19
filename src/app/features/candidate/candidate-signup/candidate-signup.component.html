@@ -1,155 +1,274 @@
-<body class="text-center">
-  <main class="form-signin">
-    <form [formGroup]="candidateSignForm">
-      <h1 class="h3 mb-3 fw-normal">Sign up as <b>Candidate</b></h1>
+<section class="login-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 py-5">
+        <div class="wrap d-md-flex">
+          <div
+            class="
+              text-wrap
+              me-5
+              col-md-6
+              text-center
+              d-flex
+              align-items-center
+            "
+          >
+            <div class="text w-100">
+              <div>
+                <svg
+                  id="visual"
+                  viewBox="0 0 700 500"
+                  width="700"
+                  height="500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  version="1.1"
+                >
+                  <rect
+                    x="0"
+                    y="0"
+                    width="700"
+                    height="500"
+                    fill="#ffffff"
+                  ></rect>
+                  <path
+                    d="M507 0L505.7 9.3C504.3 18.7 501.7 37.3 502.7 55.8C503.7 74.3 508.3 92.7 502.7 111.2C497 129.7 481 148.3 473.8 166.8C466.7 185.3 468.3 203.7 473.5 222.2C478.7 240.7 487.3 259.3 498.5 277.8C509.7 296.3 523.3 314.7 519.2 333.2C515 351.7 493 370.3 475.7 388.8C458.3 407.3 445.7 425.7 443.3 444.2C441 462.7 449 481.3 453 490.7L457 500L0 500L0 490.7C0 481.3 0 462.7 0 444.2C0 425.7 0 407.3 0 388.8C0 370.3 0 351.7 0 333.2C0 314.7 0 296.3 0 277.8C0 259.3 0 240.7 0 222.2C0 203.7 0 185.3 0 166.8C0 148.3 0 129.7 0 111.2C0 92.7 0 74.3 0 55.8C0 37.3 0 18.7 0 9.3L0 0Z"
+                    fill="#009473"
+                  ></path>
+                  <path
+                    d="M456 0L452.8 9.3C449.7 18.7 443.3 37.3 441.7 55.8C440 74.3 443 92.7 443.5 111.2C444 129.7 442 148.3 436.8 166.8C431.7 185.3 423.3 203.7 419.3 222.2C415.3 240.7 415.7 259.3 418.3 277.8C421 296.3 426 314.7 420.2 333.2C414.3 351.7 397.7 370.3 395.2 388.8C392.7 407.3 404.3 425.7 400.5 444.2C396.7 462.7 377.3 481.3 367.7 490.7L358 500L0 500L0 490.7C0 481.3 0 462.7 0 444.2C0 425.7 0 407.3 0 388.8C0 370.3 0 351.7 0 333.2C0 314.7 0 296.3 0 277.8C0 259.3 0 240.7 0 222.2C0 203.7 0 185.3 0 166.8C0 148.3 0 129.7 0 111.2C0 92.7 0 74.3 0 55.8C0 37.3 0 18.7 0 9.3L0 0Z"
+                    fill="#018568"
+                  ></path>
+                  <path
+                    d="M290 0L289.5 9.3C289 18.7 288 37.3 287.2 55.8C286.3 74.3 285.7 92.7 297 111.2C308.3 129.7 331.7 148.3 338.8 166.8C346 185.3 337 203.7 332.7 222.2C328.3 240.7 328.7 259.3 323.2 277.8C317.7 296.3 306.3 314.7 299.5 333.2C292.7 351.7 290.3 370.3 292.2 388.8C294 407.3 300 425.7 299.8 444.2C299.7 462.7 293.3 481.3 290.2 490.7L287 500L0 500L0 490.7C0 481.3 0 462.7 0 444.2C0 425.7 0 407.3 0 388.8C0 370.3 0 351.7 0 333.2C0 314.7 0 296.3 0 277.8C0 259.3 0 240.7 0 222.2C0 203.7 0 185.3 0 166.8C0 148.3 0 129.7 0 111.2C0 92.7 0 74.3 0 55.8C0 37.3 0 18.7 0 9.3L0 0Z"
+                    fill="#03765d"
+                  ></path>
+                  <path
+                    d="M256 0L255.7 9.3C255.3 18.7 254.7 37.3 260.2 55.8C265.7 74.3 277.3 92.7 271.5 111.2C265.7 129.7 242.3 148.3 234 166.8C225.7 185.3 232.3 203.7 232.5 222.2C232.7 240.7 226.3 259.3 230.8 277.8C235.3 296.3 250.7 314.7 259.7 333.2C268.7 351.7 271.3 370.3 264 388.8C256.7 407.3 239.3 425.7 238 444.2C236.7 462.7 251.3 481.3 258.7 490.7L266 500L0 500L0 490.7C0 481.3 0 462.7 0 444.2C0 425.7 0 407.3 0 388.8C0 370.3 0 351.7 0 333.2C0 314.7 0 296.3 0 277.8C0 259.3 0 240.7 0 222.2C0 203.7 0 185.3 0 166.8C0 148.3 0 129.7 0 111.2C0 92.7 0 74.3 0 55.8C0 37.3 0 18.7 0 9.3L0 0Z"
+                    fill="#056853"
+                  ></path>
+                  <path
+                    d="M192 0L192.3 9.3C192.7 18.7 193.3 37.3 196.3 55.8C199.3 74.3 204.7 92.7 203.8 111.2C203 129.7 196 148.3 186.5 166.8C177 185.3 165 203.7 163.8 222.2C162.7 240.7 172.3 259.3 175.8 277.8C179.3 296.3 176.7 314.7 175.2 333.2C173.7 351.7 173.3 370.3 168.7 388.8C164 407.3 155 425.7 149.5 444.2C144 462.7 142 481.3 141 490.7L140 500L0 500L0 490.7C0 481.3 0 462.7 0 444.2C0 425.7 0 407.3 0 388.8C0 370.3 0 351.7 0 333.2C0 314.7 0 296.3 0 277.8C0 259.3 0 240.7 0 222.2C0 203.7 0 185.3 0 166.8C0 148.3 0 129.7 0 111.2C0 92.7 0 74.3 0 55.8C0 37.3 0 18.7 0 9.3L0 0Z"
+                    fill="#065a48"
+                  ></path>
+                  <path
+                    d="M110 0L104 9.3C98 18.7 86 37.3 83.5 55.8C81 74.3 88 92.7 88.2 111.2C88.3 129.7 81.7 148.3 82.2 166.8C82.7 185.3 90.3 203.7 97.7 222.2C105 240.7 112 259.3 115.2 277.8C118.3 296.3 117.7 314.7 119.3 333.2C121 351.7 125 370.3 125 388.8C125 407.3 121 425.7 121 444.2C121 462.7 125 481.3 127 490.7L129 500L0 500L0 490.7C0 481.3 0 462.7 0 444.2C0 425.7 0 407.3 0 388.8C0 370.3 0 351.7 0 333.2C0 314.7 0 296.3 0 277.8C0 259.3 0 240.7 0 222.2C0 203.7 0 185.3 0 166.8C0 148.3 0 129.7 0 111.2C0 92.7 0 74.3 0 55.8C0 37.3 0 18.7 0 9.3L0 0Z"
+                    fill="#074c3d"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-floating">
-        <input
-          type="email"
-          class="form-control"
-          id="floatingInput"
-          placeholder="name@example.com"
-          formControlName="email"
-        />
-        <label for="floatingInput">Email address</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            candidateSignForm.get('email').hasError('required') &&
-            candidateSignForm.get('email').touched
-          "
-        >
-          *Email is required.
-        </small>
+          <div
+            class="
+              login-wrap
+              rounded-start
+              d-flex
+              justify-content-center
+              align-items-center
+              p-4
+              bg-white
+            "
+          >
+            <main class="form-signin text-center">
+              <form [formGroup]="candidateSignForm">
+                <h1 class="h3 mb-3 fw-normal">Sign up as <b>Candidate</b></h1>
 
-        <small
-          class="form-text text-danger"
-          *ngIf="candidateSignForm.get('email').errors?.email"
-        >
-          *Please enter a valid email address.
-        </small>
+                <div class="input-group">
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your first name"
+                      formControlName="firstName"
+                    />
+                    <label for="floatingInput">First Name</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm
+                          .get('firstName')
+                          .hasError('required') &&
+                        candidateSignForm.get('firstName').touched
+                      "
+                    >
+                      *First name is required.
+                    </small>
+                  </div>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your last name"
+                      formControlName="lastName"
+                    />
+                    <label for="floatingInput">Last Name</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm
+                          .get('lastName')
+                          .hasError('required') &&
+                        candidateSignForm.get('lastName').touched
+                      "
+                    >
+                      *Last name is required.
+                    </small>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <div class="form-floating">
+                    <input
+                      type="number"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your birth year"
+                      formControlName="birthYear"
+                    />
+                    <label for="floatingInput">Birth Year</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm
+                          .get('birthYear')
+                          .hasError('required') &&
+                        candidateSignForm.get('birthYear').touched
+                      "
+                    >
+                      *Birth year is required.
+                    </small>
+                  </div>
+
+                  <div class="form-floating">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your national ID"
+                      formControlName="nationalityId"
+                    />
+                    <label for="floatingInput">National ID</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm
+                          .get('nationalityId')
+                          .hasError('required') &&
+                        candidateSignForm.get('nationalityId').touched
+                      "
+                    >
+                      *National ID is required.
+                    </small>
+                  </div>
+                </div>
+
+                <div class="form-floating">
+                  <input
+                    type="email"
+                    class="form-control"
+                    id="floatingInput"
+                    placeholder="name@example.com"
+                    formControlName="email"
+                  />
+                  <label for="floatingInput">Email address</label>
+                  <small
+                    class="form-text text-danger"
+                    *ngIf="
+                      candidateSignForm.get('email').hasError('required') &&
+                      candidateSignForm.get('email').touched
+                    "
+                  >
+                    *Email is required.
+                  </small>
+
+                  <small
+                    class="form-text text-danger"
+                    *ngIf="candidateSignForm.get('email').errors?.email"
+                  >
+                    *Please enter a valid email address.
+                  </small>
+                </div>
+
+                <div class="input-group">
+                  <div class="form-floating">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Please enter password"
+                      formControlName="password"
+                    />
+                    <label for="floatingPassword">Password</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm
+                          .get('password')
+                          .hasError('required') &&
+                        candidateSignForm.get('password').touched
+                      "
+                    >
+                      *Password is required.
+                    </small>
+
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm.get('password').errors?.minlength
+                      "
+                    >
+                      *Password must be have at least 6 characters long.
+                    </small>
+
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm.get('password').errors?.maxlength
+                      "
+                    >
+                      *Password must be maximum 20 characters long.
+                    </small>
+                  </div>
+                  <div class="form-floating">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Please enter password"
+                      formControlName="password"
+                    />
+                    <label for="floatingPassword">Confirm Password</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm
+                          .get('password')
+                          .hasError('required') &&
+                        candidateSignForm.get('password').touched
+                      "
+                    >
+                      *Confirm password is required.
+                    </small>
+                  </div>
+                </div>
+
+                <button
+                  (click)="addCandidate()"
+                  class="w-50 btn btn-md btn-success mt-3"
+                  type="submit"
+                >
+                  Sign up
+                </button>
+              </form>
+            </main>
+          </div>
+        </div>
       </div>
-      <div class="form-floating">
-        <input
-          type="password"
-          class="form-control"
-          id="floatingPassword"
-          placeholder="Please enter password"
-          formControlName="password"
-        />
-        <label for="floatingPassword">Password</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            candidateSignForm.get('password').hasError('required') &&
-            candidateSignForm.get('password').touched
-          "
-        >
-          *Password is required.
-        </small>
-
-        <small
-          class="form-text text-danger"
-          *ngIf="candidateSignForm.get('password').errors?.minlength"
-        >
-          *Password must be have at least 6 characters long.
-        </small>
-
-        <small
-          class="form-text text-danger"
-          *ngIf="candidateSignForm.get('password').errors?.maxlength"
-        >
-          *Password must be maximum 20 characters long.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="number"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your birth year"
-          formControlName="birthYear"
-        />
-        <label for="floatingInput">Birth Year</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            candidateSignForm.get('birthYear').hasError('required') &&
-            candidateSignForm.get('birthYear').touched
-          "
-        >
-          *Birth year is required.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your first name"
-          formControlName="firstName"
-        />
-        <label for="floatingInput">First Name</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            candidateSignForm.get('firstName').hasError('required') &&
-            candidateSignForm.get('firstName').touched
-          "
-        >
-          *First name is required.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your last name"
-          formControlName="lastName"
-        />
-        <label for="floatingInput">Last Name</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            candidateSignForm.get('lastName').hasError('required') &&
-            candidateSignForm.get('lastName').touched
-          "
-        >
-          *Last name is required.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your national ID"
-          formControlName="nationalityId"
-        />
-        <label for="floatingInput">National ID</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            candidateSignForm.get('nationalityId').hasError('required') &&
-            candidateSignForm.get('nationalityId').touched
-          "
-        >
-          *National ID is required.
-        </small>
-      </div>
-
-      <button
-        (click)="addCandidate()"
-        class="w-100 btn btn-lg btn-success mt-3"
-        type="submit"
-      >
-        Sign up
-      </button>
-    </form>
-  </main>
-</body>
+    </div>
+  </div>
+</section>

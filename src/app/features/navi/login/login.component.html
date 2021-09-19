@@ -1,11 +1,14 @@
-<section class="login-section py-5">
+<section class="login-section">
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-md-12 py-5">
         <div class="wrap d-md-flex">
           <div
             class="
-              text-wrap text-center
+              text-wrap
+              me-5
+              col-md-6
+              text-center
               d-flex
               align-items-center
               order-md-last
@@ -51,8 +54,8 @@
                   ></path>
                 </svg>
 
-                <h2 class="position-absolute text-light fw-light top-50 end-0">
-                  Welcome to login
+                <h2 class="position-absolute text-light w-50 fw-light top-50 end-0">
+                  Hello, Welcome back!
                 </h2>
               </div>
             </div>
@@ -70,9 +73,10 @@
             "
           >
             <main class="form-signin">
-              <h3 class="mb-3 fw-normal">Please login</h3>
+              <h1 class="mb-3 fw-bold">Let's get started</h1>
+              <h6 class="mb-3 fw-normal">Please log in to your account</h6>
               <form [formGroup]="loginForm" class="signin-form">
-                <div class="form-floating mb-2">
+                <div class="form-floating mb-3">
                   <input
                     type="email"
                     class="form-control"
@@ -80,7 +84,7 @@
                     placeholder="name@example.com"
                     formControlName="email"
                   />
-                  <label for="floatingInput">Email</label>
+                  <label for="floatingInput">Email address</label>
                 </div>
 
                 <div class="form-floating">
@@ -95,10 +99,17 @@
                 </div>
               </form>
 
-              <div>
-                <button type="button" (click)="login()" class="btn btn-primary">
-                  Login
-                </button>
+              <div class="mt-4 row">
+                <div class="col-md-6">
+                  <button type="button" (click)="login()" class="btn py-2 w-100 btn-primary">
+                    Login
+                  </button>
+                </div>
+                <div class="col-md-6">
+                  <button type="button" routerLink="/candidate-sign" class="btn py-2 w-100 btn-outline-primary">
+                    Create account
+                  </button>
+                </div>
               </div>
             </main>
           </div>
@@ -106,38 +117,5 @@
       </div>
     </div>
   </div>
-
-  <!-- <main class="form-signin">
-      <h1 class="h3 mb-3 fw-normal">Please login</h1>
-      <form [formGroup]="loginForm">
-        <div class="form-floating mb-2">
-          <input
-            type="email"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            formControlName="email"
-          />
-          <label for="floatingInput">Email</label>
-        </div>
-      
-        <div class="form-floating">
-          <input
-            type="password"
-            class="form-control"
-            id="floatingInput"
-            placeholder="name@example.com"
-            formControlName="password"
-          />
-          <label for="floatingInput">Password</label>
-        </div>
-      </form>
-      
-      <div>
-        <button type="button" (click)="login()" class="btn btn-primary">
-          Login
-        </button>
-      </div>
-      
-    </main> -->
 </section>
+

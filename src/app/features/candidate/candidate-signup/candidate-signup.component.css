@@ -13,13 +13,18 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 330px;
+  max-width: 552px;
   padding: 15px;
   margin: auto;
 }
 
+
 .form-signin .checkbox {
   font-weight: 400;
+}
+
+.form-floating {
+  margin: 0 10px;
 }
 
 .form-signin .form-floating:focus-within {
