@@ -12,11 +12,11 @@ export class JobListComponent implements OnInit {
   constructor(private jobAdvertisementService:JobAdvertisementService) { }
 
   ngOnInit(): void {
-    this.getAllJobs();
+    this.getActiveJobs();
   }
 
-  getAllJobs() {
-    this.jobAdvertisementService.getAll().subscribe((response:any)=> {
+  getActiveJobs() {
+    this.jobAdvertisementService.getActives().subscribe((response:any)=> {
       this.jobs = response.data
     })
   }
