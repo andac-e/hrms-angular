@@ -1,0 +1,110 @@
+:host ::ng-deep .p-paginator .p-paginator-current {
+    margin-left: auto;
+  }
+  
+  :host ::ng-deep .table-header {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  :host ::ng-deep #myTable .p-datatable-header {
+    background-color: #fff;
+    border: 0;
+  }
+  
+  :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-header {
+    padding: 1rem;
+    text-align: left;
+    font-size: 1.3rem;
+  }
+  :host ::ng-deep .p-datatable.p-datatable-customers .p-paginator {
+    padding: 1rem;
+    font-size: 14px;
+  }
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-thead
+    > tr
+    > th {
+    text-align: left;
+    padding: 0.8rem;
+  }
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-datatable-tbody
+    > tr
+    > td {
+    cursor: auto;
+  }
+  :host
+    ::ng-deep
+    .p-datatable.p-datatable-customers
+    .p-dropdown-label:not(.p-placeholder) {
+    text-transform: uppercase;
+  }
+  :host
+    ::ng-deep
+    .p-datatable-customers
+    .p-datatable-tbody
+    > tr
+    > td
+    .p-column-title {
+    display: none;
+  }
+  @media screen and (max-width: 960px) {
+    :host
+      ::ng-deep
+      .p-datatable.p-datatable-customers
+      .p-datatable-thead
+      > tr
+      > th,
+    :host
+      ::ng-deep
+      .p-datatable.p-datatable-customers
+      .p-datatable-tfoot
+      > tr
+      > td {
+      display: none !important;
+    }
+    :host ::ng-deep .p-datatable.p-datatable-customers .p-datatable-tbody > tr {
+      border-bottom: 1px solid var(--layer-2);
+    }
+    :host
+      ::ng-deep
+      .p-datatable.p-datatable-customers
+      .p-datatable-tbody
+      > tr
+      > td {
+      text-align: left;
+      display: block;
+      border: 0 none !important;
+      width: 100% !important;
+      float: left;
+      clear: left;
+      border: 0 none;
+    }
+    :host
+      ::ng-deep
+      .p-datatable.p-datatable-customers
+      .p-datatable-tbody
+      > tr
+      > td
+      .p-column-title {
+      padding: 0.4rem;
+      min-width: 30%;
+      display: inline-block;
+      margin: -0.4rem 1rem -0.4rem -0.4rem;
+      font-weight: bold;
+    }
+  }
+  
+  th {
+    font-size: 15px;
+  }
+  
+  td {
+    font-size: 14px;
+  }
+  

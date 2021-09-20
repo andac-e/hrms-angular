@@ -16,6 +16,9 @@ import { LoginComponent } from './features/navi/login/login.component';
 import { UserInfoComponent } from './features/navi/user-info/user-info.component';
 import { PositionAddComponent } from './features/employer/position-add/position-add.component';
 import { EmployerListComponent } from './features/employer/employer-list/employer-list.component';
+import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
+import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
+import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { EmployerListComponent } from './features/employer/employer-list/employe
     UserInfoComponent,
     PositionAddComponent,
     EmployerListComponent,
+    CandidateListComponent,
+    JobListComponent,
+    JobAddComponent,
   ],
   imports: [
     BrowserModule,
