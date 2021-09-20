@@ -1,6 +1,19 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<header
+  style="background-color: #ecf3f5"
+  class="
+    d-flex
+    flex-wrap
+    align-items-center
+    justify-content-center justify-content-md-between
+    py-3
+    navbar navbar-expand-lg navbar-light
+  "
+>
   <div class="container">
-    <a class="navbar-brand" href="#">HRMS</a>
+    <a class="navbar-brand text-success fw-bold fs-3" href="#"
+      ><i class="bi bi-stack"></i> job<span class="text-dark fw-normal">4</span
+      >u
+    </a>
     <button
       class="navbar-toggler"
       type="button"
@@ -12,65 +25,79 @@
     >
       <span class="navbar-toggler-icon"></span>
     </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <div
-          class="collapse navbar-collapse"
-          *ngIf="checkEmployer()"
+
+    <ul
+      class="navbar-nav col-12 col-md-auto mb-2 justify-content-center mb-md-0"
+    >
+      <li class="nav-item dropdown">
+        <a
+          class="nav-link active dropdown-toggle"
+          href="#"
+          id="navbarDropdown"
+          role="button"
+          data-bs-toggle="dropdown"
+          aria-expanded="false"
         >
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              routerLink="/position-add"
-              >Add Position</a
+          Browse jobs
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <li><a class="dropdown-item">Job Advertisements</a></li>
+          <li><a class="dropdown-item">Candidate List</a></li>
+          <li>
+            <a class="dropdown-item" routerLink="/employer-list"
+              >Employer List</a
             >
           </li>
+        </ul>
+      </li>
 
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              routerLink="/job-add"
-              >Add Job</a
-            >
-          </li>
-        </div>
+      <div class="collapse navbar-collapse" *ngIf="checkEmployer()">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/position-add"
+            >Add Position</a
+          >
+        </li>
 
-        <div
-          class="collapse navbar-collapse"
-          *ngIf="checkCandidate()"
-        >
-          <li class="nav-item">
-            <a
-              class="nav-link active"
-              aria-current="page"
-              routerLink="/resume-add"
-              >Add Resume</a
-            >
-          </li>
-        </div>
-      </ul>
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" routerLink="/job-add"
+            >Add Job</a
+          >
+        </li>
+      </div>
 
+      <div class="collapse navbar-collapse" *ngIf="checkCandidate()">
+        <li class="nav-item">
+          <a
+            class="nav-link active"
+            aria-current="page"
+            routerLink="/resume-add"
+            >Add Resume</a
+          >
+        </li>
+      </div>
+    </ul>
+
+    <div class="d-flex text-end">
       <div *ngIf="checkUser(); else notLoginedUser">
         <app-user-info></app-user-info>
       </div>
 
       <div>
         <ng-template #notLoginedUser>
-          <button class="btn btn-outline-primary me-2" routerLink="/login">
-            Login
-          </button>
+          <a class="nav-link me-2" routerLink="/login"> Login </a>
 
           <div class="dropdown me-2">
             <button
-              class="btn btn-success dropdown-toggle"
+              class="btn btn-sign dropdown-toggle"
               type="button"
               id="dropdownMenuButton1"
               data-bs-toggle="dropdown"
               aria-expanded="false"
             >
-              Sign up
+              Create account
             </button>
             <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
               <li>
@@ -96,4 +123,4 @@
       </ng-template>
     </div>
   </div>
-</nav>
+</header>

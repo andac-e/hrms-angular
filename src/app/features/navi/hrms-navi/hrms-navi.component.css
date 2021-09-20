@@ -1,0 +1,21 @@
+
+.btn-sign {
+    padding: 8px 25px;
+    border-radius: 15px;
+    background-color: #202a4d;
+    border-color: #0d101d;
+    outline: 0;
+    color: #fff;
+  }
+
+  .btn-sign:focus {
+      outline: 0;
+      box-shadow: none;
+  }
+
+  .nav-link {
+      margin: 0 15px;
+      color: #202a4d;
+      font-weight: 600;
+      font-size: 15px;
+  }

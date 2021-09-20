@@ -10,7 +10,7 @@ import { CandidateService } from 'src/app/services/candidate.service';
   styleUrls: ['./candidate-signup.component.css'],
 })
 export class CandidateSignupComponent implements OnInit {
-  candidateSignForm!: FormGroup;
+  candidateSignForm: FormGroup;
   checkNatId: boolean = false;
 
   constructor(
@@ -39,12 +39,14 @@ export class CandidateSignupComponent implements OnInit {
           Validators.maxLength(20),
         ],
       ],
+      confirmPassword: ['', Validators.required],
     });
   }
 
   addCandidate() {
     if (this.candidateSignForm.valid) {
-      this.candidateService
+      if (this.checkPasswordMatch()) {
+        this.candidateService
         .addCandidate(this.candidateSignForm.value)
         .subscribe(
           (response: any) => {
@@ -56,14 +58,27 @@ export class CandidateSignupComponent implements OnInit {
             console.log(message);
             this.toastrService.error(
               message.replace(/{|}|"/gi, ''),
-              'Doğrulama hatası'
+              'Validation error'
             );
           }
         );
+      }
     } else {
-      this.toastrService.error('Formunuz eksik', 'Dikkat!');
+      this.toastrService.error('Invalid form');
     }
   }
 
-  //kayıt olunca anasayfaya yönlendir..
+  checkPasswordMatch(): boolean {
+    let password = this.candidateSignForm.value['password'];
+    let confirmPassword = this.candidateSignForm.value['confirmPassword'];
+
+    if (password === confirmPassword) {
+      return true;
+    } else {
+      this.toastrService.error(
+        'Your password and confirm password does not match!'
+      );
+      return false;
+    }
+  }
 }

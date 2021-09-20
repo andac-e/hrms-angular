@@ -76,13 +76,14 @@
                 <h1 class="h3 mb-3 fw-normal">Sign up as <b>Candidate</b></h1>
 
                 <div class="input-group">
-                  <div class="form-floating">
+                  <div class="form-floating w-50">
                     <input
                       type="text"
                       class="form-control"
                       id="floatingInput"
                       placeholder="Please enter your first name"
                       formControlName="firstName"
+                      autocomplete="off"
                     />
                     <label for="floatingInput">First Name</label>
                     <small
@@ -98,13 +99,14 @@
                     </small>
                   </div>
 
-                  <div class="form-floating">
+                  <div class="form-floating w-50">
                     <input
                       type="text"
                       class="form-control"
                       id="floatingInput"
                       placeholder="Please enter your last name"
                       formControlName="lastName"
+                      autocomplete="off"
                     />
                     <label for="floatingInput">Last Name</label>
                     <small
@@ -122,13 +124,14 @@
                 </div>
 
                 <div class="input-group">
-                  <div class="form-floating">
+                  <div class="form-floating w-50">
                     <input
                       type="number"
                       class="form-control"
                       id="floatingInput"
                       placeholder="Please enter your birth year"
                       formControlName="birthYear"
+                      autocomplete="off"
                     />
                     <label for="floatingInput">Birth Year</label>
                     <small
@@ -144,13 +147,14 @@
                     </small>
                   </div>
 
-                  <div class="form-floating">
+                  <div class="form-floating w-50">
                     <input
                       type="text"
                       class="form-control"
                       id="floatingInput"
                       placeholder="Please enter your national ID"
                       formControlName="nationalityId"
+                      autocomplete="off"
                     />
                     <label for="floatingInput">National ID</label>
                     <small
@@ -167,35 +171,38 @@
                   </div>
                 </div>
 
-                <div class="form-floating">
-                  <input
-                    type="email"
-                    class="form-control"
-                    id="floatingInput"
-                    placeholder="name@example.com"
-                    formControlName="email"
-                  />
-                  <label for="floatingInput">Email address</label>
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="
-                      candidateSignForm.get('email').hasError('required') &&
-                      candidateSignForm.get('email').touched
-                    "
-                  >
-                    *Email is required.
-                  </small>
-
-                  <small
-                    class="form-text text-danger"
-                    *ngIf="candidateSignForm.get('email').errors?.email"
-                  >
-                    *Please enter a valid email address.
-                  </small>
+                <div class="input-group">
+                  <div class="form-floating w-100">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="name@example.com"
+                      formControlName="email"
+                      autocomplete="off"
+                    />
+                    <label for="floatingInput">Email address</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm.get('email').hasError('required') &&
+                        candidateSignForm.get('email').touched
+                      "
+                    >
+                      *Email is required.
+                    </small>
+  
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="candidateSignForm.get('email').errors?.email"
+                    >
+                      *Please enter a valid email address.
+                    </small>
+                  </div>
                 </div>
 
                 <div class="input-group">
-                  <div class="form-floating">
+                  <div class="form-floating w-50">
                     <input
                       type="password"
                       class="form-control"
@@ -234,22 +241,23 @@
                       *Password must be maximum 20 characters long.
                     </small>
                   </div>
-                  <div class="form-floating">
+
+                  <div class="form-floating w-50">
                     <input
                       type="password"
                       class="form-control"
                       id="floatingPassword"
                       placeholder="Please enter password"
-                      formControlName="password"
+                      formControlName="confirmPassword"
                     />
                     <label for="floatingPassword">Confirm Password</label>
                     <small
                       class="form-text text-danger"
                       *ngIf="
                         candidateSignForm
-                          .get('password')
+                          .get('confirmPassword')
                           .hasError('required') &&
-                        candidateSignForm.get('password').touched
+                        candidateSignForm.get('confirmPassword').touched
                       "
                     >
                       *Confirm password is required.

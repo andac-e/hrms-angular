@@ -35,45 +35,53 @@ export class EmployerSignupComponent implements OnInit {
           Validators.maxLength(20),
         ],
       ],
-      phoneNumber: ['', Validators.required],
+      phoneNumber: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
       website: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
     });
   }
 
   addEmployer() {
     if (this.employerSignForm.valid) {
-      this.employerService.addEmployer(this.employerSignForm.value).subscribe(
-        (response: any) => {
-          this.toastrService.success('Başarılı');
-          this.router.navigate(['home']);
-        },
-        (responseError) => {
-          let message = JSON.stringify(responseError.error.data.errors);
-          console.log(responseError)
-          this.toastrService.error(
-            message.replace(/{|}|"/gi, ''),
-            'Doğrulama hatası'
-          );
-        }
-      );
+      if (this.checkPasswordMatch()) {
+        this.employerService.addEmployer(this.employerSignForm.value).subscribe(
+          (response: any) => {
+            this.toastrService.success('Başarılı');
+            this.router.navigate(['home']);
+          },
+          (responseError) => {
+            let message = JSON.stringify(responseError.error.data.errors);
+            console.log(responseError);
+            this.toastrService.error(
+              message.replace(/{|}|"/gi, ''),
+              'Doğrulama hatası'
+            );
+          }
+        );
+      }
     } else {
       this.toastrService.error('Formunuz eksik', 'Dikkat!');
     }
   }
 
-  // emailDomainCheck() {
-  //   let url = this.employerSignForm.value['website'];
-  //   let domain = url.replace('www.', '');
+  checkPasswordMatch(): boolean {
+    let password = this.employerSignForm.value['password'];
+    let confirmPassword = this.employerSignForm.value['confirmPassword'];
 
-  //   let email = this.employerSignForm.value['email'];
-  //   let res = email.split('@');
-  //   console.log(res[1]);
-  //   console.log(domain);
-
-  //   if (domain === res[1]) {
-  //     return false;
-  //   } else {
-  //     return true;
-  //   }
-  // }
+    if (password === confirmPassword) {
+      return true;
+    } else {
+      this.toastrService.error(
+        'Your password and confirm password does not match!'
+      );
+      return false;
+    }
+  }
 }

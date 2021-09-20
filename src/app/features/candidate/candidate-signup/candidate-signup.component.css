@@ -13,7 +13,7 @@ body {
 
 .form-signin {
   width: 100%;
-  max-width: 552px;
+  max-width: 650px;
   padding: 15px;
   margin: auto;
 }
@@ -23,9 +23,6 @@ body {
   font-weight: 400;
 }
 
-.form-floating {
-  margin: 0 10px;
-}
 
 .form-signin .form-floating:focus-within {
   z-index: 2;
@@ -35,4 +32,18 @@ body {
   margin-bottom: 5px;
   border-bottom-right-radius: 0;
   border-bottom-left-radius: 0;
+}
+
+.input-group {
+  margin-bottom: 5px;
+}
+
+.wrap {
+  max-height: 500px;
+}
+
+
+
+.form-text {
+  padding: 0;
 }

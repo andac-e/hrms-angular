@@ -1,134 +1,257 @@
-<body class="text-center">
-  <main class="form-signin">
-    <form [formGroup]="employerSignForm">
-      <h1 class="h3 mb-3 fw-normal">Sign up as <b>Employer</b></h1>
+<section class="login-section">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-12 py-5">
+        <div class="wrap d-md-flex">
+          <div
+            class="
+              text-wrap
+              me-5
+              col-md-6
+              text-center
+              d-flex
+              align-items-center
+            "
+          >
+            <div class="text w-100">
+              <div>
+                <svg
+                  id="visual"
+                  viewBox="0 0 700 500"
+                  width="700"
+                  height="500"
+                  xmlns="http://www.w3.org/2000/svg"
+                  xmlns:xlink="http://www.w3.org/1999/xlink"
+                  version="1.1"
+                >
+                  <rect
+                    x="0"
+                    y="0"
+                    width="700"
+                    height="500"
+                    fill="#ffffff"
+                  ></rect>
+                  <path
+                    d="M496 0L502 13.8C508 27.7 520 55.3 518 83.2C516 111 500 139 480.8 166.8C461.7 194.7 439.3 222.3 447.7 250C456 277.7 495 305.3 520 333.2C545 361 556 389 554.7 416.8C553.3 444.7 539.7 472.3 532.8 486.2L526 500L0 500L0 486.2C0 472.3 0 444.7 0 416.8C0 389 0 361 0 333.2C0 305.3 0 277.7 0 250C0 222.3 0 194.7 0 166.8C0 139 0 111 0 83.2C0 55.3 0 27.7 0 13.8L0 0Z"
+                    fill="#fcaf3c"
+                  ></path>
+                  <path
+                    d="M370 0L376 13.8C382 27.7 394 55.3 383.5 83.2C373 111 340 139 324.7 166.8C309.3 194.7 311.7 222.3 333.8 250C356 277.7 398 305.3 418.8 333.2C439.7 361 439.3 389 439.3 416.8C439.3 444.7 439.7 472.3 439.8 486.2L440 500L0 500L0 486.2C0 472.3 0 444.7 0 416.8C0 389 0 361 0 333.2C0 305.3 0 277.7 0 250C0 222.3 0 194.7 0 166.8C0 139 0 111 0 83.2C0 55.3 0 27.7 0 13.8L0 0Z"
+                    fill="#fba432"
+                  ></path>
+                  <path
+                    d="M359 0L340.5 13.8C322 27.7 285 55.3 266.3 83.2C247.7 111 247.3 139 269.3 166.8C291.3 194.7 335.7 222.3 341 250C346.3 277.7 312.7 305.3 291.8 333.2C271 361 263 389 274.2 416.8C285.3 444.7 315.7 472.3 330.8 486.2L346 500L0 500L0 486.2C0 472.3 0 444.7 0 416.8C0 389 0 361 0 333.2C0 305.3 0 277.7 0 250C0 222.3 0 194.7 0 166.8C0 139 0 111 0 83.2C0 55.3 0 27.7 0 13.8L0 0Z"
+                    fill="#fa9a29"
+                  ></path>
+                  <path
+                    d="M308 0L310.3 13.8C312.7 27.7 317.3 55.3 313.3 83.2C309.3 111 296.7 139 278 166.8C259.3 194.7 234.7 222.3 237.8 250C241 277.7 272 305.3 275.3 333.2C278.7 361 254.3 389 237.2 416.8C220 444.7 210 472.3 205 486.2L200 500L0 500L0 486.2C0 472.3 0 444.7 0 416.8C0 389 0 361 0 333.2C0 305.3 0 277.7 0 250C0 222.3 0 194.7 0 166.8C0 139 0 111 0 83.2C0 55.3 0 27.7 0 13.8L0 0Z"
+                    fill="#f98e20"
+                  ></path>
+                  <path
+                    d="M199 0L201.3 13.8C203.7 27.7 208.3 55.3 203.3 83.2C198.3 111 183.7 139 176.3 166.8C169 194.7 169 222.3 162.3 250C155.7 277.7 142.3 305.3 151.5 333.2C160.7 361 192.3 389 192 416.8C191.7 444.7 159.3 472.3 143.2 486.2L127 500L0 500L0 486.2C0 472.3 0 444.7 0 416.8C0 389 0 361 0 333.2C0 305.3 0 277.7 0 250C0 222.3 0 194.7 0 166.8C0 139 0 111 0 83.2C0 55.3 0 27.7 0 13.8L0 0Z"
+                    fill="#f88317"
+                  ></path>
+                  <path
+                    d="M78 0L82.5 13.8C87 27.7 96 55.3 99.7 83.2C103.3 111 101.7 139 96.2 166.8C90.7 194.7 81.3 222.3 86 250C90.7 277.7 109.3 305.3 116.7 333.2C124 361 120 389 122.8 416.8C125.7 444.7 135.3 472.3 140.2 486.2L145 500L0 500L0 486.2C0 472.3 0 444.7 0 416.8C0 389 0 361 0 333.2C0 305.3 0 277.7 0 250C0 222.3 0 194.7 0 166.8C0 139 0 111 0 83.2C0 55.3 0 27.7 0 13.8L0 0Z"
+                    fill="#f7770f"
+                  ></path>
+                </svg>
+              </div>
+            </div>
+          </div>
 
-      <div class="form-floating">
-        <input
-          type="email"
-          class="form-control"
-          id="floatingInput"
-          placeholder="name@example.com"
-          formControlName="email"
-        />
-        <label for="floatingInput">Email address</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            employerSignForm.get('email').hasError('required') &&
-            employerSignForm.get('email').touched
-          "
-        >
-          *Email is required.
-        </small>
+          <div
+            class="
+              login-wrap
+              rounded-start
+              d-flex
+              justify-content-center
+              align-items-center
+              p-4
+              bg-white
+            "
+          >
+            <main class="form-signin text-center">
+              <form [formGroup]="employerSignForm">
+                <h1 class="h3 mb-3 fw-normal">Sign up as <b>Employer</b></h1>
 
-        <small
-          class="form-text text-danger"
-          *ngIf="employerSignForm.get('email').errors?.email"
-        >
-          *Please enter a valid email address.
-        </small>
+                <div class="input-group">
+                  <div class="form-floating w-50">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your company name"
+                      formControlName="companyName"
+                      autocomplete="off"
+                    />
+                    <label for="floatingInput">Company name</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm
+                          .get('companyName')
+                          .hasError('required') &&
+                        employerSignForm.get('companyName').touched
+                      "
+                    >
+                      *Company name is required.
+                    </small>
+                  </div>
+
+                  <div class="form-floating w-50">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your website"
+                      formControlName="website"
+                      autocomplete="off"
+                    />
+                    <label for="floatingInput">Website</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm.get('website').hasError('required') &&
+                        employerSignForm.get('website').touched
+                      "
+                    >
+                      *Website is required.
+                    </small>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <div class="form-floating w-50">
+                    <input
+                      type="email"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="name@example.com"
+                      formControlName="email"
+                      autocomplete="off"
+                    />
+                    <label for="floatingInput">Email address</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm.get('email').hasError('required') &&
+                        employerSignForm.get('email').touched
+                      "
+                    >
+                      *Email is required.
+                    </small>
+
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="employerSignForm.get('email').errors?.email"
+                    >
+                      *Please enter a valid email address.
+                    </small>
+                  </div>
+
+                  <div class="form-floating w-50">
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="floatingInput"
+                      placeholder="Please enter your phone number"
+                      formControlName="phoneNumber"
+                      autocomplete="off"
+                    />
+                    <label for="floatingInput">Phone number</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm
+                          .get('phoneNumber')
+                          .hasError('required') &&
+                        employerSignForm.get('phoneNumber').touched
+                      "
+                    >
+                      *Phone number is required.
+                    </small>
+
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm.get('phoneNumber').errors?.minlength
+                      "
+                    >
+                      *Phone number must be 11 characters long.
+                    </small>
+                  </div>
+                </div>
+
+                <div class="input-group">
+                  <div class="form-floating w-50">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Please enter password"
+                      formControlName="password"
+                    />
+                    <label for="floatingPassword">Password</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm.get('password').hasError('required') &&
+                        employerSignForm.get('password').touched
+                      "
+                    >
+                      *Password is required.
+                    </small>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="employerSignForm.get('password').errors?.minlength"
+                    >
+                      *Password must be have at least 6 characters long.
+                    </small>
+
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="employerSignForm.get('password').errors?.maxlength"
+                    >
+                      *Password must be maximum 20 characters long.
+                    </small>
+                  </div>
+
+                  <div class="form-floating w-50">
+                    <input
+                      type="password"
+                      class="form-control"
+                      id="floatingPassword"
+                      placeholder="Please enter password"
+                      formControlName="confirmPassword"
+                    />
+                    <label for="floatingPassword">Confirm Password</label>
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        employerSignForm
+                          .get('confirmPassword')
+                          .hasError('required') &&
+                        employerSignForm.get('confirmPassword').touched
+                      "
+                    >
+                      *Confirm password is required.
+                    </small>
+                  </div>
+                </div>
+
+                <button
+                  (click)="addEmployer()"
+                  class="w-50 btn btn-md btn-warning mt-3"
+                  type="submit"
+                >
+                  Sign up
+                </button>
+              </form>
+            </main>
+          </div>
+        </div>
       </div>
-      <div class="form-floating">
-        <input
-          type="password"
-          class="form-control"
-          id="floatingPassword"
-          placeholder="Please enter password"
-          formControlName="password"
-        />
-        <label for="floatingPassword">Password</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            employerSignForm.get('password').hasError('required') &&
-            employerSignForm.get('password').touched
-          "
-        >
-          *Password is required.
-        </small>
-        <small
-          class="form-text text-danger"
-          *ngIf="employerSignForm.get('password').errors?.minlength"
-        >
-          *Password must be have at least 6 characters long.
-        </small>
-
-        <small
-          class="form-text text-danger"
-          *ngIf="employerSignForm.get('password').errors?.maxlength"
-        >
-          *Password must be maximum 20 characters long.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your company name"
-          formControlName="companyName"
-        />
-        <label for="floatingInput">Company name</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            employerSignForm.get('companyName').hasError('required') &&
-            employerSignForm.get('companyName').touched
-          "
-        >
-          *Company name is required.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="text"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your website"
-          formControlName="website"
-        />
-        <label for="floatingInput">Website</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            employerSignForm.get('website').hasError('required') &&
-            employerSignForm.get('website').touched
-          "
-        >
-          *Website is required.
-        </small>
-      </div>
-
-      <div class="form-floating">
-        <input
-          type="number"
-          class="form-control"
-          id="floatingInput"
-          placeholder="Please enter your phone number"
-          formControlName="phoneNumber"
-        />
-        <label for="floatingInput">Phone number</label>
-        <small
-          class="form-text text-danger"
-          *ngIf="
-            employerSignForm.get('phoneNumber').hasError('required') &&
-            employerSignForm.get('phoneNumber').touched
-          "
-        >
-          *Phone number is required.
-        </small>
-      </div>
-
-      <button
-        (click)="addEmployer()"
-        class="w-100 btn btn-lg btn-success mt-3"
-        type="submit"
-      >
-        Sign up
-      </button>
-    </form>
-  </main>
-</body>
+    </div>
+  </div>
+</section>

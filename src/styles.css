@@ -6,8 +6,9 @@
 
 .login-section {
   height: 100%;
-  background: #f8f9fd;
+  background: #ecf3f5;
 }
+
 
 
 .form-signin {
@@ -30,11 +31,12 @@
 .wrap {
   width: 100%;
   border-radius: 5px;
-  -webkit-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
-	-moz-box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
-	box-shadow: 0px 10px 34px -15px rgba(0,0,0,0.24);
+  -webkit-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  -moz-box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
+  box-shadow: 0px 10px 34px -15px rgba(0, 0, 0, 0.24);
 }
 
-.text-wrap, .login-wrap {
+.text-wrap,
+.login-wrap {
   width: 50%;
 }
