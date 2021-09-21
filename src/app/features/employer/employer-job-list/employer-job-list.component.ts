@@ -12,7 +12,7 @@ export class EmployerJobListComponent implements OnInit {
   userId: any;
   companyName: any;
   employerJobs: JobAdvertisement[] = [];
-  constructor(private jobAdvertisementService: JobAdvertisementService, private activatedRoute:ActivatedRoute) {}
+  constructor(private jobAdvertisementService: JobAdvertisementService) {}
 
   ngOnInit(): void {
     this.getJobsByEmployer();
@@ -24,14 +24,8 @@ export class EmployerJobListComponent implements OnInit {
       .getJobsByEmployer(this.getUserId())
       .subscribe((response: any) => {
         this.employerJobs = response.data;
+        console.log(this.employerJobs)
       });
-  }
-
-  getJobById(id:number) {
-    this.jobAdvertisementService.getJobById(id).subscribe((response:any)=>{
-      console.log(response.data)
-      response.data.active == false;
-    })
   }
 
   changeActivity(job:JobAdvertisement) {
