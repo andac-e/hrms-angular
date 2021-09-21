@@ -38,9 +38,7 @@ export class JobAdvertisementService {
     );
   }
 
-  changeActivityOfJob(
-    jobAdvertisement: JobAdvertisement
-  ): Observable<JobAdvertisement> {
+  changeActivityOfJob(jobAdvertisement: JobAdvertisement): Observable<JobAdvertisement> {
     return this.httpClient.put<JobAdvertisement>(
       this.apiUrl +
         '/update/activation?jobAdvId=' +
