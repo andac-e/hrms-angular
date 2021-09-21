@@ -1,0 +1,96 @@
+<div class="container mt-3">
+    <h5>Add Job Experience </h5>
+
+    <form [formGroup]="experienceAddForm" class="mt-3">
+      <div class="form-group">
+        <label>Position</label>
+        <select
+          name="positionId"
+          id="positionId"
+          class="form-select"
+          formControlName="positionId"
+        >
+          <option value="" disabled selected>Please select position</option>
+          <option *ngFor="let position of positions" value="{{ position.id }}">
+            {{ position.title }}
+          </option>
+        </select>
+        <small
+          class="text-danger"
+          *ngIf="
+          experienceAddForm.get('positionId').hasError('required') &&
+          experienceAddForm.get('positionId').touched
+          "
+          >*Position is required.</small
+        >
+      </div>
+  
+      <div class="form-group">
+        <label>Work Place</label>
+        <input
+          class="form-control"
+          type="text"
+          id="workPlace"
+          formControlName="workPlace"
+          placeholder="Please enter work place"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+          experienceAddForm.get('workPlace').hasError('required') &&
+          experienceAddForm.get('workPlace').touched
+          "
+          >*Work place is required.</small
+        >
+      </div>
+  
+      <div class="form-group">
+        <label>Start Year</label>
+        <input
+          class="form-control"
+          type="number"
+          id="startYear"
+          formControlName="startYear"
+          placeholder="Please enter start year"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+          experienceAddForm.get('startYear').hasError('required') &&
+          experienceAddForm.get('startYear').touched
+          "
+          >*Start year is required.</small
+        >
+      </div>
+  
+      <div class="form-group">
+        <label>Quit Year</label>
+        <input
+          class="form-control"
+          type="number"
+          id="quitYear"
+          formControlName="quitYear"
+          placeholder="Please enter quit year"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+          experienceAddForm.get('quitYear').hasError('required') &&
+          experienceAddForm.get('quitYear').touched
+          "
+          >*Quit year is required.</small
+        >
+      </div>
+  
+      
+  
+      <button
+        [disabled]="!experienceAddForm.valid"
+        class="btn btn-primary mt-2"
+        (click)="addExperience()"
+      >
+        Add job experience
+      </button>
+    </form>
+  </div>
+  

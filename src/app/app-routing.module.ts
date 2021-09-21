@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience-add/candidate-experience-add.component';
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
 import { CandidateSignupComponent } from './features/candidate/candidate-signup/candidate-signup.component';
 import { EmployerJobListComponent } from './features/employer/employer-job-list/employer-job-list.component';
@@ -10,7 +11,8 @@ import { HomeComponent } from './features/home/home/home.component';
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
 import { LoginComponent } from './features/navi/login/login.component';
-import { RoleGuard } from './guards/role.guard';
+import { CandidateGuard } from './guards/candidate.guard';
+import { EmployerGuard } from './guards/employer.guard';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -24,17 +26,22 @@ const routes: Routes = [
   {
     path: 'employer-job-list',
     component: EmployerJobListComponent,
-    canActivate: [RoleGuard],
+    canActivate: [EmployerGuard],
   },
   {
     path: 'position-add',
     component: PositionAddComponent,
-    canActivate: [RoleGuard],
+    canActivate: [EmployerGuard],
   },
   {
     path: 'job-add',
     component: JobAddComponent,
-    canActivate: [RoleGuard],
+    canActivate: [EmployerGuard],
+  },
+  {
+    path: 'candidate-experience-add',
+    component: CandidateExperienceAddComponent,
+    canActivate: [CandidateGuard],
   },
 ];
 

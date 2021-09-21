@@ -12,9 +12,8 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class RoleGuard implements CanActivate {
+export class CandidateGuard implements CanActivate {
   constructor(private toastrService: ToastrService, private router: Router) {}
-
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
@@ -26,7 +25,7 @@ export class RoleGuard implements CanActivate {
     if (localStorage.getItem('user')) {
       let user = JSON.parse(localStorage.getItem('user'));
       let employer = user.message;
-      if (employer.includes('employer')) {
+      if (employer.includes('candidate')) {
         return true;
       } else {
         this.toastrService.error('Bu sayfaya giriş izniniz bulunmuyor.');
