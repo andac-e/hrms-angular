@@ -24,6 +24,33 @@ export class JobAdvertisementService {
     );
   }
 
+  getJobsByEmployer(
+    employerId: number
+  ): Observable<JobAdvertisementListResponse> {
+    return this.httpClient.get<JobAdvertisementListResponse>(
+      this.apiUrl + '/get/byEmployer?employerId=' + employerId
+    );
+  }
+
+  getJobById(jobAdvId: number): Observable<JobAdvertisementListResponse> {
+    return this.httpClient.get<JobAdvertisementListResponse>(
+      this.apiUrl + '/get/byId?jobAdvId=' + jobAdvId
+    );
+  }
+
+  changeActivityOfJob(
+    jobAdvertisement: JobAdvertisement
+  ): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(
+      this.apiUrl +
+        '/update/activation?jobAdvId=' +
+        jobAdvertisement.id +
+        '&status=' +
+        !jobAdvertisement.active,
+      jobAdvertisement
+    );
+  }
+
   add(jobAdvertisement: JobAdvertisement): Observable<JobAdvertisement> {
     return this.httpClient.post<JobAdvertisement>(
       this.apiUrl + '/add',

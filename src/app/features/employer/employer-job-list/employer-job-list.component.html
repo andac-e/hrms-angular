@@ -1,0 +1,199 @@
+<div class="container">
+  <p-table
+    id="myTable"
+    #dt
+    [value]="employerJobs"
+    dataKey="id"
+    styleClass="p-datatable-customers"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="[
+      'employer.companyName',
+      'position.title',
+      'openPositions',
+      'createdAt',
+      'deadline'
+    ]"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        Job List of <span class="text-danger">{{ companyName }} </span>company
+        <!-- <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
+              </span> -->
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="position.title">
+          <div class="d-flex justify-content-between align-items-center">
+            Position
+            <p-sortIcon field="position.title"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="position.title"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="openPositions">
+          <div class="d-flex justify-content-between align-items-center">
+            Open Positions
+            <p-sortIcon field="openPositions"></p-sortIcon>
+            <p-columnFilter
+              type="number"
+              field="openPositions"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="createdAt">
+          <div class="d-flex justify-content-between align-items-center">
+            Release Date
+            <p-sortIcon field="createdAt"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="createdAt"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="deadline">
+          <div class="d-flex justify-content-between align-items-center">
+            Deadline
+            <p-sortIcon field="deadline"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="deadline"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="active">
+          <div class="d-flex justify-content-between align-items-center">
+            Active Status
+            <p-sortIcon field="active"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="active"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <!-- <th pSortableColumn="date">
+                  <div class="p-d-flex p-jc-between p-ai-center">
+                      Date
+                      <p-sortIcon field="date"></p-sortIcon>
+                      <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
+                  </div>
+              </th> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job>
+      <tr class="p-selectable-row">
+        <td>
+          <span class="p-column-title">Position</span>
+          {{ job.position.title }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Open Positions</span>
+          {{ job.openPositions }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Release Date</span>
+          {{ job.createdAt | date: "MMMM d, y" }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Deadline</span>
+          {{ job.deadline | date: "MMMM d, y" }}
+        </td>
+
+        <td class="d-flex justify-content-between align-items-center">
+          <span class="p-column-title">Active Status</span>
+          {{ job.active }}
+          <button
+            (click)="changeActivity(job)"
+            pButton
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+            class="btn sm btn-secondary"
+          >
+            Change status <i class="bi bi-gear"></i>
+          </button>
+
+          <!-- Modal -->
+          <!-- <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Applying changes...
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">Are you sure you want to change this job activity status?</div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button type="button" class="btn btn-primary">
+                    Change status
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div> -->
+        </td>
+
+        <!-- <td>
+                  <span class="p-column-title">Date</span>
+                  {{customer.date | date: 'MM/dd/yyyy'}}
+              </td> -->
+
+        <!-- <td style="text-align: center">
+                  <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
+              </td> -->
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No jobs found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>

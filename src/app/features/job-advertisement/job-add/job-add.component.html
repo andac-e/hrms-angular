@@ -8,6 +8,7 @@
         class="form-select"
         formControlName="positionId"
       >
+        <option value="" disabled selected>Please select position</option>
         <option *ngFor="let position of positions" value="{{ position.id }}">
           {{ position.title }}
         </option>
@@ -50,6 +51,7 @@
         class="form-select"
         formControlName="cityId"
       >
+      <option value="" disabled selected>Please select city</option>
         <option *ngFor="let city of cities" value="{{ city.id }}">
           {{ city.name }}
         </option>
@@ -66,13 +68,17 @@
 
     <div class="form-group">
       <label>Work Time</label>
-      <input
-        class="form-control"
-        type="text"
+      <select
+        name="workTime"
         id="workTime"
+        class="form-select"
         formControlName="workTime"
-        placeholder="Please enter work time"
-      />
+      >
+      <option value="" disabled selected>Please select work time</option>
+        <option *ngFor="let workTime of workTimes" value="{{ workTime.title }}">
+          {{ workTime.title }}
+        </option>
+      </select>
       <small
         class="text-danger"
         *ngIf="
@@ -85,13 +91,20 @@
 
     <div class="form-group">
       <label>Work Model</label>
-      <input
-        class="form-control"
-        type="text"
+      <select
+        name="workModel"
         id="workModel"
+        class="form-select"
         formControlName="workModel"
-        placeholder="Please enter work model"
-      />
+      >
+      <option value="" disabled selected>Please select work model</option>
+        <option
+          *ngFor="let workModel of workModels"
+          value="{{ workModel.title }}"
+        >
+          {{ workModel.title }}
+        </option>
+      </select>
       <small
         class="text-danger"
         *ngIf="

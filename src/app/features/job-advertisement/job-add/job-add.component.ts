@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { City } from 'src/app/models/city/city';
+import { WorkModels } from 'src/app/models/job-advertisement/work-models';
+import { WorkTimes } from 'src/app/models/job-advertisement/work-times';
 import { Position } from 'src/app/models/position/position';
 import { CityService } from 'src/app/services/city.service';
 import { JobAdvertisementService } from 'src/app/services/job-advertisement.service';
@@ -17,6 +19,9 @@ export class JobAddComponent implements OnInit {
   user: any;
   positions: Position[] = [];
   cities: City[] = [];
+  workModels = WorkModels;
+  workTimes = WorkTimes;
+
   constructor(
     private cityService: CityService,
     private positionService: PositionService,
@@ -33,16 +38,16 @@ export class JobAddComponent implements OnInit {
 
   createJobAddForm() {
     this.jobAddForm = this.formBuilder.group({
-      cityId: ["", Validators.required], //
-      employerId: [this.getUserId()], //
+      cityId: ["", Validators.required], 
+      employerId: [this.getUserId()], 
       deadline: ["", Validators.required],
-      jobDescription: ["", Validators.required], //
-      maxSalary: [""], //
-      minSalary: [""], //
-      openPositions: ["", Validators.required], //
-      positionId: ["", Validators.required], //
-      workModel: ["", Validators.required],  //
-      workTime: ["", Validators.required], // 
+      jobDescription: ["", Validators.required], 
+      maxSalary: [""], 
+      minSalary: [""], 
+      openPositions: ["", Validators.required], 
+      positionId: ["", Validators.required], 
+      workModel: ["", Validators.required],  
+      workTime: ["", Validators.required],  
 
     })
   }

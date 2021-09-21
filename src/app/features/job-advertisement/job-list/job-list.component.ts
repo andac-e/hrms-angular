@@ -8,6 +8,7 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
   styleUrls: ['./job-list.component.css']
 })
 export class JobListComponent implements OnInit {
+  
   jobs : JobAdvertisement[] = []
   constructor(private jobAdvertisementService:JobAdvertisementService) { }
 
