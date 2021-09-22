@@ -16,10 +16,13 @@ export class CandidateService {
     return this.httpClient.post<Candidate>(this.apiUrl + '/add', candidate);
   }
 
-  getAll():Observable<CandidateListResponse> {
-    return this.httpClient.get<CandidateListResponse>(this.apiUrl+"/get/all")
+  getAll(): Observable<CandidateListResponse> {
+    return this.httpClient.get<CandidateListResponse>(this.apiUrl + '/get/all');
   }
 
-  
-
+  getCandidateById(id: number): Observable<CandidateListResponse> {
+    return this.httpClient.get<CandidateListResponse>(
+      this.apiUrl + '/get/byId?candId=' + id
+    );
+  }
 }

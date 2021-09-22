@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
+import { MultiSelectModule } from 'primeng/multiselect';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -21,6 +22,10 @@ import { JobListComponent } from './features/job-advertisement/job-list/job-list
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 import { EmployerJobListComponent } from './features/employer/employer-job-list/employer-job-list.component';
 import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience-add/candidate-experience-add.component';
+import { CandidateLanguageAddComponent } from './features/candidate/candidate-language-add/candidate-language-add.component';
+import { CandidateSchoolAddComponent } from './features/candidate/candidate-school-add/candidate-school-add.component';
+import { CandidateSkillAddComponent } from './features/candidate/candidate-skill-add/candidate-skill-add.component';
+import { CandidateImageUploadComponent } from './features/candidate/candidate-image-upload/candidate-image-upload.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +43,10 @@ import { CandidateExperienceAddComponent } from './features/candidate/candidate-
     JobAddComponent,
     EmployerJobListComponent,
     CandidateExperienceAddComponent,
+    CandidateLanguageAddComponent,
+    CandidateSchoolAddComponent,
+    CandidateSkillAddComponent,
+    CandidateImageUploadComponent,
   ],
   imports: [
     BrowserModule,
@@ -47,6 +56,7 @@ import { CandidateExperienceAddComponent } from './features/candidate/candidate-
     BrowserAnimationsModule,
     HttpClientModule,
     TableModule,
+    MultiSelectModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
   ],
   providers: [],

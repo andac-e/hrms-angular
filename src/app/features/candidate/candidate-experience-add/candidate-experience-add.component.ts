@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { CandidateJobExperience } from 'src/app/models/candidate-job-experience/candidate-job-experience';
 import { Position } from 'src/app/models/position/position';
 import { CandidateJobExperienceService } from 'src/app/services/candidate-information/candidate-job-experience.service';
+import { CandidateService } from 'src/app/services/candidate.service';
 import { PositionService } from 'src/app/services/position.service';
 
 @Component({
@@ -12,8 +14,10 @@ import { PositionService } from 'src/app/services/position.service';
 })
 export class CandidateExperienceAddComponent implements OnInit {
   experienceAddForm: FormGroup;
-  user: any;
+  loggedUser: any;
   positions: Position[] = [];
+  candidateExperiences: CandidateJobExperience[] = [];
+
   constructor(
     private positionService: PositionService,
     private candidateExperienceService: CandidateJobExperienceService,
@@ -24,6 +28,7 @@ export class CandidateExperienceAddComponent implements OnInit {
   ngOnInit(): void {
     this.createExperienceAddForm();
     this.getAllPositions();
+    this.getCandidateByQuitYear();
   }
 
   createExperienceAddForm() {
@@ -31,22 +36,37 @@ export class CandidateExperienceAddComponent implements OnInit {
       candidateId: [this.getUserId()],
       positionId: ['', Validators.required],
       startYear: ['', Validators.required],
-      quitYear: ['', Validators.required],
+      quitYear: [''],
       workPlace: ['', Validators.required],
     });
   }
 
   addExperience() {
     if (this.experienceAddForm.valid) {
-      this.candidateExperienceService.add(this.experienceAddForm.value).subscribe((response:any)=>{
-        this.toastrService.success('Successfully added');
-      })
+      this.candidateExperienceService
+        .add(this.experienceAddForm.value)
+        .subscribe((response: any) => {
+          this.toastrService.success('Successfully added');
+          window.location.reload();
+        });
     }
   }
 
+  getCandidateByQuitYear() {
+    this.candidateExperienceService
+      .getCandidatesByQuitYear(-1)
+      .subscribe((response: any) => {
+        response.data = response.data.filter(
+          (r) => r.candidate.id === this.getUserId()
+        );
+        this.candidateExperiences = response.data;
+        console.log(this.candidateExperiences);
+      });
+  }
+
   getUserId(): any {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    return this.user.data.id;
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   getAllPositions() {

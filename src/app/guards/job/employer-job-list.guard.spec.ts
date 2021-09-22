@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { EmployerGuard } from './employer.guard';
+import { EmployerJobListGuard } from './employer-job-list.guard';
 
-describe('EmployerGuard', () => {
-  let guard: EmployerGuard;
+describe('EmployerJobListGuard', () => {
+  let guard: EmployerJobListGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(EmployerGuard);
+    guard = TestBed.inject(EmployerJobListGuard);
   });
 
   it('should be created', () => {

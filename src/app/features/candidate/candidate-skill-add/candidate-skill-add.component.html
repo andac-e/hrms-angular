@@ -1,0 +1,88 @@
+<div class="container w-75 mt-3">
+    <h5>Add Skill </h5>
+
+    <form [formGroup]="skillAddForm" class="mt-3">
+      <div class="row mb-3">
+        <div class="form-group col-md-12">
+          <label>Skill</label>
+          <select
+            name="skillId"
+            id="skillId"
+            class="form-select"
+            formControlName="skillId"
+          >
+            <option value="" disabled selected>Please select skill</option>
+            <option *ngFor="let skill of skills" value="{{ skill.id }}">
+              {{ skill.name }}
+            </option>
+          </select>
+          <small
+            class="text-danger"
+            *ngIf="
+            skillAddForm.get('skillId').hasError('required') &&
+            skillAddForm.get('skillId').touched
+            "
+            >*Skill is required.</small
+          >
+        </div>
+      </div>
+  
+      <button
+        [disabled]="!skillAddForm.valid"
+        class="btn btn-primary my-4"
+        (click)="addSkill()"
+      >
+        Add skill
+      </button>
+    </form>
+
+    <h5>Current Skills</h5>
+
+    <p-table
+      id="myTable"
+      #dt
+      [value]="candidateSkills"
+      dataKey="id"
+      styleClass="p-datatable-customers"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+    >
+      
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="skill.name">
+            <div class="d-flex justify-content-between align-items-center">
+              Skill
+              <p-sortIcon field="skill.name"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="skill.name"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-skill>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">Skill</span>
+            {{ skill.skill.name }}
+          </td>
+          
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No skills found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  

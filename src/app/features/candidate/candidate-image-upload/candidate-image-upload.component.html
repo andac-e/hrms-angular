@@ -1,0 +1,23 @@
+<div class="container w-75 mt-3">
+  <div class="table-header">
+    <h5>Upload Image</h5>
+  </div>
+
+  <form [formGroup]="imgUploadForm" class="m-3" >
+    <label for="formFile" class="form-label">Please choose your photo</label>
+    <input
+      class="form-control"
+      formControlName="multipartFile"
+      type="file"
+      id="multipartFile"
+    />
+  </form>
+
+  <button
+      [disabled]="!imgUploadForm.valid"
+      class="btn btn-primary my-2"
+      (click)="imageUpload()"
+    >
+      Upload image
+    </button>
+</div>

@@ -1,0 +1,127 @@
+<div class="container w-75 mt-3">
+    <h5>Add Language </h5>
+
+    <form [formGroup]="languageAddForm" class="m-3">
+      <div class="row">
+        <div class="form-group col-md-6">
+          <label>Language</label>
+          <select
+            name="languageId"
+            id="languageId"
+            class="form-select"
+            formControlName="languageId"
+          >
+            <option value="" disabled selected>Please select language</option>
+            <option *ngFor="let language of languages" value="{{ language.id }}">
+              {{ language.name }}
+            </option>
+          </select>
+          <small
+            class="text-danger"
+            *ngIf="
+            languageAddForm.get('languageId').hasError('required') &&
+            languageAddForm.get('languageId').touched
+            "
+            >*Language is required.</small
+          >
+        </div>
+    
+        <div class="form-group col-md-6">
+          <label>Language Level</label>
+          <select
+            name="languageLevel"
+            id="languageLevel"
+            class="form-select"
+            formControlName="languageLevel"
+          >
+            <option value="" disabled selected>Please select language level</option>
+            <option *ngFor="let languageLevel of languageLevels" value="{{ languageLevel.title }}">
+              {{ languageLevel.title }}
+            </option>
+          </select>
+          <small
+            class="text-danger"
+            *ngIf="
+            languageAddForm.get('languageLevel').hasError('required') &&
+            languageAddForm.get('languageLevel').touched
+            "
+            >*Language level is required.</small
+          >
+        </div>
+      </div>
+
+      <button
+        [disabled]="!languageAddForm.valid"
+        class="btn btn-primary my-2"
+        (click)="addLanguage()"
+      >
+        Add language
+      </button>
+    </form>
+
+    <h5>Current Languages</h5>
+
+  <p-table
+    id="myTable"
+    #dt
+    [value]="candidateLanguages"
+    dataKey="id"
+    styleClass="p-datatable-customers"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+  >
+    
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="language.name">
+          <div class="d-flex justify-content-between align-items-center">
+            Language
+            <p-sortIcon field="language.name"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="language.name"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="languageLevel">
+          <div class="d-flex justify-content-between align-items-center">
+            Level
+            <p-sortIcon field="languageLevel"></p-sortIcon>
+            
+          </div>
+        </th>
+
+        
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-language>
+      <tr class="p-selectable-row">
+        <td>
+          <span class="p-column-title">Language</span>
+          {{ language.language.name }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Level</span>
+          {{ language.languageLevel }}
+        </td>
+
+        
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No languages found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+  </div>
+  

@@ -1,49 +1,54 @@
 <div class="container w-75 mt-3">
-  <div class="table-header">
-    <h5>Add Job Experience</h5>
-  </div>
+  <h5>Add School</h5>
 
-  <form [formGroup]="experienceAddForm" class="m-3">
+  <form [formGroup]="schoolAddForm" class="mt-3">
     <div class="row mb-3">
       <div class="form-group col-md-6">
-        <label>Position</label>
+        <label>School</label>
         <select
-          name="positionId"
-          id="positionId"
+          name="schoolId"
+          id="schoolId"
           class="form-select"
-          formControlName="positionId"
+          formControlName="schoolId"
         >
-          <option value="" disabled selected>Please select position</option>
-          <option *ngFor="let position of positions" value="{{ position.id }}">
-            {{ position.title }}
+          <option value="" disabled selected>Please select school</option>
+          <option *ngFor="let school of schools" value="{{ school.id }}">
+            {{ school.name }}
           </option>
         </select>
         <small
           class="text-danger"
           *ngIf="
-            experienceAddForm.get('positionId').hasError('required') &&
-            experienceAddForm.get('positionId').touched
+            schoolAddForm.get('schoolId').hasError('required') &&
+            schoolAddForm.get('schoolId').touched
           "
-          >*Position is required.</small
+          >*School is required.</small
         >
       </div>
 
       <div class="form-group col-md-6">
-        <label>Work Place</label>
-        <input
-          class="form-control"
-          type="text"
-          id="workPlace"
-          formControlName="workPlace"
-          placeholder="Please enter work place"
-        />
+        <label>Department</label>
+        <select
+          name="departmentId"
+          id="departmentId"
+          class="form-select"
+          formControlName="departmentId"
+        >
+          <option value="" disabled selected>Please select department</option>
+          <option
+            *ngFor="let department of departments"
+            value="{{ department.id }}"
+          >
+            {{ department.name }}
+          </option>
+        </select>
         <small
           class="text-danger"
           *ngIf="
-            experienceAddForm.get('workPlace').hasError('required') &&
-            experienceAddForm.get('workPlace').touched
+            schoolAddForm.get('departmentId').hasError('required') &&
+            schoolAddForm.get('departmentId').touched
           "
-          >*Work place is required.</small
+          >*Department is required.</small
         >
       </div>
     </div>
@@ -61,40 +66,40 @@
         <small
           class="text-danger"
           *ngIf="
-            experienceAddForm.get('startYear').hasError('required') &&
-            experienceAddForm.get('startYear').touched
+            schoolAddForm.get('startYear').hasError('required') &&
+            schoolAddForm.get('startYear').touched
           "
           >*Start year is required.</small
         >
       </div>
 
       <div class="form-group col-md-6">
-        <label>Quit Year</label>
+        <label>Graduation Year</label>
         <input
           class="form-control"
           type="number"
-          id="quitYear"
-          formControlName="quitYear"
-          placeholder="Please enter quit year (optional)"
+          id="graduationYear"
+          formControlName="graduationYear"
+          placeholder="Please enter graduation year (optional)"
         />
       </div>
     </div>
 
     <button
-      [disabled]="!experienceAddForm.valid"
+      [disabled]="!schoolAddForm.valid"
       class="btn btn-primary my-2"
-      (click)="addExperience()"
+      (click)="addSchool()"
     >
-      Add job experience
+      Add school
     </button>
   </form>
 
-  <h5>Current Experiences</h5>
+  <h5 class="mt-4">Current Schools</h5>
 
   <p-table
     id="myTable"
     #dt
-    [value]="candidateExperiences"
+    [value]="candidateSchools"
     dataKey="id"
     styleClass="p-datatable-customers"
     [rowHover]="true"
@@ -109,13 +114,13 @@
       <tr>
         <th>
           <div class="d-flex justify-content-between align-items-center">
-            Work Place
+            School
           </div>
         </th>
 
         <th>
           <div class="d-flex justify-content-between align-items-center">
-            Position Title
+            Department
           </div>
         </th>
 
@@ -127,40 +132,40 @@
 
         <th>
           <div class="d-flex justify-content-between align-items-center">
-            Quit Year
+            Graduation Year
           </div>
         </th>
       </tr>
     </ng-template>
-    <ng-template pTemplate="body" let-experience>
+    <ng-template pTemplate="body" let-school>
       <tr class="p-selectable-row">
         <td>
-          <span class="p-column-title">Company</span>
-          {{ experience.workPlace }}
+          <span class="p-column-title">School</span>
+          {{ school.school.name }}
         </td>
 
         <td>
-          <span class="p-column-title">Position</span>
-          {{ experience.position.title }}
+          <span class="p-column-title">Department</span>
+          {{ school.department.name }}
         </td>
 
         <td>
           <span class="p-column-title">Start Year</span>
-          {{ experience.startYear }}
+          {{ school.startYear }}
         </td>
 
         <td>
-          <span class="p-column-title">Quit Year</span>
-          <span *ngIf="experience.quitYear">
-            {{ experience.quitYear.toString() }}</span
+          <span class="p-column-title">Graduation Year</span>
+          <span *ngIf="school.graduationYear">
+            {{ school.graduationYear }}</span
           >
-          <span *ngIf="!experience.quitYear">Present</span>
+          <span *ngIf="!school.graduationYear">Present</span>
         </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8">No experiences found.</td>
+        <td colspan="8">No schools found.</td>
       </tr>
     </ng-template>
   </p-table>
