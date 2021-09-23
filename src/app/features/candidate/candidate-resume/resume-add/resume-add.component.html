@@ -1,0 +1,54 @@
+<div class="container w-75 mt-3">
+  <div class="table-header">
+    <h5>Add Resume</h5>
+  </div>
+
+  <form [formGroup]="resumeAddForm" class="m-3">
+    <div class="form-group">
+      <label>Title</label>
+      <input
+        class="form-control"
+        type="text"
+        id="title"
+        formControlName="title"
+        placeholder="Please enter your resume title"
+      />
+      <small
+        class="text-danger"
+        *ngIf="
+          resumeAddForm.get('title').hasError('required') &&
+          resumeAddForm.get('title').touched
+        "
+        >*Resume title is required.</small
+      >
+    </div>
+
+    <div class="form-group">
+      <label>Cover Letter</label>
+      <textarea
+        class="form-control"
+        type="text"
+        id="coverLetter"
+        formControlName="coverLetter"
+        placeholder="Please enter your cover letter"
+      >
+      </textarea>
+      <small
+        class="text-danger"
+        *ngIf="
+          resumeAddForm.get('coverLetter').hasError('required') &&
+          resumeAddForm.get('coverLetter').touched
+        "
+        >*Cover letter is required.</small
+      >
+    </div>
+
+    <button
+      [disabled]="!resumeAddForm.valid"
+      class="btn btn-primary my-2"
+      (click)="addCv()"
+    >
+      Add resume
+    </button>
+  </form>
+</div>

@@ -1,1 +1,37 @@
-<p>candidate-linkedin-add works!</p>
+<div class="container w-75 mt-3">
+    <div class="table-header">
+      <h5>Add Linkedin Account</h5>
+    </div>
+  
+    <form [formGroup]="linkedinAddForm" class="m-3">
+      <div class="row">
+        <div class="form-group col-md-12">
+          <label>Linkedin Account</label>
+          <input
+            class="form-control"
+            type="text"
+            id="linkedinAccount"
+            formControlName="linkedinAccount"
+            placeholder="Please enter your linkedin account"
+          />
+          <small
+            class="text-danger"
+            *ngIf="
+            linkedinAddForm.get('linkedinAccount').hasError('required') &&
+            linkedinAddForm.get('linkedinAccount').touched
+            "
+            >*Linkedin account is required.</small
+          >
+        </div>
+      </div>
+  
+      <button
+        [disabled]="!linkedinAddForm.valid"
+        class="btn btn-primary my-2"
+        (click)="addLinkedinAccount()"
+      >
+        Add linkedin account
+      </button>
+    </form>
+  </div>
+  

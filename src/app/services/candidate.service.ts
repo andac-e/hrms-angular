@@ -37,13 +37,13 @@ export class CandidateService {
     );
   }
 
-  updateLinkedin(candidate: Candidate): Observable<Candidate> {
+  updateLinkedin(candidate: Candidate, linkedinLink:string): Observable<Candidate> {
     return this.httpClient.put<Candidate>(
       this.apiUrl +
         '/update/linkedinAccount?candId=' +
         candidate.id +
         '&linkedinAccount=' +
-        candidate.linkedinAccount,
+        linkedinLink,
       candidate
     );
   }

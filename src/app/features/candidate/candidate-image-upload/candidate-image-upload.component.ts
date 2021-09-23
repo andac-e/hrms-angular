@@ -51,6 +51,7 @@ export class CandidateImageUploadComponent implements OnInit {
 
       this.imageService
         .upload(formData, this.getUserId())
+        //progress bar 
         .subscribe((response: any) => {
           console.log(response);
           this.toastrService.success('Successfully added');

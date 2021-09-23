@@ -32,7 +32,7 @@ export class CandidateGithubAddComponent implements OnInit {
     });
   }
 
-  addGithub() {
+  addGithubAccount() {
     if (this.githubAddForm.valid) {
       this.candidateService.updateGithub(this.loggedCandidate, this.githubAddForm.value["githubAccount"]).subscribe((response:any)=>{
         this.toastrService.success("Successfully added")

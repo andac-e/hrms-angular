@@ -27,6 +27,8 @@ import { CandidateSkillAddComponent } from './features/candidate/candidate-skill
 import { CandidateImageUploadComponent } from './features/candidate/candidate-image-upload/candidate-image-upload.component';
 import { CandidateGithubAddComponent } from './features/candidate/candidate-github-add/candidate-github-add.component';
 import { CandidateLinkedinAddComponent } from './features/candidate/candidate-linkedin-add/candidate-linkedin-add.component';
+import { ResumeAddComponent } from './features/candidate/candidate-resume/resume-add/resume-add.component';
+import { ResumeViewComponent } from './features/candidate/candidate-resume/resume-view/resume-view.component';
 
 @NgModule({
   declarations: [
@@ -50,6 +52,8 @@ import { CandidateLinkedinAddComponent } from './features/candidate/candidate-li
     CandidateImageUploadComponent,
     CandidateGithubAddComponent,
     CandidateLinkedinAddComponent,
+    ResumeAddComponent,
+    ResumeViewComponent,
   ],
   imports: [
     BrowserModule,

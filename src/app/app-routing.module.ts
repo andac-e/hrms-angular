@@ -6,6 +6,7 @@ import { CandidateImageUploadComponent } from './features/candidate/candidate-im
 import { CandidateLanguageAddComponent } from './features/candidate/candidate-language-add/candidate-language-add.component';
 import { CandidateLinkedinAddComponent } from './features/candidate/candidate-linkedin-add/candidate-linkedin-add.component';
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
+import { ResumeAddComponent } from './features/candidate/candidate-resume/resume-add/resume-add.component';
 import { CandidateSchoolAddComponent } from './features/candidate/candidate-school-add/candidate-school-add.component';
 import { CandidateSignupComponent } from './features/candidate/candidate-signup/candidate-signup.component';
 import { CandidateSkillAddComponent } from './features/candidate/candidate-skill-add/candidate-skill-add.component';
@@ -83,6 +84,11 @@ const routes: Routes = [
   {
     path: 'candidate-linkedin-add',
     component: CandidateLinkedinAddComponent,
+    canActivate: [],
+  },
+  {
+    path: 'resume-add',
+    component: ResumeAddComponent,
     canActivate: [],
   },
 ];
