@@ -14,7 +14,7 @@ import { SkillService } from 'src/app/services/skill.service';
 export class CandidateSkillAddComponent implements OnInit {
   skillAddForm: FormGroup;
   skills: Skill[] = [];
-  user: any;
+  loggedUser: any;
   candidateSkills: Skill[] = [];
 
   constructor(
@@ -64,9 +64,9 @@ export class CandidateSkillAddComponent implements OnInit {
       });
   }
 
-  getUserId(): any {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    return this.user.data.id;
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   getAllSkills() {

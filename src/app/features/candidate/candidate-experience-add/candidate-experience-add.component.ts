@@ -64,7 +64,7 @@ export class CandidateExperienceAddComponent implements OnInit {
       });
   }
 
-  getUserId(): any {
+  getUserId(): number {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     return this.loggedUser.data.id;
   }

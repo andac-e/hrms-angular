@@ -3,9 +3,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
-import { MultiSelectModule } from 'primeng/multiselect';
-
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
 import { HrmsNaviComponent } from './features/navi/hrms-navi/hrms-navi.component';
 import { CandidateSignupComponent } from './features/candidate/candidate-signup/candidate-signup.component';
@@ -26,6 +25,8 @@ import { CandidateLanguageAddComponent } from './features/candidate/candidate-la
 import { CandidateSchoolAddComponent } from './features/candidate/candidate-school-add/candidate-school-add.component';
 import { CandidateSkillAddComponent } from './features/candidate/candidate-skill-add/candidate-skill-add.component';
 import { CandidateImageUploadComponent } from './features/candidate/candidate-image-upload/candidate-image-upload.component';
+import { CandidateGithubAddComponent } from './features/candidate/candidate-github-add/candidate-github-add.component';
+import { CandidateLinkedinAddComponent } from './features/candidate/candidate-linkedin-add/candidate-linkedin-add.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,8 @@ import { CandidateImageUploadComponent } from './features/candidate/candidate-im
     CandidateSchoolAddComponent,
     CandidateSkillAddComponent,
     CandidateImageUploadComponent,
+    CandidateGithubAddComponent,
+    CandidateLinkedinAddComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,7 +59,6 @@ import { CandidateImageUploadComponent } from './features/candidate/candidate-im
     BrowserAnimationsModule,
     HttpClientModule,
     TableModule,
-    MultiSelectModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
   ],
   providers: [],

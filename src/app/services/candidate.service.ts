@@ -25,4 +25,26 @@ export class CandidateService {
       this.apiUrl + '/get/byId?candId=' + id
     );
   }
+
+  updateGithub(candidate: Candidate, githubLink:string): Observable<Candidate> {
+    return this.httpClient.put<Candidate>(
+      this.apiUrl +
+        '/update/githubAccount?candId=' +
+        candidate.id +
+        '&githubAccount=' +
+        githubLink,
+      candidate
+    );
+  }
+
+  updateLinkedin(candidate: Candidate): Observable<Candidate> {
+    return this.httpClient.put<Candidate>(
+      this.apiUrl +
+        '/update/linkedinAccount?candId=' +
+        candidate.id +
+        '&linkedinAccount=' +
+        candidate.linkedinAccount,
+      candidate
+    );
+  }
 }

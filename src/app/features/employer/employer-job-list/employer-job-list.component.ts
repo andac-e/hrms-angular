@@ -9,7 +9,7 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
   styleUrls: ['./employer-job-list.component.css'],
 })
 export class EmployerJobListComponent implements OnInit {
-  userId: any;
+  loggedUser: any;
   companyName: any;
   employerJobs: JobAdvertisement[] = [];
   constructor(private jobAdvertisementService: JobAdvertisementService) {}
@@ -38,12 +38,12 @@ export class EmployerJobListComponent implements OnInit {
   }
 
   getUserId(): number {
-    this.userId = JSON.parse(localStorage.getItem('user'));
-    return this.userId.data.id;
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   getCompanyName() {
-    this.userId = JSON.parse(localStorage.getItem('user'));
-    this.companyName = this.userId.data.companyName;
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    this.companyName = this.loggedUser.data.companyName;
   }
 }

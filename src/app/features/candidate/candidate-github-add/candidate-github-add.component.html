@@ -1,0 +1,36 @@
+<div class="container w-75 mt-3">
+  <div class="table-header">
+    <h5>Add Github Account</h5>
+  </div>
+
+  <form [formGroup]="githubAddForm" class="m-3">
+    <div class="row">
+      <div class="form-group col-md-12">
+        <label>Github Account</label>
+        <input
+          class="form-control"
+          type="text"
+          id="githubAccount"
+          formControlName="githubAccount"
+          placeholder="Please enter your github account"
+        />
+        <small
+          class="text-danger"
+          *ngIf="
+            githubAddForm.get('githubAccount').hasError('required') &&
+            githubAddForm.get('githubAccount').touched
+          "
+          >*Github account is required.</small
+        >
+      </div>
+    </div>
+
+    <button
+      [disabled]="!githubAddForm.valid"
+      class="btn btn-primary my-2"
+      (click)="addGithub()"
+    >
+      Add github account
+    </button>
+  </form>
+</div>

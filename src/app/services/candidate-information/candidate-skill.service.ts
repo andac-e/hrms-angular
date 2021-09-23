@@ -14,8 +14,4 @@ export class CandidateSkillService {
   add(candidateSkill: Skill): Observable<Skill> {
     return this.httpClient.post<Skill>(this.apiUrl + '/add', candidateSkill);
   }
-
-  addMultiple(candidateSkills: Skill[]): Observable<Skill[]> {
-    return this.httpClient.post<Skill[]>(this.apiUrl + '/add/multiple', candidateSkills);
-  }
 }

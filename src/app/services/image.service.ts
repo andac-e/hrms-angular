@@ -11,14 +11,10 @@ export class ImageService {
     'https://javareactcamp-hrms-backend.herokuapp.com/api/images';
   constructor(private httpClient: HttpClient) {}
 
-  upload(image: any, userId: any): Observable<Image> {
-    const data = new FormData();
-    data.append("multipartFile ", image);
-    data.append("userId ", userId);
-    
+  upload(image: Image, userId: number): Observable<Image> {
     return this.httpClient.post<Image>(
       this.apiUrl + '/upload?userId=' + userId,
-      data
+      image
     );
   }
 }

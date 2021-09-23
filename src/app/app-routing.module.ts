@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience-add/candidate-experience-add.component';
+import { CandidateGithubAddComponent } from './features/candidate/candidate-github-add/candidate-github-add.component';
 import { CandidateImageUploadComponent } from './features/candidate/candidate-image-upload/candidate-image-upload.component';
 import { CandidateLanguageAddComponent } from './features/candidate/candidate-language-add/candidate-language-add.component';
+import { CandidateLinkedinAddComponent } from './features/candidate/candidate-linkedin-add/candidate-linkedin-add.component';
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
 import { CandidateSchoolAddComponent } from './features/candidate/candidate-school-add/candidate-school-add.component';
 import { CandidateSignupComponent } from './features/candidate/candidate-signup/candidate-signup.component';
@@ -16,6 +18,7 @@ import { JobAddComponent } from './features/job-advertisement/job-add/job-add.co
 import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
 import { LoginComponent } from './features/navi/login/login.component';
 import { CandidateExperienceAddGuard } from './guards/candidate-information/candidate-experience-add.guard';
+import { CandidateImageUploadGuard } from './guards/candidate-information/candidate-image-upload.guard';
 import { CandidateLanguageAddGuard } from './guards/candidate-information/candidate-language-add.guard';
 import { CandidateSchoolAddGuard } from './guards/candidate-information/candidate-school-add.guard';
 import { CandidateSkillAddGuard } from './guards/candidate-information/candidate-skill-add.guard';
@@ -70,6 +73,16 @@ const routes: Routes = [
   {
     path: 'candidate-photo-upload',
     component: CandidateImageUploadComponent,
+    canActivate: [CandidateImageUploadGuard],
+  },
+  {
+    path: 'candidate-github-add',
+    component: CandidateGithubAddComponent,
+    canActivate: [],
+  },
+  {
+    path: 'candidate-linkedin-add',
+    component: CandidateLinkedinAddComponent,
     canActivate: [],
   },
 ];

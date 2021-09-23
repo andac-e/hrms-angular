@@ -16,7 +16,7 @@ import { SchoolService } from 'src/app/services/school.service';
 })
 export class CandidateSchoolAddComponent implements OnInit {
   schoolAddForm: FormGroup;
-  user: any;
+  loggedUser: any;
   schools: School[] = [];
   departments: Department[] = [];
   candidateSchools: School[] = [];
@@ -30,14 +30,13 @@ export class CandidateSchoolAddComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.createLanguageAddForm();
+    this.createSchoolAddForm();
     this.getAllDepartments();
     this.getAllSchools();
-    //this.getCandidateSchools();
     this.getCandidateByGradYear();
   }
 
-  createLanguageAddForm() {
+  createSchoolAddForm() {
     this.schoolAddForm = this.formBuilder.group({
       candidateId: [this.getUserId()],
       schoolId: ['', Validators.required],
@@ -58,9 +57,9 @@ export class CandidateSchoolAddComponent implements OnInit {
     }
   }
 
-  getUserId(): any {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    return this.user.data.id;
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   getAllSchools() {

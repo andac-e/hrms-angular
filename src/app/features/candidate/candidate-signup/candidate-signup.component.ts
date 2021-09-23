@@ -11,7 +11,6 @@ import { CandidateService } from 'src/app/services/candidate.service';
 })
 export class CandidateSignupComponent implements OnInit {
   candidateSignForm: FormGroup;
-  checkNatId: boolean = false;
 
   constructor(
     private candidateService: CandidateService,

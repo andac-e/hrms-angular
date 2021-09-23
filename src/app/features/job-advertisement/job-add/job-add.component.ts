@@ -16,7 +16,7 @@ import { PositionService } from 'src/app/services/position.service';
 })
 export class JobAddComponent implements OnInit {
   jobAddForm: FormGroup;
-  user: any;
+  loggedUser: any;
   positions: Position[] = [];
   cities: City[] = [];
   workModels = WorkModels;
@@ -60,9 +60,9 @@ export class JobAddComponent implements OnInit {
     }
   }
 
-  getUserId(): any {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    return this.user.data.id;
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   getAllCities() {

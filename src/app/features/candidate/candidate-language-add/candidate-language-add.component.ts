@@ -14,7 +14,7 @@ import { LanguageService } from 'src/app/services/language.service';
 })
 export class CandidateLanguageAddComponent implements OnInit {
   languageAddForm: FormGroup;
-  user: any;
+  loggedUser: any;
   languages: Language[] = [];
   languageLevels = LanguageLevels;
   candidateLanguages: Language[] = [];
@@ -68,9 +68,9 @@ export class CandidateLanguageAddComponent implements OnInit {
       });
   }
 
-  getUserId(): any {
-    this.user = JSON.parse(localStorage.getItem('user'));
-    return this.user.data.id;
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   getAllLanguages() {
