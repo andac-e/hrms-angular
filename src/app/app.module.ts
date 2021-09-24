@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TableModule } from 'primeng/table';
+import {CardModule} from 'primeng/card';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -63,6 +64,7 @@ import { ResumeViewComponent } from './features/candidate/candidate-resume/resum
     BrowserAnimationsModule,
     HttpClientModule,
     TableModule,
+    CardModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
   ],
   providers: [],

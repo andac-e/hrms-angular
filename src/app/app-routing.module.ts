@@ -7,6 +7,7 @@ import { CandidateLanguageAddComponent } from './features/candidate/candidate-la
 import { CandidateLinkedinAddComponent } from './features/candidate/candidate-linkedin-add/candidate-linkedin-add.component';
 import { CandidateListComponent } from './features/candidate/candidate-list/candidate-list.component';
 import { ResumeAddComponent } from './features/candidate/candidate-resume/resume-add/resume-add.component';
+import { ResumeViewComponent } from './features/candidate/candidate-resume/resume-view/resume-view.component';
 import { CandidateSchoolAddComponent } from './features/candidate/candidate-school-add/candidate-school-add.component';
 import { CandidateSignupComponent } from './features/candidate/candidate-signup/candidate-signup.component';
 import { CandidateSkillAddComponent } from './features/candidate/candidate-skill-add/candidate-skill-add.component';
@@ -23,6 +24,7 @@ import { CandidateImageUploadGuard } from './guards/candidate-information/candid
 import { CandidateLanguageAddGuard } from './guards/candidate-information/candidate-language-add.guard';
 import { CandidateSchoolAddGuard } from './guards/candidate-information/candidate-school-add.guard';
 import { CandidateSkillAddGuard } from './guards/candidate-information/candidate-skill-add.guard';
+import { CandidateSocialGuard } from './guards/candidate-information/candidate-social.guard';
 import { EmployerJobListGuard } from './guards/job/employer-job-list.guard';
 import { JobAddGuard } from './guards/job/job-add.guard';
 import { PositionAddGuard } from './guards/job/position-add.guard';
@@ -79,16 +81,21 @@ const routes: Routes = [
   {
     path: 'candidate-github-add',
     component: CandidateGithubAddComponent,
-    canActivate: [],
+    canActivate: [CandidateSocialGuard],
   },
   {
     path: 'candidate-linkedin-add',
     component: CandidateLinkedinAddComponent,
-    canActivate: [],
+    canActivate: [CandidateSocialGuard],
   },
   {
     path: 'resume-add',
     component: ResumeAddComponent,
+    canActivate: [],
+  },
+  {
+    path: 'resume-view',
+    component: ResumeViewComponent,
     canActivate: [],
   },
 ];

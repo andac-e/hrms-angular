@@ -29,7 +29,7 @@
   
       <button
         [disabled]="!skillAddForm.valid"
-        class="btn btn-primary my-4"
+        class="btn btn-primary mb-4"
         (click)="addSkill()"
       >
         Add skill
@@ -43,7 +43,7 @@
       #dt
       [value]="candidateSkills"
       dataKey="id"
-      styleClass="p-datatable-customers"
+      styleClass="p-datatable-striped"
       [rowHover]="true"
       [rows]="10"
       [showCurrentPageReport]="true"

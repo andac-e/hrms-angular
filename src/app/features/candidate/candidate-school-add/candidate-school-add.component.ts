@@ -57,6 +57,18 @@ export class CandidateSchoolAddComponent implements OnInit {
     }
   }
 
+  getCandidateByGradYear() {
+    this.candidateSchoolService
+      .getCandidatesByGradYear(-1)
+      .subscribe((response: any) => {
+        response.data = response.data.filter(
+          (r) => r.candidate.id === this.getUserId()
+        );
+        this.candidateSchools = response.data;
+        console.log(this.candidateSchools);
+      });
+  }
+
   getUserId(): number {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     return this.loggedUser.data.id;
@@ -72,17 +84,5 @@ export class CandidateSchoolAddComponent implements OnInit {
     this.departmentService.getAll().subscribe((response: any) => {
       this.departments = response.data;
     });
-  }
-
-  getCandidateByGradYear() {
-    this.candidateSchoolService
-      .getCandidatesByGradYear(-1)
-      .subscribe((response: any) => {
-        response.data = response.data.filter(
-          (r) => r.candidate.id === this.getUserId()
-          );
-          this.candidateSchools = response.data;
-          console.log(this.candidateSchools);
-      });
   }
 }

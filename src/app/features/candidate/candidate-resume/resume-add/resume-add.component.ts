@@ -49,6 +49,7 @@ export class ResumeAddComponent implements OnInit {
   addCv() {
     this.cvService.addCv(this.resumeAddForm.value).subscribe((response:any)=>{
       console.log(response)
+      this.toastrService.success("Resume added successfully")
     })
   }
 

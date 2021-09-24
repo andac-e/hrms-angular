@@ -1,1 +1,127 @@
-<p>resume-view works!</p>
+<div *ngIf="loggedCandidate.cvs.length > 0; else emptyCv">
+  <div class="container d-flex flex-column align-items-center text-center mt-2">
+    <div class="col">
+      <img
+        width="15%"
+        class="rounded-circle m-2"
+        src="{{ loggedCandidate.images[5]?.imageUrl }}"
+      />
+      <h4 class="fw-bold mb-2">
+        {{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }}
+      </h4>
+    </div>
+
+    <div class="card w-50 my-3">
+      <div class="card-header text-center">
+        <i class="bi bi-person"></i>About Me
+      </div>
+      <div class="card-body text-start">
+        <p class="card-text">
+            Cover Letter:
+            <span class="fw-bold">{{ loggedCandidate.cvs[0].coverLetter }}</span>
+          </p>
+        <p class="card-text">
+          Age:
+          <span class="fw-bold">{{
+            getCurrentYear() - loggedCandidate.birthYear
+          }}</span>
+        </p>
+        <p class="card-text">
+          Email: <span class="fw-bold">{{ loggedCandidate.email }}</span>
+        </p>
+        <p class="card-text">
+          National ID:
+          <span class="fw-bold">{{ loggedCandidate.nationalityId }}</span>
+        </p>
+        <p class="card-text">
+          Languages:
+          <span *ngFor="let lang of candidateLanguages" class="fw-bold"
+            >{{ lang.language.name }}
+            <span class="text-secondary small"
+              >({{ lang.languageLevel }})
+            </span>
+          </span>
+        </p>
+
+        <p class="card-text">
+          LinkedIn:
+          <a
+            target="_blank"
+            class="link-dark"
+            href="{{ loggedCandidate.linkedinAccount }}"
+            ><span class="fw-bold">{{
+              loggedCandidate.linkedinAccount
+            }}</span></a
+          >
+        </p>
+        <p class="card-text">
+          Github:
+          <a
+            target="_blank"
+            class="link-dark"
+            href="{{ loggedCandidate.githubAccount }}"
+            ><span class="fw-bold">{{ loggedCandidate.githubAccount }}</span></a
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="card w-50 my-3">
+      <div class="card-header text-center">
+        <i class="bi bi-briefcase"></i>Professional Experience
+      </div>
+      <div class="card-body text-start">
+        <p *ngFor="let job of candidateJobExperiences" class="card-text">
+          <span class="fw-bold">{{ job.position.title }}</span> at
+          <span class="fw-bold">{{ job.workPlace }} </span>
+          <span class="small text-secondary">({{ job.startYear }} - </span>
+          <span class="small text-secondary" *ngIf="job.quitYear">
+            {{ job.quitYear }})</span
+          >
+          <span class="small text-secondary" *ngIf="!job.quitYear"
+            >Present)</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="card w-50 my-3">
+      <div class="card-header text-center">
+        <i class="bi bi-book"></i>Education
+      </div>
+      <div class="card-body text-start">
+        <p *ngFor="let school of candidateSchools" class="card-text">
+          <span class="fw-bold">{{ school.department.name }}</span> at
+          <span class="fw-bold">{{ school.school.name }} </span>
+          <span class="small text-secondary">({{ school.startYear }} - </span>
+          <span class="small text-secondary" *ngIf="school.graduationYear">
+            {{ school.graduationYear }})</span
+          >
+          <span class="small text-secondary" *ngIf="!school.graduationYear"
+            >Present)</span
+          >
+        </p>
+      </div>
+    </div>
+
+    <div class="card w-50 my-3">
+      <div class="card-header text-center"><i class="bi bi-gem"></i>Skills</div>
+      <div class="card-body">
+        <p *ngFor="let skill of candidateSkills" class="card-text">
+          <span class="fw-bold">{{ skill.skill.name }}</span>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-template #emptyCv>
+  <div class="container d-flex flex-column justify-content-center align-items-center text-center">
+    <div class="p-5 m-2">
+        <h4>You don't have any resume yet. If you want to create a new one, click the
+            button down below... </h4>
+            <div class="fs-2"><i class="bi bi-arrow-down"></i></div>
+        <a routerLink="/resume-add" class="btn btn-success btn-lg">Create Resume</a>
+    </div>
+  </div>
+</ng-template>
