@@ -97,11 +97,12 @@
   <h5 class="mt-4">Current Schools</h5>
 
   <p-table
+    *ngIf="loading == false; else loadingInfo"
     id="myTable"
     #dt
     [value]="candidateSchools"
     dataKey="id"
-    styleClass="p-datatable-customers"
+    styleClass="p-datatable-striped"
     [rowHover]="true"
     [rows]="10"
     [showCurrentPageReport]="true"
@@ -170,3 +171,19 @@
     </ng-template>
   </p-table>
 </div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

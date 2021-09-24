@@ -13,9 +13,12 @@
           type="file"
           id="multipartFile"
         />
+        <div class="my-2">
+          <p-progressBar [value]="progress"></p-progressBar>
+        </div>
         <button
           [disabled]="!imgUploadForm.valid"
-          class="btn btn-primary my-3"
+          class="btn btn-primary"
           (click)="imageUpload()"
         >
           Upload image

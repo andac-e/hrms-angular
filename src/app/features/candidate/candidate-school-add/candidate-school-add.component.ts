@@ -20,6 +20,7 @@ export class CandidateSchoolAddComponent implements OnInit {
   schools: School[] = [];
   departments: Department[] = [];
   candidateSchools: School[] = [];
+  loading: boolean = true;
 
   constructor(
     private schoolService: SchoolService,
@@ -65,7 +66,7 @@ export class CandidateSchoolAddComponent implements OnInit {
           (r) => r.candidate.id === this.getUserId()
         );
         this.candidateSchools = response.data;
-        console.log(this.candidateSchools);
+        this.loading = false;
       });
   }
 

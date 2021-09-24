@@ -9,6 +9,7 @@ import { CandidateService } from 'src/app/services/candidate.service';
 })
 export class CandidateListComponent implements OnInit {
   candidates: Candidate[] = [];
+  loading: boolean = true;
   constructor(private candidateService: CandidateService) {}
 
   ngOnInit(): void {
@@ -18,6 +19,7 @@ export class CandidateListComponent implements OnInit {
   getAllCandidates() {
     this.candidateService.getAll().subscribe((response: any) => {
       this.candidates = response.data;
+      this.loading = false;
     });
   }
 }

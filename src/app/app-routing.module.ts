@@ -22,6 +22,8 @@ import { LoginComponent } from './features/navi/login/login.component';
 import { CandidateExperienceAddGuard } from './guards/candidate-information/candidate-experience-add.guard';
 import { CandidateImageUploadGuard } from './guards/candidate-information/candidate-image-upload.guard';
 import { CandidateLanguageAddGuard } from './guards/candidate-information/candidate-language-add.guard';
+import { CandidateResumeAddGuard } from './guards/candidate-information/candidate-resume-add.guard';
+import { CandidateResumeViewGuard } from './guards/candidate-information/candidate-resume-view.guard';
 import { CandidateSchoolAddGuard } from './guards/candidate-information/candidate-school-add.guard';
 import { CandidateSkillAddGuard } from './guards/candidate-information/candidate-skill-add.guard';
 import { CandidateSocialGuard } from './guards/candidate-information/candidate-social.guard';
@@ -91,12 +93,12 @@ const routes: Routes = [
   {
     path: 'resume-add',
     component: ResumeAddComponent,
-    canActivate: [],
+    canActivate: [CandidateResumeAddGuard],
   },
   {
     path: 'resume-view',
     component: ResumeViewComponent,
-    canActivate: [],
+    canActivate: [CandidateResumeViewGuard],
   },
 ];
 

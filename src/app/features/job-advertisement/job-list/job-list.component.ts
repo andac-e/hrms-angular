@@ -8,8 +8,8 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
   styleUrls: ['./job-list.component.css']
 })
 export class JobListComponent implements OnInit {
-  
   jobs : JobAdvertisement[] = []
+  loading: boolean = true;
   constructor(private jobAdvertisementService:JobAdvertisementService) { }
 
   ngOnInit(): void {
@@ -18,7 +18,8 @@ export class JobListComponent implements OnInit {
 
   getActiveJobs() {
     this.jobAdvertisementService.getActives().subscribe((response:any)=> {
-      this.jobs = response.data
+      this.jobs = response.data;
+      this.loading = false;
     })
   }
 

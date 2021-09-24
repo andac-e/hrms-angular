@@ -35,6 +35,10 @@
   );
 }
 
+label {
+  margin: 0;
+}
+
 .image {
   display: inline-block;
 

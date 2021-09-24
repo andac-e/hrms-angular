@@ -16,6 +16,7 @@ export class CandidateSkillAddComponent implements OnInit {
   skills: Skill[] = [];
   loggedUser: any;
   candidateSkills: Skill[] = [];
+  loading: boolean = true;
 
   constructor(
     private candidateService: CandidateService,
@@ -61,6 +62,7 @@ export class CandidateSkillAddComponent implements OnInit {
       .getCandidateById(this.getUserId())
       .subscribe((response: any) => {
         this.candidateSkills = response.data.candidateSkills;
+        this.loading = false;
       });
   }
 

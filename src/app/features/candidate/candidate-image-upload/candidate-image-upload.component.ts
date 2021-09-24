@@ -13,6 +13,7 @@ export class CandidateImageUploadComponent implements OnInit {
   loggedUser: any;
   selectedFile: File = null;
   imageUrl: string | ArrayBuffer;
+  progress: number;
 
   constructor(
     private imageService: ImageService,
@@ -33,7 +34,7 @@ export class CandidateImageUploadComponent implements OnInit {
 
   onFileSelected(event) {
     this.selectedFile = event.target.files[0];
-    
+
     //image preview
     const reader = new FileReader();
     reader.readAsDataURL(this.selectedFile);
@@ -49,12 +50,13 @@ export class CandidateImageUploadComponent implements OnInit {
       formData.append('multipartFile', this.selectedFile);
       formData.append('userId', this.imgUploadForm.get('userId').value);
 
+      this.progress = 0;
       this.imageService
         .upload(formData, this.getUserId())
-        //progress bar 
         .subscribe((response: any) => {
           console.log(response);
           this.toastrService.success('Successfully added');
+          this.progress = 100;
           this.imgUploadForm.reset(); //input reset
         });
     }

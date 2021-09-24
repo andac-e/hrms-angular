@@ -16,6 +16,7 @@ export class CandidateExperienceAddComponent implements OnInit {
   experienceAddForm: FormGroup;
   loggedUser: any;
   positions: Position[] = [];
+  loading: boolean = true;
   candidateExperiences: CandidateJobExperience[] = [];
 
   constructor(
@@ -60,7 +61,7 @@ export class CandidateExperienceAddComponent implements OnInit {
           (r) => r.candidate.id === this.getUserId()
         );
         this.candidateExperiences = response.data;
-        console.log(this.candidateExperiences);
+        this.loading = false;
       });
   }
 

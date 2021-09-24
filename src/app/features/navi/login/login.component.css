@@ -9,3 +9,7 @@ body {
   padding-top: 40px;
   padding-bottom: 40px;
 }
+
+label {
+  margin: 0;
+}

@@ -40,6 +40,7 @@
 
     <p-table
       id="myTable"
+      *ngIf="loading == false; else loadingInfo"
       #dt
       [value]="candidateSkills"
       dataKey="id"
@@ -86,3 +87,12 @@
     </p-table>
   </div>
   
+  <ng-template #loadingInfo>
+    <div
+      class="text-center d-flex flex-column align-items-center justify-content-center"
+      style="height: 200px"
+    >
+      <p-progressSpinner></p-progressSpinner>
+      <h6 class="mt-2">Loading...</h6>
+    </div>
+  </ng-template>

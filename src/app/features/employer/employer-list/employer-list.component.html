@@ -1,5 +1,6 @@
 <div class="container">
   <p-table
+    *ngIf="loading == false; else loadingInfo"
     id="myTable"
     #dt
     [value]="employers"
@@ -17,10 +18,6 @@
     <ng-template pTemplate="caption">
       <div class="table-header">
         List of Employers
-        <!-- <span class="p-input-icon-left">
-                <i class="pi pi-search"></i>
-                <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
-            </span> -->
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -41,49 +38,20 @@
         <th pSortableColumn="website">
           <div class="d-flex justify-content-between align-items-center">
             Website
-            <p-sortIcon field="website"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="website"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
           </div>
         </th>
 
         <th pSortableColumn="email">
           <div class="d-flex justify-content-between align-items-center">
             Email
-            <p-sortIcon field="email"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="email"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
           </div>
         </th>
 
         <th pSortableColumn="phoneNumber">
           <div class="d-flex justify-content-between align-items-center">
             Phone Number
-            <p-sortIcon field="phoneNumber"></p-sortIcon>
-            <p-columnFilter
-              type="number"
-              field="phoneNumber"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
           </div>
         </th>
-
-        <!-- <th pSortableColumn="date">
-                <div class="p-d-flex p-jc-between p-ai-center">
-                    Date
-                    <p-sortIcon field="date"></p-sortIcon>
-                    <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
-                </div>
-            </th> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-employer>
@@ -107,15 +75,6 @@
           <span class="p-column-title">Company Name</span>
           {{ employer.phoneNumber }}
         </td>
-
-        <!-- <td>
-                <span class="p-column-title">Date</span>
-                {{customer.date | date: 'MM/dd/yyyy'}}
-            </td> -->
-
-        <!-- <td style="text-align: center">
-                <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
-            </td> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
@@ -125,3 +84,13 @@
     </ng-template>
   </p-table>
 </div>
+
+<ng-template #loadingInfo>
+  <div
+    class="text-center d-flex flex-column align-items-center justify-content-center"
+    style="height: 500px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

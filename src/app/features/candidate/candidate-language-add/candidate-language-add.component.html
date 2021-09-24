@@ -1,72 +1,78 @@
 <div class="container w-75 mt-3">
-    <h5>Add Language </h5>
+  <h5>Add Language</h5>
 
-    <form [formGroup]="languageAddForm" class="m-3">
-      <div class="row">
-        <div class="form-group col-md-6">
-          <label>Language</label>
-          <select
-            name="languageId"
-            id="languageId"
-            class="form-select"
-            formControlName="languageId"
-          >
-            <option value="" disabled selected>Please select language</option>
-            <option *ngFor="let language of languages" value="{{ language.id }}">
-              {{ language.name }}
-            </option>
-          </select>
-          <small
-            class="text-danger"
-            *ngIf="
+  <form [formGroup]="languageAddForm" class="m-3">
+    <div class="row">
+      <div class="form-group col-md-6">
+        <label>Language</label>
+        <select
+          name="languageId"
+          id="languageId"
+          class="form-select"
+          formControlName="languageId"
+        >
+          <option value="" disabled selected>Please select language</option>
+          <option *ngFor="let language of languages" value="{{ language.id }}">
+            {{ language.name }}
+          </option>
+        </select>
+        <small
+          class="text-danger"
+          *ngIf="
             languageAddForm.get('languageId').hasError('required') &&
             languageAddForm.get('languageId').touched
-            "
-            >*Language is required.</small
-          >
-        </div>
-    
-        <div class="form-group col-md-6">
-          <label>Language Level</label>
-          <select
-            name="languageLevel"
-            id="languageLevel"
-            class="form-select"
-            formControlName="languageLevel"
-          >
-            <option value="" disabled selected>Please select language level</option>
-            <option *ngFor="let languageLevel of languageLevels" value="{{ languageLevel.title }}">
-              {{ languageLevel.title }}
-            </option>
-          </select>
-          <small
-            class="text-danger"
-            *ngIf="
-            languageAddForm.get('languageLevel').hasError('required') &&
-            languageAddForm.get('languageLevel').touched
-            "
-            >*Language level is required.</small
-          >
-        </div>
+          "
+          >*Language is required.</small
+        >
       </div>
 
-      <button
-        [disabled]="!languageAddForm.valid"
-        class="btn btn-primary my-2"
-        (click)="addLanguage()"
-      >
-        Add language
-      </button>
-    </form>
+      <div class="form-group col-md-6">
+        <label>Language Level</label>
+        <select
+          name="languageLevel"
+          id="languageLevel"
+          class="form-select"
+          formControlName="languageLevel"
+        >
+          <option value="" disabled selected>
+            Please select language level
+          </option>
+          <option
+            *ngFor="let languageLevel of languageLevels"
+            value="{{ languageLevel.title }}"
+          >
+            {{ languageLevel.title }}
+          </option>
+        </select>
+        <small
+          class="text-danger"
+          *ngIf="
+            languageAddForm.get('languageLevel').hasError('required') &&
+            languageAddForm.get('languageLevel').touched
+          "
+          >*Language level is required.</small
+        >
+      </div>
+    </div>
 
-    <h5>Current Languages</h5>
+    <button
+      [disabled]="!languageAddForm.valid"
+      class="btn btn-primary my-2"
+      (click)="addLanguage()"
+    >
+      Add language
+    </button>
+  </form>
+
+  <h5>Current Languages</h5>
 
   <p-table
+    *ngIf="loading == false; else loadingInfo"
     id="myTable"
     #dt
     [value]="candidateLanguages"
     dataKey="id"
-    styleClass="p-datatable-customers"
+    styleClass="p-datatable-striped"
     [rowHover]="true"
     [rows]="10"
     [showCurrentPageReport]="true"
@@ -75,7 +81,6 @@
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [filterDelay]="0"
   >
-    
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="language.name">
@@ -95,11 +100,8 @@
           <div class="d-flex justify-content-between align-items-center">
             Level
             <p-sortIcon field="languageLevel"></p-sortIcon>
-            
           </div>
         </th>
-
-        
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-language>
@@ -113,15 +115,28 @@
           <span class="p-column-title">Level</span>
           {{ language.languageLevel }}
         </td>
-
-        
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
       <tr>
-        <td colspan="8">No languages found.</td>
+        <td colspan="2">No languages found.</td>
       </tr>
     </ng-template>
   </p-table>
+</div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
   </div>
-  
+</ng-template>

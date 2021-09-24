@@ -1,131 +1,143 @@
 <div class="container">
-    <p-table
-      id="myTable"
-      #dt
-      [value]="jobs"
-      dataKey="id"
-      styleClass="p-datatable-striped"
-      [rowHover]="true"
-      [rows]="10"
-      [showCurrentPageReport]="true"
-      [rowsPerPageOptions]="[10, 25, 50]"
-      [paginator]="true"
-      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-      [filterDelay]="0"
-      [globalFilterFields]="['employer.companyName', 'position.title', 'openPositions', 'createdAt', 'deadline']"
-    >
-      <ng-template pTemplate="caption">
-        <div class="table-header">
-          List of Jobs
-          <!-- <span class="p-input-icon-left">
+  <p-table
+    *ngIf="loading == false; else loadingInfo"
+    id="myTable"
+    #dt
+    [value]="jobs"
+    dataKey="id"
+    styleClass="p-datatable-striped"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+    [globalFilterFields]="[
+      'employer.companyName',
+      'position.title',
+      'openPositions',
+      'createdAt',
+      'deadline'
+    ]"
+  >
+    <ng-template pTemplate="caption">
+      <div class="table-header">
+        List of Jobs
+        <!-- <span class="p-input-icon-left">
                   <i class="pi pi-search"></i>
                   <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
               </span> -->
-        </div>
-      </ng-template>
-      <ng-template pTemplate="header">
-        <tr>
-          <th pSortableColumn="employer.companyName">
-            <div class="d-flex justify-content-between align-items-center">
-              Company Name
-              <p-sortIcon field="employer.companyName"></p-sortIcon>
-              <p-columnFilter
-                type="text"
-                field="employer.companyName"
-                display="menu"
-                class="ms-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
-  
-          <th pSortableColumn="position.title">
-            <div class="d-flex justify-content-between align-items-center">
-              Position
-              <p-sortIcon field="position.title"></p-sortIcon>
-              <p-columnFilter
-                type="text"
-                field="position.title"
-                display="menu"
-                class="ms-auto"
-              ></p-columnFilter>
-            </div>
-          </th>
-  
-          <th pSortableColumn="openPositions">
-            <div class="d-flex justify-content-between align-items-center">
-                Open Positions
-              <p-sortIcon field="openPositions"></p-sortIcon>
-              
-            </div>
-          </th>
-  
-          <th pSortableColumn="createdAt">
-            <div class="d-flex justify-content-between align-items-center">
-              Release Date
-              <p-sortIcon field="createdAt"></p-sortIcon>
-              
-            </div>
-          </th>
+      </div>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th pSortableColumn="employer.companyName">
+          <div class="d-flex justify-content-between align-items-center">
+            Company Name
+            <p-sortIcon field="employer.companyName"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="employer.companyName"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
 
-          <th pSortableColumn="deadline">
-            <div class="d-flex justify-content-between align-items-center">
-                Deadline
-              <p-sortIcon field="deadline"></p-sortIcon>
-              
-            </div>
-          </th>
-  
-          <!-- <th pSortableColumn="date">
+        <th pSortableColumn="position.title">
+          <div class="d-flex justify-content-between align-items-center">
+            Position
+            <p-sortIcon field="position.title"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="position.title"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
+        <th pSortableColumn="openPositions">
+          <div class="d-flex justify-content-between align-items-center">
+            Open Positions
+            <p-sortIcon field="openPositions"></p-sortIcon>
+          </div>
+        </th>
+
+        <th pSortableColumn="createdAt">
+          <div class="d-flex justify-content-between align-items-center">
+            Release Date
+            <p-sortIcon field="createdAt"></p-sortIcon>
+          </div>
+        </th>
+
+        <th pSortableColumn="deadline">
+          <div class="d-flex justify-content-between align-items-center">
+            Deadline
+            <p-sortIcon field="deadline"></p-sortIcon>
+          </div>
+        </th>
+
+        <!-- <th pSortableColumn="date">
                   <div class="p-d-flex p-jc-between p-ai-center">
                       Date
                       <p-sortIcon field="date"></p-sortIcon>
                       <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
                   </div>
               </th> -->
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="body" let-job>
-        <tr class="p-selectable-row">
-          <td>
-            <span class="p-column-title">Company Name</span>
-            {{ job.employer.companyName }}
-          </td>
-  
-          <td>
-            <span class="p-column-title">Position</span>
-            {{ job.position.title }}
-          </td>
-  
-          <td>
-            <span class="p-column-title">Open Positions</span>
-            {{ job.openPositions }}
-          </td>
-  
-          <td>
-            <span class="p-column-title">Release Date</span>
-            {{ job.createdAt | date: 'MMMM d, y' }}
-          </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-job>
+      <tr class="p-selectable-row">
+        <td>
+          <span class="p-column-title">Company Name</span>
+          {{ job.employer.companyName }}
+        </td>
 
-          <td>
-            <span class="p-column-title">Deadline</span>
-            {{ job.deadline | date: 'MMMM d, y'}}
-          </td>
-  
-          <!-- <td>
+        <td>
+          <span class="p-column-title">Position</span>
+          {{ job.position.title }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Open Positions</span>
+          {{ job.openPositions }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Release Date</span>
+          {{ job.createdAt | date: "MMMM d, y" }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Deadline</span>
+          {{ job.deadline | date: "MMMM d, y" }}
+        </td>
+
+        <!-- <td>
                   <span class="p-column-title">Date</span>
                   {{customer.date | date: 'MM/dd/yyyy'}}
               </td> -->
-  
-          <!-- <td style="text-align: center">
+
+        <!-- <td style="text-align: center">
                   <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
               </td> -->
-        </tr>
-      </ng-template>
-      <ng-template pTemplate="emptymessage">
-        <tr>
-          <td colspan="8">No jobs found.</td>
-        </tr>
-      </ng-template>
-    </p-table>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No jobs found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+<ng-template #loadingInfo>
+  <div
+    class="text-center d-flex flex-column align-items-center justify-content-center"
+    style="height: 500px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
   </div>
-  
+</ng-template>

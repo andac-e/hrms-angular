@@ -1,167 +1,190 @@
 <div class="container w-75 mt-3">
-  <div class="table-header">
-    <h5>Add Job Experience</h5>
+  <div class="card my-3">
+    <div class="card-header fs-6 fw-bold text-center">Add Job Experience</div>
+
+    <div class="card-body">
+      <form [formGroup]="experienceAddForm" class="p-2">
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label>Position</label>
+            <select
+              name="positionId"
+              id="positionId"
+              class="form-select"
+              formControlName="positionId"
+            >
+              <option value="" disabled selected>Please select position</option>
+              <option
+                *ngFor="let position of positions"
+                value="{{ position.id }}"
+              >
+                {{ position.title }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                experienceAddForm.get('positionId').hasError('required') &&
+                experienceAddForm.get('positionId').touched
+              "
+              >*Position is required.</small
+            >
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Work Place</label>
+            <input
+              class="form-control"
+              type="text"
+              id="workPlace"
+              formControlName="workPlace"
+              placeholder="Please enter work place"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                experienceAddForm.get('workPlace').hasError('required') &&
+                experienceAddForm.get('workPlace').touched
+              "
+              >*Work place is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Start Year</label>
+            <input
+              class="form-control"
+              type="number"
+              id="startYear"
+              formControlName="startYear"
+              placeholder="Please enter start year"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                experienceAddForm.get('startYear').hasError('required') &&
+                experienceAddForm.get('startYear').touched
+              "
+              >*Start year is required.</small
+            >
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Quit Year</label>
+            <input
+              class="form-control"
+              type="number"
+              id="quitYear"
+              formControlName="quitYear"
+              placeholder="Please enter quit year (optional)"
+            />
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!experienceAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addExperience()"
+          >
+            Add Job Experience
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 
-  <form [formGroup]="experienceAddForm" class="m-3">
-    <div class="row mb-3">
-      <div class="form-group col-md-6">
-        <label>Position</label>
-        <select
-          name="positionId"
-          id="positionId"
-          class="form-select"
-          formControlName="positionId"
-        >
-          <option value="" disabled selected>Please select position</option>
-          <option *ngFor="let position of positions" value="{{ position.id }}">
-            {{ position.title }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            experienceAddForm.get('positionId').hasError('required') &&
-            experienceAddForm.get('positionId').touched
-          "
-          >*Position is required.</small
-        >
-      </div>
-
-      <div class="form-group col-md-6">
-        <label>Work Place</label>
-        <input
-          class="form-control"
-          type="text"
-          id="workPlace"
-          formControlName="workPlace"
-          placeholder="Please enter work place"
-        />
-        <small
-          class="text-danger"
-          *ngIf="
-            experienceAddForm.get('workPlace').hasError('required') &&
-            experienceAddForm.get('workPlace').touched
-          "
-          >*Work place is required.</small
-        >
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="form-group col-md-6">
-        <label>Start Year</label>
-        <input
-          class="form-control"
-          type="number"
-          id="startYear"
-          formControlName="startYear"
-          placeholder="Please enter start year"
-        />
-        <small
-          class="text-danger"
-          *ngIf="
-            experienceAddForm.get('startYear').hasError('required') &&
-            experienceAddForm.get('startYear').touched
-          "
-          >*Start year is required.</small
-        >
-      </div>
-
-      <div class="form-group col-md-6">
-        <label>Quit Year</label>
-        <input
-          class="form-control"
-          type="number"
-          id="quitYear"
-          formControlName="quitYear"
-          placeholder="Please enter quit year (optional)"
-        />
-      </div>
-    </div>
-
-    <button
-      [disabled]="!experienceAddForm.valid"
-      class="btn btn-primary my-2"
-      (click)="addExperience()"
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Experiences</div>
+    <p-table
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="candidateExperiences"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
     >
-      Add job experience
-    </button>
-  </form>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Work Place
+            </div>
+          </th>
 
-  <h5>Current Experiences</h5>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Position Title
+            </div>
+          </th>
 
-  <p-table
-    id="myTable"
-    #dt
-    [value]="candidateExperiences"
-    dataKey="id"
-    styleClass="p-datatable-customers"
-    [rowHover]="true"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [filterDelay]="0"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Work Place
-          </div>
-        </th>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Start Year
+            </div>
+          </th>
 
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Position Title
-          </div>
-        </th>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Quit Year
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-experience>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">Company</span>
+            {{ experience.workPlace }}
+          </td>
 
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Start Year
-          </div>
-        </th>
+          <td>
+            <span class="p-column-title">Position</span>
+            {{ experience.position.title }}
+          </td>
 
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Quit Year
-          </div>
-        </th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-experience>
-      <tr class="p-selectable-row">
-        <td>
-          <span class="p-column-title">Company</span>
-          {{ experience.workPlace }}
-        </td>
+          <td>
+            <span class="p-column-title">Start Year</span>
+            {{ experience.startYear }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Position</span>
-          {{ experience.position.title }}
-        </td>
-
-        <td>
-          <span class="p-column-title">Start Year</span>
-          {{ experience.startYear }}
-        </td>
-
-        <td>
-          <span class="p-column-title">Quit Year</span>
-          <span *ngIf="experience.quitYear">
-            {{ experience.quitYear }}</span
-          >
-          <span *ngIf="!experience.quitYear">Present</span>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8">No experiences found.</td>
-      </tr>
-    </ng-template>
-  </p-table>
+          <td>
+            <span class="p-column-title">Quit Year</span>
+            <span *ngIf="experience.quitYear"> {{ experience.quitYear }}</span>
+            <span *ngIf="!experience.quitYear">Present</span>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No experiences found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

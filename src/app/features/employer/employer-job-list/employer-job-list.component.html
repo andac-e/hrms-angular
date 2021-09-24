@@ -1,5 +1,6 @@
 <div class="container">
   <p-table
+    *ngIf="loading == false; else loadingInfo"
     id="myTable"
     #dt
     [value]="employerJobs"
@@ -22,11 +23,9 @@
   >
     <ng-template pTemplate="caption">
       <div class="table-header">
-        <h4 class="fw-bold">Job List of <span class="text-danger">{{ companyName }} </span>company</h4>
-        <!-- <span class="p-input-icon-left">
-                  <i class="pi pi-search"></i>
-                  <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
-              </span> -->
+        <h4 class="fw-bold">
+          Job List of <span class="text-danger">{{ companyName }} </span>company
+        </h4>
       </div>
     </ng-template>
     <ng-template pTemplate="header">
@@ -48,7 +47,6 @@
           <div class="d-flex justify-content-between align-items-center">
             Open Positions
             <p-sortIcon field="openPositions"></p-sortIcon>
-            
           </div>
         </th>
 
@@ -56,7 +54,6 @@
           <div class="d-flex justify-content-between align-items-center">
             Release Date
             <p-sortIcon field="createdAt"></p-sortIcon>
-            
           </div>
         </th>
 
@@ -64,24 +61,14 @@
           <div class="d-flex justify-content-between align-items-center">
             Deadline
             <p-sortIcon field="deadline"></p-sortIcon>
-            
           </div>
         </th>
 
         <th pSortableColumn="active">
           <div class="d-flex justify-content-between align-items-center">
             Active Status
-            
           </div>
         </th>
-
-        <!-- <th pSortableColumn="date">
-                  <div class="p-d-flex p-jc-between p-ai-center">
-                      Date
-                      <p-sortIcon field="date"></p-sortIcon>
-                      <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
-                  </div>
-              </th> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-job>
@@ -115,58 +102,11 @@
             type="button"
             data-bs-toggle="modal"
             data-bs-target="#exampleModal"
-            class="btn sm btn-secondary"
+            class="btn btn-sm btn-secondary"
           >
-            Change status <i class="bi bi-gear"></i>
+            <span>change status <i class="bi bi-arrow-repeat ms-1"></i></span>
           </button>
-
-          <!-- Modal -->
-          <!-- <div
-            class="modal fade"
-            id="exampleModal"
-            tabindex="-1"
-            aria-labelledby="exampleModalLabel"
-            aria-hidden="true"
-          >
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="exampleModalLabel">
-                    Applying changes...
-                  </h5>
-                  <button
-                    type="button"
-                    class="btn-close"
-                    data-bs-dismiss="modal"
-                    aria-label="Close"
-                  ></button>
-                </div>
-                <div class="modal-body">Are you sure you want to change this job activity status?</div>
-                <div class="modal-footer">
-                  <button
-                    type="button"
-                    class="btn btn-secondary"
-                    data-bs-dismiss="modal"
-                  >
-                    Close
-                  </button>
-                  <button type="button" class="btn btn-primary">
-                    Change status
-                  </button>
-                </div>
-              </div>
-            </div>
-          </div> -->
         </td>
-
-        <!-- <td>
-                  <span class="p-column-title">Date</span>
-                  {{customer.date | date: 'MM/dd/yyyy'}}
-              </td> -->
-
-        <!-- <td style="text-align: center">
-                  <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
-              </td> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">
@@ -176,3 +116,19 @@
     </ng-template>
   </p-table>
 </div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

@@ -18,6 +18,7 @@ export class CandidateLanguageAddComponent implements OnInit {
   languages: Language[] = [];
   languageLevels = LanguageLevels;
   candidateLanguages: Language[] = [];
+  loading: boolean = true;
 
   constructor(
     private candidateService: CandidateService,
@@ -65,6 +66,7 @@ export class CandidateLanguageAddComponent implements OnInit {
       .getCandidateById(this.getUserId())
       .subscribe((response: any) => {
         this.candidateLanguages = response.data.candidateLanguages;
+        this.loading = false;
       });
   }
 

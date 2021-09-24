@@ -12,6 +12,8 @@ export class EmployerJobListComponent implements OnInit {
   loggedUser: any;
   companyName: any;
   employerJobs: JobAdvertisement[] = [];
+  loading: boolean = true;
+
   constructor(private jobAdvertisementService: JobAdvertisementService) {}
 
   ngOnInit(): void {
@@ -24,7 +26,7 @@ export class EmployerJobListComponent implements OnInit {
       .getJobsByEmployer(this.getUserId())
       .subscribe((response: any) => {
         this.employerJobs = response.data;
-        console.log(this.employerJobs)
+        this.loading = false;
       });
   }
 
