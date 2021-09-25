@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience-add/candidate-experience-add.component';
+import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience/candidate-experience-add/candidate-experience-add.component';
 import { CandidateGithubAddComponent } from './features/candidate/candidate-github-add/candidate-github-add.component';
 import { CandidateImageUploadComponent } from './features/candidate/candidate-image-upload/candidate-image-upload.component';
 import { CandidateLanguageAddComponent } from './features/candidate/candidate-language-add/candidate-language-add.component';

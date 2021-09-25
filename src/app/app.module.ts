@@ -24,7 +24,7 @@ import { CandidateListComponent } from './features/candidate/candidate-list/cand
 import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 import { EmployerJobListComponent } from './features/employer/employer-job-list/employer-job-list.component';
-import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience-add/candidate-experience-add.component';
+import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience/candidate-experience-add/candidate-experience-add.component';
 import { CandidateLanguageAddComponent } from './features/candidate/candidate-language-add/candidate-language-add.component';
 import { CandidateSchoolAddComponent } from './features/candidate/candidate-school-add/candidate-school-add.component';
 import { CandidateSkillAddComponent } from './features/candidate/candidate-skill-add/candidate-skill-add.component';
@@ -34,7 +34,7 @@ import { CandidateLinkedinAddComponent } from './features/candidate/candidate-li
 import { ResumeAddComponent } from './features/candidate/candidate-resume/resume-add/resume-add.component';
 import { ResumeViewComponent } from './features/candidate/candidate-resume/resume-view/resume-view.component';
 import { UnverifiedJobListComponent } from './features/system-employee/unverified-job-list/unverified-job-list.component';
-import { CandidateExperienceListComponent } from './features/candidate/candidate-experience-list/candidate-experience-list.component';
+import { CandidateExperienceListComponent } from './features/candidate/candidate-experience/candidate-experience-list/candidate-experience-list.component';
 
 @NgModule({
   declarations: [
