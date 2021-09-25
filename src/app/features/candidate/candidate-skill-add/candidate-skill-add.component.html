@@ -1,42 +1,49 @@
 <div class="container w-75 mt-3">
-    <h5>Add Skill </h5>
+  <div class="card mb-4">
+    <div class="card-header fs-6 fw-bold text-center">Add Skill</div>
 
-    <form [formGroup]="skillAddForm" class="mt-3">
-      <div class="row mb-3">
-        <div class="form-group col-md-12">
-          <label>Skill</label>
-          <select
-            name="skillId"
-            id="skillId"
-            class="form-select"
-            formControlName="skillId"
-          >
-            <option value="" disabled selected>Please select skill</option>
-            <option *ngFor="let skill of skills" value="{{ skill.id }}">
-              {{ skill.name }}
-            </option>
-          </select>
-          <small
-            class="text-danger"
-            *ngIf="
-            skillAddForm.get('skillId').hasError('required') &&
-            skillAddForm.get('skillId').touched
-            "
-            >*Skill is required.</small
-          >
+    <div class="card-body">
+      <form [formGroup]="skillAddForm" class="p-2">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Skill</label>
+            <select
+              name="skillId"
+              id="skillId"
+              class="form-select"
+              formControlName="skillId"
+            >
+              <option value="" disabled selected>Please select skill</option>
+              <option *ngFor="let skill of skills" value="{{ skill.id }}">
+                {{ skill.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                skillAddForm.get('skillId').hasError('required') &&
+                skillAddForm.get('skillId').touched
+              "
+              >*Skill is required.</small
+            >
+          </div>
         </div>
-      </div>
-  
-      <button
-        [disabled]="!skillAddForm.valid"
-        class="btn btn-primary mb-4"
-        (click)="addSkill()"
-      >
-        Add skill
-      </button>
-    </form>
 
-    <h5>Current Skills</h5>
+        <div class="text-center">
+          <button
+            [disabled]="!skillAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addSkill()"
+          >
+            Add Skill
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Skills</div>
 
     <p-table
       id="myTable"
@@ -53,7 +60,6 @@
       currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       [filterDelay]="0"
     >
-      
       <ng-template pTemplate="header">
         <tr>
           <th pSortableColumn="skill.name">
@@ -76,7 +82,6 @@
             <span class="p-column-title">Skill</span>
             {{ skill.skill.name }}
           </td>
-          
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">
@@ -86,13 +91,20 @@
       </ng-template>
     </p-table>
   </div>
-  
-  <ng-template #loadingInfo>
-    <div
-      class="text-center d-flex flex-column align-items-center justify-content-center"
-      style="height: 200px"
-    >
-      <p-progressSpinner></p-progressSpinner>
-      <h6 class="mt-2">Loading...</h6>
-    </div>
-  </ng-template>
+</div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

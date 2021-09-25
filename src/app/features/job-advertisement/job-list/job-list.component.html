@@ -78,14 +78,6 @@
             <p-sortIcon field="deadline"></p-sortIcon>
           </div>
         </th>
-
-        <!-- <th pSortableColumn="date">
-                  <div class="p-d-flex p-jc-between p-ai-center">
-                      Date
-                      <p-sortIcon field="date"></p-sortIcon>
-                      <p-columnFilter type="date" field="date" display="menu" class="p-ml-auto"></p-columnFilter>
-                  </div>
-              </th> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-job>
@@ -114,15 +106,6 @@
           <span class="p-column-title">Deadline</span>
           {{ job.deadline | date: "MMMM d, y" }}
         </td>
-
-        <!-- <td>
-                  <span class="p-column-title">Date</span>
-                  {{customer.date | date: 'MM/dd/yyyy'}}
-              </td> -->
-
-        <!-- <td style="text-align: center">
-                  <button pButton type="button" class="p-button-secondary" icon="pi pi-cog"></button>
-              </td> -->
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

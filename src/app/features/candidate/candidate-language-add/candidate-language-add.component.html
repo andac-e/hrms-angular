@@ -1,70 +1,80 @@
 <div class="container w-75 mt-3">
-  <h5>Add Language</h5>
+  <div class="card mb-4">
+    <div class="card-header fs-6 fw-bold text-center">Add Language</div>
 
-  <form [formGroup]="languageAddForm" class="m-3">
-    <div class="row">
-      <div class="form-group col-md-6">
-        <label>Language</label>
-        <select
-          name="languageId"
-          id="languageId"
-          class="form-select"
-          formControlName="languageId"
-        >
-          <option value="" disabled selected>Please select language</option>
-          <option *ngFor="let language of languages" value="{{ language.id }}">
-            {{ language.name }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            languageAddForm.get('languageId').hasError('required') &&
-            languageAddForm.get('languageId').touched
-          "
-          >*Language is required.</small
-        >
-      </div>
+    <div class="card-body">
+      <form [formGroup]="languageAddForm" class="p-2">
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Language</label>
+            <select
+              name="languageId"
+              id="languageId"
+              class="form-select"
+              formControlName="languageId"
+            >
+              <option value="" disabled selected>Please select language</option>
+              <option
+                *ngFor="let language of languages"
+                value="{{ language.id }}"
+              >
+                {{ language.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                languageAddForm.get('languageId').hasError('required') &&
+                languageAddForm.get('languageId').touched
+              "
+              >*Language is required.</small
+            >
+          </div>
 
-      <div class="form-group col-md-6">
-        <label>Language Level</label>
-        <select
-          name="languageLevel"
-          id="languageLevel"
-          class="form-select"
-          formControlName="languageLevel"
-        >
-          <option value="" disabled selected>
-            Please select language level
-          </option>
-          <option
-            *ngFor="let languageLevel of languageLevels"
-            value="{{ languageLevel.title }}"
+          <div class="form-group col-md-6">
+            <label>Language Level</label>
+            <select
+              name="languageLevel"
+              id="languageLevel"
+              class="form-select"
+              formControlName="languageLevel"
+            >
+              <option value="" disabled selected>
+                Please select language level
+              </option>
+              <option
+                *ngFor="let languageLevel of languageLevels"
+                value="{{ languageLevel.title }}"
+              >
+                {{ languageLevel.title }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                languageAddForm.get('languageLevel').hasError('required') &&
+                languageAddForm.get('languageLevel').touched
+              "
+              >*Language level is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!languageAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addLanguage()"
           >
-            {{ languageLevel.title }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            languageAddForm.get('languageLevel').hasError('required') &&
-            languageAddForm.get('languageLevel').touched
-          "
-          >*Language level is required.</small
-        >
-      </div>
+            Add Language
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <button
-      [disabled]="!languageAddForm.valid"
-      class="btn btn-primary my-2"
-      (click)="addLanguage()"
-    >
-      Add language
-    </button>
-  </form>
-
-  <h5>Current Languages</h5>
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Languages</div>
 
   <p-table
     *ngIf="loading == false; else loadingInfo"
@@ -123,6 +133,7 @@
       </tr>
     </ng-template>
   </p-table>
+  </div>
 </div>
 
 <ng-template #loadingInfo>

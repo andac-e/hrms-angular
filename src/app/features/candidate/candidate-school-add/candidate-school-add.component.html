@@ -1,175 +1,185 @@
 <div class="container w-75 mt-3">
-  <h5>Add School</h5>
+  <div class="card mb-4">
+    <div class="card-header fs-6 fw-bold text-center">Add School</div>
 
-  <form [formGroup]="schoolAddForm" class="mt-3">
-    <div class="row mb-3">
-      <div class="form-group col-md-6">
-        <label>School</label>
-        <select
-          name="schoolId"
-          id="schoolId"
-          class="form-select"
-          formControlName="schoolId"
-        >
-          <option value="" disabled selected>Please select school</option>
-          <option *ngFor="let school of schools" value="{{ school.id }}">
-            {{ school.name }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            schoolAddForm.get('schoolId').hasError('required') &&
-            schoolAddForm.get('schoolId').touched
-          "
-          >*School is required.</small
-        >
-      </div>
+    <div class="card-body">
+      <form [formGroup]="schoolAddForm" class="p-2">
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label>School</label>
+            <select
+              name="schoolId"
+              id="schoolId"
+              class="form-select"
+              formControlName="schoolId"
+            >
+              <option value="" disabled selected>Please select school</option>
+              <option *ngFor="let school of schools" value="{{ school.id }}">
+                {{ school.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                schoolAddForm.get('schoolId').hasError('required') &&
+                schoolAddForm.get('schoolId').touched
+              "
+              >*School is required.</small
+            >
+          </div>
 
-      <div class="form-group col-md-6">
-        <label>Department</label>
-        <select
-          name="departmentId"
-          id="departmentId"
-          class="form-select"
-          formControlName="departmentId"
-        >
-          <option value="" disabled selected>Please select department</option>
-          <option
-            *ngFor="let department of departments"
-            value="{{ department.id }}"
+          <div class="form-group col-md-6">
+            <label>Department</label>
+            <select
+              name="departmentId"
+              id="departmentId"
+              class="form-select"
+              formControlName="departmentId"
+            >
+              <option value="" disabled selected>
+                Please select department
+              </option>
+              <option
+                *ngFor="let department of departments"
+                value="{{ department.id }}"
+              >
+                {{ department.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                schoolAddForm.get('departmentId').hasError('required') &&
+                schoolAddForm.get('departmentId').touched
+              "
+              >*Department is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Start Year</label>
+            <input
+              class="form-control"
+              type="number"
+              id="startYear"
+              formControlName="startYear"
+              placeholder="Please enter start year"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                schoolAddForm.get('startYear').hasError('required') &&
+                schoolAddForm.get('startYear').touched
+              "
+              >*Start year is required.</small
+            >
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Graduation Year</label>
+            <input
+              class="form-control"
+              type="number"
+              id="graduationYear"
+              formControlName="graduationYear"
+              placeholder="Please enter graduation year (optional)"
+            />
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!schoolAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addSchool()"
           >
-            {{ department.name }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            schoolAddForm.get('departmentId').hasError('required') &&
-            schoolAddForm.get('departmentId').touched
-          "
-          >*Department is required.</small
-        >
-      </div>
+            Add School
+          </button>
+        </div>
+      </form>
     </div>
+  </div>
 
-    <div class="row">
-      <div class="form-group col-md-6">
-        <label>Start Year</label>
-        <input
-          class="form-control"
-          type="number"
-          id="startYear"
-          formControlName="startYear"
-          placeholder="Please enter start year"
-        />
-        <small
-          class="text-danger"
-          *ngIf="
-            schoolAddForm.get('startYear').hasError('required') &&
-            schoolAddForm.get('startYear').touched
-          "
-          >*Start year is required.</small
-        >
-      </div>
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Schools</div>
 
-      <div class="form-group col-md-6">
-        <label>Graduation Year</label>
-        <input
-          class="form-control"
-          type="number"
-          id="graduationYear"
-          formControlName="graduationYear"
-          placeholder="Please enter graduation year (optional)"
-        />
-      </div>
-    </div>
-
-    <button
-      [disabled]="!schoolAddForm.valid"
-      class="btn btn-primary my-2"
-      (click)="addSchool()"
+    <p-table
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="candidateSchools"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
     >
-      Add school
-    </button>
-  </form>
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              School
+            </div>
+          </th>
 
-  <h5 class="mt-4">Current Schools</h5>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Department
+            </div>
+          </th>
 
-  <p-table
-    *ngIf="loading == false; else loadingInfo"
-    id="myTable"
-    #dt
-    [value]="candidateSchools"
-    dataKey="id"
-    styleClass="p-datatable-striped"
-    [rowHover]="true"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [filterDelay]="0"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            School
-          </div>
-        </th>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Start Year
+            </div>
+          </th>
 
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Department
-          </div>
-        </th>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Graduation Year
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-school>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">School</span>
+            {{ school.school.name }}
+          </td>
 
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Start Year
-          </div>
-        </th>
+          <td>
+            <span class="p-column-title">Department</span>
+            {{ school.department.name }}
+          </td>
 
-        <th>
-          <div class="d-flex justify-content-between align-items-center">
-            Graduation Year
-          </div>
-        </th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-school>
-      <tr class="p-selectable-row">
-        <td>
-          <span class="p-column-title">School</span>
-          {{ school.school.name }}
-        </td>
+          <td>
+            <span class="p-column-title">Start Year</span>
+            {{ school.startYear }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Department</span>
-          {{ school.department.name }}
-        </td>
-
-        <td>
-          <span class="p-column-title">Start Year</span>
-          {{ school.startYear }}
-        </td>
-
-        <td>
-          <span class="p-column-title">Graduation Year</span>
-          <span *ngIf="school.graduationYear">
-            {{ school.graduationYear }}</span
-          >
-          <span *ngIf="!school.graduationYear">Present</span>
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8">No schools found.</td>
-      </tr>
-    </ng-template>
-  </p-table>
+          <td>
+            <span class="p-column-title">Graduation Year</span>
+            <span *ngIf="school.graduationYear">
+              {{ school.graduationYear }}</span
+            >
+            <span *ngIf="!school.graduationYear">Present</span>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No schools found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
 </div>
 
 <ng-template #loadingInfo>
