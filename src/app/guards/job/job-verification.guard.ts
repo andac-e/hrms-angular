@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CandidateLanguageAddGuard implements CanActivate {
+export class JobVerificationGuard implements CanActivate {
   constructor(private toastrService: ToastrService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,
@@ -14,7 +14,7 @@ export class CandidateLanguageAddGuard implements CanActivate {
       if (localStorage.getItem('user')) {
         let user = JSON.parse(localStorage.getItem('user'));
         let loggedUser = user.message;
-        if (loggedUser.includes('candidate')) {
+        if (loggedUser.includes('systemEmployee')) {
           return true;
         } else {
           this.toastrService.error("You don't have permission to access this page.");

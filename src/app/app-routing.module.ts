@@ -19,6 +19,7 @@ import { HomeComponent } from './features/home/home/home.component';
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
 import { LoginComponent } from './features/navi/login/login.component';
+import { UnverifiedJobListComponent } from './features/system-employee/unverified-job-list/unverified-job-list.component';
 import { CandidateExperienceAddGuard } from './guards/candidate-information/candidate-experience-add.guard';
 import { CandidateImageUploadGuard } from './guards/candidate-information/candidate-image-upload.guard';
 import { CandidateLanguageAddGuard } from './guards/candidate-information/candidate-language-add.guard';
@@ -29,6 +30,7 @@ import { CandidateSkillAddGuard } from './guards/candidate-information/candidate
 import { CandidateSocialGuard } from './guards/candidate-information/candidate-social.guard';
 import { EmployerJobListGuard } from './guards/job/employer-job-list.guard';
 import { JobAddGuard } from './guards/job/job-add.guard';
+import { JobVerificationGuard } from './guards/job/job-verification.guard';
 import { PositionAddGuard } from './guards/job/position-add.guard';
 
 const routes: Routes = [
@@ -99,6 +101,11 @@ const routes: Routes = [
     path: 'resume-view',
     component: ResumeViewComponent,
     canActivate: [CandidateResumeViewGuard],
+  },
+  {
+    path: 'unverified-job-list',
+    component: UnverifiedJobListComponent,
+    canActivate: [JobVerificationGuard],
   },
 ];
 

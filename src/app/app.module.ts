@@ -6,6 +6,7 @@ import { TableModule } from 'primeng/table';
 import { CardModule } from 'primeng/card';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
+import { BadgeModule } from 'primeng/badge';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -32,6 +33,7 @@ import { CandidateGithubAddComponent } from './features/candidate/candidate-gith
 import { CandidateLinkedinAddComponent } from './features/candidate/candidate-linkedin-add/candidate-linkedin-add.component';
 import { ResumeAddComponent } from './features/candidate/candidate-resume/resume-add/resume-add.component';
 import { ResumeViewComponent } from './features/candidate/candidate-resume/resume-view/resume-view.component';
+import { UnverifiedJobListComponent } from './features/system-employee/unverified-job-list/unverified-job-list.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,7 @@ import { ResumeViewComponent } from './features/candidate/candidate-resume/resum
     CandidateLinkedinAddComponent,
     ResumeAddComponent,
     ResumeViewComponent,
+    UnverifiedJobListComponent,
   ],
   imports: [
     BrowserModule,
@@ -69,6 +72,7 @@ import { ResumeViewComponent } from './features/candidate/candidate-resume/resum
     CardModule,
     ProgressBarModule,
     ProgressSpinnerModule,
+    BadgeModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
   ],
   providers: [],

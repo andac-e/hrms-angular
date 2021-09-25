@@ -1,0 +1,155 @@
+<div class="container">
+    <p-table
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="unverifiedJobs"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+      [globalFilterFields]="[
+        'employer.companyName',
+        'position.title',
+        'openPositions',
+        'createdAt',
+        'deadline'
+      ]"
+    >
+      <ng-template pTemplate="caption">
+        <div class="table-header">
+          <h4 class="fw-bold">
+            <span class="text-danger">{{ unverifiedJobs.length }} </span> jobs are waiting for verification.
+          </h4>
+        </div>
+      </ng-template>
+      <ng-template pTemplate="header">
+        <tr>
+            <th pSortableColumn="companyName">
+                <div class="d-flex justify-content-between align-items-center">
+                  Company Name
+                  <p-sortIcon field="companyName"></p-sortIcon>
+                  <p-columnFilter
+                    type="text"
+                    field="companyName"
+                    display="menu"
+                    class="ms-auto"
+                  ></p-columnFilter>
+                </div>
+              </th>
+
+          <th pSortableColumn="position.title">
+            <div class="d-flex justify-content-between align-items-center">
+              Position
+            </div>
+          </th>
+
+          <th pSortableColumn="jobDescription">
+            <div class="d-flex justify-content-between align-items-center">
+              Job Description
+              
+            </div>
+          </th>
+  
+          <th pSortableColumn="openPositions">
+            <div class="d-flex justify-content-between align-items-center">
+              Open Positions
+              
+            </div>
+          </th>
+  
+          <th pSortableColumn="createdAt">
+            <div class="d-flex justify-content-between align-items-center">
+              Release Date
+              <p-sortIcon field="createdAt"></p-sortIcon>
+            </div>
+          </th>
+  
+          <th pSortableColumn="deadline">
+            <div class="d-flex justify-content-between align-items-center">
+              Deadline
+              <p-sortIcon field="deadline"></p-sortIcon>
+            </div>
+          </th>
+
+          <th>
+              Verification
+          </th>
+  
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-job>
+        <tr class="p-selectable-row">
+            <td>
+                <span class="p-column-title">Company</span>
+                {{ job.employer.companyName }}
+              </td>
+
+          <td>
+            <span class="p-column-title">Position</span>
+            {{ job.position.title }}
+          </td>
+
+          <td>
+            <div class="overflow-auto" style="max-height: 50px;">
+            {{ job.jobDescription }}
+            </div>
+          </td>
+  
+          <td>
+            <span class="p-column-title">Open Positions</span>
+            {{ job.openPositions }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Release Date</span>
+            {{ job.createdAt | date: "MMMM d, y" }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Deadline</span>
+            {{ job.deadline | date: "MMMM d, y" }}
+          </td>
+  
+          <td>
+            <span class="p-column-title">Verified Status</span>
+            <button
+              (click)="changeVerification(job)"
+              pButton
+              type="button"
+              class="btn btn-sm btn-success"
+            >
+              <span>verify <i class="bi bi-shield-check"></i></span>
+            </button>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No unverified jobs found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+  
+  <ng-template #loadingInfo>
+    <div
+      class="
+        text-center
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-center
+      "
+      style="height: 200px"
+    >
+      <p-progressSpinner></p-progressSpinner>
+      <h6 class="mt-2">Loading...</h6>
+    </div>
+  </ng-template>
+  

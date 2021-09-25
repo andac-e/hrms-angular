@@ -17,12 +17,12 @@ export class JobAddGuard implements CanActivate {
         if (loggedUser.includes('employer')) {
           return true;
         } else {
-          this.toastrService.error('Bu sayfaya giriş izniniz bulunmuyor.');
+          this.toastrService.error("You don't have permission to access this page.");
           this.router.navigate(['home']);
           return false;
         }
       } else {
-        this.toastrService.error('Öncelikle giriş yapmalısınız.');
+        this.toastrService.error('You have to login for view this page.');
         this.router.navigate(['login']);
         return false;
       }

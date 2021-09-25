@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { JobAdvertisement } from 'src/app/models/job-advertisement/job-advertisement';
 import { JobAdvertisementService } from 'src/app/services/job-advertisement.service';
 
@@ -14,7 +15,10 @@ export class EmployerJobListComponent implements OnInit {
   employerJobs: JobAdvertisement[] = [];
   loading: boolean = true;
 
-  constructor(private jobAdvertisementService: JobAdvertisementService) {}
+  constructor(
+    private jobAdvertisementService: JobAdvertisementService,
+    private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
     this.getJobsByEmployer();
@@ -30,12 +34,12 @@ export class EmployerJobListComponent implements OnInit {
       });
   }
 
-  changeActivity(job:JobAdvertisement) {
+  changeActivity(job: JobAdvertisement) {
     this.jobAdvertisementService
-      .changeActivityOfJob(job)
-      .subscribe((response: any) => {
-        window.location.reload();
-        console.log(response)
+    .changeActivityOfJob(job)
+    .subscribe((response: any) => {
+        this.toastrService.success("Activation changed successfully.")
+        this.pageReloadDelay();
       });
   }
 
@@ -47,5 +51,9 @@ export class EmployerJobListComponent implements OnInit {
   getCompanyName() {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     this.companyName = this.loggedUser.data.companyName;
+  }
+  
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }
