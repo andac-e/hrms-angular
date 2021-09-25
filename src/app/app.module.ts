@@ -34,6 +34,7 @@ import { CandidateLinkedinAddComponent } from './features/candidate/candidate-li
 import { ResumeAddComponent } from './features/candidate/candidate-resume/resume-add/resume-add.component';
 import { ResumeViewComponent } from './features/candidate/candidate-resume/resume-view/resume-view.component';
 import { UnverifiedJobListComponent } from './features/system-employee/unverified-job-list/unverified-job-list.component';
+import { CandidateExperienceListComponent } from './features/candidate/candidate-experience-list/candidate-experience-list.component';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,7 @@ import { UnverifiedJobListComponent } from './features/system-employee/unverifie
     ResumeAddComponent,
     ResumeViewComponent,
     UnverifiedJobListComponent,
+    CandidateExperienceListComponent,
   ],
   imports: [
     BrowserModule,

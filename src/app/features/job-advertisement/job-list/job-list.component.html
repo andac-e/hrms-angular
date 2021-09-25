@@ -13,6 +13,8 @@
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [filterDelay]="0"
+    sortField="createdAt" 
+    [sortOrder]="-1"
     [globalFilterFields]="[
       'employer.companyName',
       'position.title',
@@ -24,10 +26,6 @@
     <ng-template pTemplate="caption">
       <div class="table-header">
         List of Jobs
-        <!-- <span class="p-input-icon-left">
-                  <i class="pi pi-search"></i>
-                  <input pInputText type="text" (input)="dt.filterGlobal($event.target.value, 'contains')" placeholder="Global Search" />
-              </span> -->
       </div>
     </ng-template>
     <ng-template pTemplate="header">

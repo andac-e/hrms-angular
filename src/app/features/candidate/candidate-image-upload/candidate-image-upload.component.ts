@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { Candidate } from 'src/app/models/candidate/candidate';
+import { User } from 'src/app/models/user/user';
+import { CandidateService } from 'src/app/services/candidate.service';
 import { ImageService } from 'src/app/services/image.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-candidate-image-upload',
@@ -11,11 +15,15 @@ import { ImageService } from 'src/app/services/image.service';
 export class CandidateImageUploadComponent implements OnInit {
   imgUploadForm: FormGroup;
   loggedUser: any;
+  loggedCandidate: User;
   selectedFile: File = null;
   imageUrl: string | ArrayBuffer;
   progress: number;
+  uploadedImgId: number;
 
   constructor(
+    private candidateService:CandidateService, //
+    private userService:UserService,
     private imageService: ImageService,
     private toastrService: ToastrService,
     private formBuilder: FormBuilder
@@ -54,12 +62,27 @@ export class CandidateImageUploadComponent implements OnInit {
       this.imageService
         .upload(formData, this.getUserId())
         .subscribe((response: any) => {
-          console.log(response);
+          this.uploadedImgId = response.data.id;
+          this.updateProfileImg();
           this.toastrService.success('Successfully added');
           this.progress = 100;
           this.imgUploadForm.reset(); //input reset
         });
     }
+  }
+
+  updateProfileImg() {
+      this.userService.updateProfileImg(this.loggedCandidate, this.getUserId(), this.uploadedImgId).subscribe((response:any)=>{
+        response.data;
+      })
+  }
+
+  getCandidateById() {
+    this.candidateService
+      .getCandidateById(this.getUserId())
+      .subscribe((response: any) => {
+        this.loggedCandidate = response.data;
+      });
   }
 
   getUserId(): number {

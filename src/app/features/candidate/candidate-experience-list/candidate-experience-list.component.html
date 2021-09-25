@@ -1,0 +1,166 @@
+<div class="card my-4 border-bottom-0">
+  <div class="card-header text-center fw-bold">Current Experiences</div>
+  <p-table
+    *ngIf="loading == false; else loadingInfo"
+    id="myTable"
+    #dt
+    [value]="candidateExperiences"
+    dataKey="id"
+    styleClass="p-datatable-striped"
+    [rowHover]="true"
+    [rows]="10"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    [filterDelay]="0"
+  >
+    <ng-template pTemplate="header">
+      <tr>
+        <th>
+          <div class="d-flex justify-content-between align-items-center">
+            Work Place
+          </div>
+        </th>
+
+        <th>
+          <div class="d-flex justify-content-between align-items-center">
+            Position Title
+          </div>
+        </th>
+
+        <th>
+          <div class="d-flex justify-content-between align-items-center">
+            Start Year
+          </div>
+        </th>
+
+        <th>
+          <div class="d-flex justify-content-between align-items-center">
+            Quit Year
+          </div>
+        </th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-experience>
+      <tr class="p-selectable-row">
+        <td class="justify-content-between d-flex">
+          <span class="p-column-title">Company</span>
+          {{ experience.workPlace }}
+
+          <a
+            type="button"
+            data-bs-toggle="modal"
+            data-bs-target="#exampleModal"
+          >
+            <i class="bi bi-gear text-success"></i>
+          </a>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="exampleModal"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Update Workplace
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="workPlaceUpdateForm">
+                    <div class="row">
+                      <div class="form-group col-md-12">
+                        <input
+                          class="form-control"
+                          type="text"
+                          id="workPlace"
+                          formControlName="workPlace"
+                          placeholder="Please enter work place"
+                        />
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            workPlaceUpdateForm
+                              .get('workPlace')
+                              .hasError('required') &&
+                            workPlaceUpdateForm.get('workPlace').touched
+                          "
+                          >*Work place is required.</small
+                        >
+                      </div>
+                    </div>
+
+                    <div class="text-center"></div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                  <button
+                    [disabled]="!workPlaceUpdateForm.valid"
+                    class="btn btn-success"
+                    (click)="updateWorkPlace(experience)"
+                  >Save changes
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </td>
+
+        <td>
+          <span class="p-column-title">Position</span>
+          {{ experience.position.title }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Start Year</span>
+          {{ experience.startYear }}
+        </td>
+
+        <td>
+          <span class="p-column-title">Quit Year</span>
+          <span *ngIf="experience.quitYear"> {{ experience.quitYear }}</span>
+          <span *ngIf="!experience.quitYear">Present</span>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td colspan="8">No experiences found.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 200px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

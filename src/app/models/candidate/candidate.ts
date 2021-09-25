@@ -1,4 +1,4 @@
-import { CandidateJobExperience } from "../candidate-job-experience/candidate-job-experience";
+import { CandidateJobExperience } from "./candidate-job-experience/candidate-job-experience";
 import { Cv } from "../cv/cv";
 import { Image } from "../image/image";
 import { JobAdvertisement } from "../job-advertisement/job-advertisement";
@@ -9,7 +9,7 @@ import { Skill } from "../skill/skill";
 export interface Candidate {
     id: number;
     email: string;
-    profileImgId?: any;
+    profileImg?: any;
     images: Image[];
     createdAt: Date;
     lastModifiedAt?: any;

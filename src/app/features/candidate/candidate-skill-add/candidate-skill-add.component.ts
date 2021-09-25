@@ -44,6 +44,7 @@ export class CandidateSkillAddComponent implements OnInit {
       this.candidateSkillService.add(this.skillAddForm.value).subscribe(
         (response: any) => {
           this.toastrService.success('Skill added successfully.');
+          window.location.reload();
         },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);

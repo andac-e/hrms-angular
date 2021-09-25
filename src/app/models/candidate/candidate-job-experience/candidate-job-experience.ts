@@ -1,4 +1,5 @@
 export interface CandidateJobExperience {
+  id: number;
   candidateId: number;
   positionId: number;
   quitYear: number;

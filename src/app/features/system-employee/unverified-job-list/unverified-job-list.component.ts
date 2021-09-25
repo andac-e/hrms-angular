@@ -24,7 +24,6 @@ export class UnverifiedJobListComponent implements OnInit {
   getUnverifiedJobs() {
     this.jobAdvertisementService.getUnverifieds(-1).subscribe((response:any)=>{
       this.unverifiedJobs = response.data;
-      console.log(this.unverifiedJobs)
       this.loading = false;
     })
   }

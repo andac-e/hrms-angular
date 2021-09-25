@@ -28,10 +28,10 @@ export class ResumeAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createResumeAddForm();
-    this.getCandidateJobExperienceIds()
-    this.getCandidateLanguageIds()
-    this.getCandidateSchoolIds()
-    this.getCandidateSkillIds()
+    this.getCandidateJobExperienceIds();
+    this.getCandidateLanguageIds();
+    this.getCandidateSchoolIds();
+    this.getCandidateSkillIds();
   }
 
   createResumeAddForm() {
@@ -47,10 +47,13 @@ export class ResumeAddComponent implements OnInit {
   }
 
   addCv() {
-    this.cvService.addCv(this.resumeAddForm.value).subscribe((response:any)=>{
-      console.log(response)
-      this.toastrService.success("Resume added successfully")
-    })
+    this.cvService
+      .addCv(this.resumeAddForm.value)
+      .subscribe((response: any) => {
+        console.log(response);
+        this.toastrService.success('Resume added successfully');
+        this.resumeAddForm.reset();
+      });
   }
 
   getCandidateJobExperienceIds(): number[] {
@@ -58,7 +61,8 @@ export class ResumeAddComponent implements OnInit {
       .getCandidateById(this.getUserId())
       .subscribe((response: any) => {
         for (let i = 0; i < response.data.candidateJobExperiences.length; i++) {
-          this.candidateJobExperienceIds[i] = response.data.candidateJobExperiences[i].id;
+          this.candidateJobExperienceIds[i] =
+            response.data.candidateJobExperiences[i].id;
         }
       });
     return this.candidateJobExperienceIds;
