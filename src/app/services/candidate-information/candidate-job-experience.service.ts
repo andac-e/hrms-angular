@@ -31,14 +31,60 @@ export class CandidateJobExperienceService {
 
   updateWorkPlace(
     candidateJobExperience: CandidateJobExperience,
-    workPlace: string
+    workPlace: string,
+    candJobId: number
   ): Observable<CandidateJobExperience> {
     return this.httpClient.put<CandidateJobExperience>(
       this.apiUrl +
         '/update/workPlace?candJobExpId=' +
-        candidateJobExperience.id +
+        candJobId +
         '&workPlace=' +
         workPlace,
+      candidateJobExperience
+    );
+  }
+
+  updatePosition(
+    candidateJobExperience: CandidateJobExperience,
+    positionId: number,
+    candJobId: number
+  ): Observable<CandidateJobExperience> {
+    return this.httpClient.put<CandidateJobExperience>(
+      this.apiUrl +
+        '/update/position?candJobExpId=' +
+        candJobId +
+        '&positionId=' +
+        positionId,
+      candidateJobExperience
+    );
+  }
+
+  updateStartYear(
+    candidateJobExperience: CandidateJobExperience,
+    startYear: string,
+    candJobId: number
+  ): Observable<CandidateJobExperience> {
+    return this.httpClient.put<CandidateJobExperience>(
+      this.apiUrl +
+        '/update/startYear?candJobExpId=' +
+        candJobId +
+        '&startYear=' +
+        startYear,
+      candidateJobExperience
+    );
+  }
+
+  updateQuitYear(
+    candidateJobExperience: CandidateJobExperience,
+    quitYear: string,
+    candJobId: number
+  ): Observable<CandidateJobExperience> {
+    return this.httpClient.put<CandidateJobExperience>(
+      this.apiUrl +
+        '/update/quitYear?candJobExpId=' +
+        candJobId +
+        '&quitYear=' +
+        quitYear,
       candidateJobExperience
     );
   }

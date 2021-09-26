@@ -44,22 +44,29 @@
     </ng-template>
     <ng-template pTemplate="body" let-experience>
       <tr class="p-selectable-row">
-        <td class="justify-content-between d-flex">
-          <span class="p-column-title">Company</span>
-          {{ experience.workPlace }}
+        <td>
+          <div class="row">
+            <div class="col-md-10">
+              {{ experience.workPlace }}
+            </div>
 
-          <a
-            type="button"
-            data-bs-toggle="modal"
-            data-bs-target="#exampleModal"
-          >
-            <i class="bi bi-gear text-success"></i>
-          </a>
+            <div class="col-md-2 text-end">
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modal"
+                (click)="catchId(experience.id)"
+                class="ms-auto"
+              >
+                <i class="bi bi-gear text-success"></i>
+              </a>
+            </div>
+          </div>
 
           <!-- Modal -->
           <div
             class="modal fade"
-            id="exampleModal"
+            id="modal"
             tabindex="-1"
             aria-labelledby="exampleModalLabel"
             aria-hidden="true"
@@ -100,23 +107,22 @@
                         >
                       </div>
                     </div>
-
-                    <div class="text-center"></div>
                   </form>
                 </div>
                 <div class="modal-footer">
+                  <button
+                    [disabled]="!workPlaceUpdateForm.valid"
+                    class="btn btn-success"
+                    (click)="updateWorkPlace(experience)"
+                  >
+                    Save changes
+                  </button>
                   <button
                     type="button"
                     class="btn btn-secondary"
                     data-bs-dismiss="modal"
                   >
                     Close
-                  </button>
-                  <button
-                    [disabled]="!workPlaceUpdateForm.valid"
-                    class="btn btn-success"
-                    (click)="updateWorkPlace(experience)"
-                  >Save changes
                   </button>
                 </div>
               </div>
@@ -125,19 +131,270 @@
         </td>
 
         <td>
-          <span class="p-column-title">Position</span>
-          {{ experience.position.title }}
+          <div class="row">
+            <div class="col-md-10">
+              {{ experience.position.title }}
+            </div>
+
+            <div class="col-md-2 text-right">
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modal2"
+                (click)="catchId(experience.id)"
+                class="ms-auto"
+              >
+                <i class="bi bi-gear text-success"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="modal2"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Update Position
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="positionUpdateForm">
+                    <div class="row mb-3">
+                      <div class="form-group col-md-12">
+                        <select
+                          name="positionId"
+                          id="positionId"
+                          class="form-select"
+                          formControlName="positionId"
+                        >
+                          <option value="" disabled selected>
+                            Please select position
+                          </option>
+                          <option
+                            *ngFor="let position of positions"
+                            value="{{ position.id }}"
+                          >
+                            {{ position.title }}
+                          </option>
+                        </select>
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            positionUpdateForm
+                              .get('positionId')
+                              .hasError('required') &&
+                            positionUpdateForm.get('positionId').touched
+                          "
+                          >*Position is required.</small
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    [disabled]="!positionUpdateForm.valid"
+                    class="btn btn-success"
+                    (click)="updatePosition(experience)"
+                  >
+                    Save changes
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </td>
 
         <td>
-          <span class="p-column-title">Start Year</span>
-          {{ experience.startYear }}
+          <div class="row">
+            <div class="col-md-10">
+              {{ experience.startYear }}
+            </div>
+            <div class="col-md-2 text-right">
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modal3"
+                (click)="catchId(experience.id)"
+                class="ms-auto"
+              >
+                <i class="bi bi-gear text-success"></i>
+              </a>
+            </div>
+          </div>
+
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="modal3"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Update Start Year
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="startYearUpdateForm">
+                    <div class="row mb-3">
+                      <div class="form-group col-md-12">
+                        <input
+                          class="form-control"
+                          type="number"
+                          id="startYear"
+                          formControlName="startYear"
+                          placeholder="Please enter start year"
+                        />
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                            startYearUpdateForm
+                              .get('startYear')
+                              .hasError('required') &&
+                            startYearUpdateForm.get('startYear').touched
+                          "
+                          >*Start year is required.</small
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    [disabled]="!startYearUpdateForm.valid"
+                    class="btn btn-success"
+                    (click)="updateStartYear(experience)"
+                  >
+                    Save changes
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </td>
 
         <td>
-          <span class="p-column-title">Quit Year</span>
-          <span *ngIf="experience.quitYear"> {{ experience.quitYear }}</span>
-          <span *ngIf="!experience.quitYear">Present</span>
+          <div class="row">
+            <div class="col-md-10">
+              <span *ngIf="experience.quitYear">
+                {{ experience.quitYear }}</span
+              >
+              <span *ngIf="!experience.quitYear">Present</span>
+            </div>
+
+            <div class="col-md-2 text-right">
+              <a
+                type="button"
+                data-bs-toggle="modal"
+                data-bs-target="#modal4"
+                (click)="catchId(experience.id)"
+                class="ms-auto"
+              >
+                <i class="bi bi-gear text-success"></i>
+              </a>
+            </div>
+          </div>
+          <!-- Modal -->
+          <div
+            class="modal fade"
+            id="modal4"
+            tabindex="-1"
+            aria-labelledby="exampleModalLabel"
+            aria-hidden="true"
+          >
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">
+                    Update Quit Year
+                  </h5>
+                  <button
+                    type="button"
+                    class="btn-close"
+                    data-bs-dismiss="modal"
+                    aria-label="Close"
+                  ></button>
+                </div>
+                <div class="modal-body">
+                  <form [formGroup]="quitYearUpdateForm">
+                    <div class="row mb-3">
+                      <div class="form-group col-md-12">
+                        <input
+                          class="form-control"
+                          type="number"
+                          id="quitYear"
+                          formControlName="quitYear"
+                          placeholder="Please enter quit year"
+                        />
+                        <small
+                          class="text-danger"
+                          *ngIf="
+                          quitYearUpdateForm
+                              .get('quitYear')
+                              .hasError('required') &&
+                              quitYearUpdateForm.get('quitYear').touched
+                          "
+                          >*Quit year is required.</small
+                        >
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <div class="modal-footer">
+                  <button
+                    [disabled]="!quitYearUpdateForm.valid"
+                    class="btn btn-success"
+                    (click)="updateQuitYear(experience)"
+                  >
+                    Save changes
+                  </button>
+                  <button
+                    type="button"
+                    class="btn btn-secondary"
+                    data-bs-dismiss="modal"
+                  >
+                    Close
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
         </td>
       </tr>
     </ng-template>

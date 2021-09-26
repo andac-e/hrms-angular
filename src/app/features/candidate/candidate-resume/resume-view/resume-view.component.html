@@ -2,11 +2,21 @@
   <div class="container d-flex flex-column align-items-center text-center mt-2">
     <div class="col">
       <img
+        *ngIf="loggedCandidate.profileImg"
         width="128"
         height="128"
         class="rounded-circle m-2 border border-5"
-        src="{{ loggedCandidate.profileImg.imageUrl }}"
+        src="{{ loggedCandidate.profileImg?.imageUrl }}"
       />
+      <img
+        *ngIf="!loggedCandidate.profileImg"
+        width="128"
+        height="128"
+        class="rounded-circle m-2 border border-5"
+        src="http://res.cloudinary.com/cloudinary73/image/upload/v1632609148/vkzs6cz3i9gla1vkohfr.png"
+      />
+
+      
       <h4 class="fw-bold mb-2">
         {{ loggedCandidate.firstName }} {{ loggedCandidate.lastName }}
       </h4>

@@ -1,0 +1,16 @@
+div > i {
+  font-size: 32px;
+}
+
+.no-shadow {
+  box-shadow: none;
+}
+
+.card {
+  position: absolute;
+  top: 12%;
+  width: 13rem;
+  height: 20rem;
+  background-color: #e8eef0;
+  border-radius: 15px;
+}

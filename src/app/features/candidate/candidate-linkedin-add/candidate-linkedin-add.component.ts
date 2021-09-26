@@ -7,7 +7,7 @@ import { CandidateService } from 'src/app/services/candidate.service';
 @Component({
   selector: 'app-candidate-linkedin-add',
   templateUrl: './candidate-linkedin-add.component.html',
-  styleUrls: ['./candidate-linkedin-add.component.css']
+  styleUrls: ['./candidate-linkedin-add.component.css'],
 })
 export class CandidateLinkedinAddComponent implements OnInit {
   linkedinAddForm: FormGroup;
@@ -22,7 +22,7 @@ export class CandidateLinkedinAddComponent implements OnInit {
 
   ngOnInit(): void {
     this.createLinkedinAddForm();
-    this.getCandidateById()
+    this.getCandidateById();
   }
 
   createLinkedinAddForm() {
@@ -34,19 +34,26 @@ export class CandidateLinkedinAddComponent implements OnInit {
 
   addLinkedinAccount() {
     if (this.linkedinAddForm.valid) {
-      this.candidateService.updateLinkedin(this.loggedCandidate, this.linkedinAddForm.value["linkedinAccount"]).subscribe((response:any)=>{
-        this.toastrService.success("Successfully added")
-        this.linkedinAddForm.reset()
-        console.log(response)
-      })
+      this.candidateService
+        .updateLinkedin(
+          this.loggedCandidate,
+          this.linkedinAddForm.value['linkedinAccount']
+        )
+        .subscribe((response: any) => {
+          this.toastrService.success('Successfully added');
+          this.linkedinAddForm.reset();
+          console.log(response);
+        });
     }
   }
 
   getCandidateById() {
-    this.candidateService.getCandidateById(this.getUserId()).subscribe((response:any)=>{
-      this.loggedCandidate = response.data;
-      console.log(this.loggedCandidate)
-    })
+    this.candidateService
+      .getCandidateById(this.getUserId())
+      .subscribe((response: any) => {
+        this.loggedCandidate = response.data;
+        console.log(this.loggedCandidate);
+      });
   }
 
   getUserId(): number {

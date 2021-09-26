@@ -63,6 +63,7 @@ export class CandidateImageUploadComponent implements OnInit {
         .upload(formData, this.getUserId())
         .subscribe((response: any) => {
           this.uploadedImgId = response.data.id;
+          console.log(response)
           this.updateProfileImg();
           this.toastrService.success('Successfully added');
           this.progress = 100;

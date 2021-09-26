@@ -35,6 +35,7 @@ import { ResumeAddComponent } from './features/candidate/candidate-resume/resume
 import { ResumeViewComponent } from './features/candidate/candidate-resume/resume-view/resume-view.component';
 import { UnverifiedJobListComponent } from './features/system-employee/unverified-job-list/unverified-job-list.component';
 import { CandidateExperienceListComponent } from './features/candidate/candidate-experience/candidate-experience-list/candidate-experience-list.component';
+import { PositionCardComponent } from './features/home/position-card/position-card.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { CandidateExperienceListComponent } from './features/candidate/candidate
     ResumeViewComponent,
     UnverifiedJobListComponent,
     CandidateExperienceListComponent,
+    PositionCardComponent,
   ],
   imports: [
     BrowserModule,

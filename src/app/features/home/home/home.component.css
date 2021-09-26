@@ -74,3 +74,41 @@ label {
   margin-left: 120px !important;
 }
 
+.spacer {
+  position: relative;
+  aspect-ratio: 960/300;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+
+.position {
+  position: absolute;
+  top: -5%;
+}
+
+.layer1 {
+  background-image: url('../../../../assets/wave-haikei.svg');
+  opacity: 1;
+}
+
+.layer2 {
+  background-image: url('../../../../assets/wave-haikei-2.svg');
+  opacity: 1;
+}
+
+section {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-height: 400px;
+  padding-top: 100px;
+}
+
+.green {
+  background-color: #009473;
+}
+
