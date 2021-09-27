@@ -15,13 +15,6 @@
     [filterDelay]="0"
     sortField="createdAt" 
     [sortOrder]="-1"
-    [globalFilterFields]="[
-      'employer.companyName',
-      'position.title',
-      'openPositions',
-      'createdAt',
-      'deadline'
-    ]"
   >
     <ng-template pTemplate="caption">
       <div class="table-header">
@@ -43,6 +36,19 @@
           </div>
         </th>
 
+        <th pSortableColumn="city.name">
+          <div class="d-flex justify-content-between align-items-center">
+            Location
+            <p-sortIcon field="city.name"></p-sortIcon>
+            <p-columnFilter
+              type="text"
+              field="city.name"
+              display="menu"
+              class="ms-auto"
+            ></p-columnFilter>
+          </div>
+        </th>
+
         <th pSortableColumn="position.title">
           <div class="d-flex justify-content-between align-items-center">
             Position
@@ -56,12 +62,19 @@
           </div>
         </th>
 
-        <th pSortableColumn="openPositions">
+        <th pSortableColumn="workTime">
+          <div class="d-flex justify-content-between align-items-center">
+            Work Time
+            <p-sortIcon field="workTime"></p-sortIcon>
+          </div>
+        </th>
+
+        <!-- <th pSortableColumn="openPositions">
           <div class="d-flex justify-content-between align-items-center">
             Open Positions
             <p-sortIcon field="openPositions"></p-sortIcon>
           </div>
-        </th>
+        </th> -->
 
         <th pSortableColumn="createdAt">
           <div class="d-flex justify-content-between align-items-center">
@@ -86,14 +99,24 @@
         </td>
 
         <td>
+          <span class="p-column-title">Location</span>
+          {{ job.city.name }}
+        </td>
+
+        <td>
           <span class="p-column-title">Position</span>
           {{ job.position.title }}
         </td>
 
         <td>
+          <span class="p-column-title">Position</span>
+          {{ job.workTime }}
+        </td>
+
+        <!-- <td>
           <span class="p-column-title">Open Positions</span>
           {{ job.openPositions }}
-        </td>
+        </td> -->
 
         <td>
           <span class="p-column-title">Release Date</span>

@@ -29,6 +29,12 @@ export class CandidateJobExperienceService {
     );
   }
 
+  deleteById(jobExpId: number): Observable<CandidateJobExperience> {
+    return this.httpClient.delete<CandidateJobExperience>(
+      this.apiUrl + '/delete/byId?candJobExpId=' + jobExpId
+    );
+  }
+
   updateWorkPlace(
     candidateJobExperience: CandidateJobExperience,
     workPlace: string,

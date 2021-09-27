@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+    <div class="card w-75 my-4">
+        <div class="card-header fs-6 fw-bold text-center">Update First Name</div>
+      
+        <div class="card-body">
+            <h6 class="mt-2">Your first name: <span class="text-success fw-bold">{{loggedSystemEmployee?.firstName}}</span> </h6>
+            <hr class="dropdown-divider mt-4">
+          <form [formGroup]="firstNameUpdateForm" class="p-2">
+            <div class="row">
+              <div class="form-group col-md-12">
+                  <label>Update First Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="firstName"
+                  formControlName="firstName"
+                  placeholder="Please enter first name"
+                />
+                <small
+                  class="text-danger d-block"
+                  *ngIf="
+                  firstNameUpdateForm.get('firstName').hasError('required') &&
+                  firstNameUpdateForm.get('firstName').touched
+                  "
+                  >*First name is required.</small
+                >
+              </div>
+            </div>
+        
+            <div class="text-center">
+              <button
+              [disabled]="!firstNameUpdateForm.valid"
+              class="btn btn-success mt-3"
+              (click)="updateFirstName()"
+            >
+              Update
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,101 @@
+<div class="card my-4 border-bottom-0">
+    <div class="card-header text-center fw-bold">Current Schools</div>
+
+    <p-table
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="candidateSchools"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              School
+            </div>
+          </th>
+
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Department
+            </div>
+          </th>
+
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Start Year
+            </div>
+          </th>
+
+          <th>
+            <div class="d-flex justify-content-between align-items-center">
+              Graduation Year
+            </div>
+          </th>
+
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-school>
+        <tr class="p-selectable-row">
+          <td>
+            <span class="p-column-title">School</span>
+            {{ school.school.name }}
+          </td>
+
+          <td>
+            <span class="p-column-title">Department</span>
+            {{ school.department.name }}
+          </td>
+
+          <td>
+            <span class="p-column-title">Start Year</span>
+            {{ school.startYear }}
+          </td>
+
+          <td>
+            <span class="p-column-title">Graduation Year</span>
+            <span *ngIf="school.graduationYear">
+              {{ school.graduationYear }}</span
+            >
+            <span *ngIf="!school.graduationYear">Present</span>
+          </td>
+
+          <td class="text-end">
+            <a (click)="deleteSchool(school.id)"><i class="text-danger bi bi-x-lg"></i></a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No schools found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
+  <ng-template #loadingInfo>
+    <div
+      class="
+        text-center
+        d-flex
+        flex-column
+        align-items-center
+        justify-content-center
+      "
+      style="height: 200px"
+    >
+      <p-progressSpinner></p-progressSpinner>
+      <h6 class="mt-2">Loading...</h6>
+    </div>
+  </ng-template>
+  

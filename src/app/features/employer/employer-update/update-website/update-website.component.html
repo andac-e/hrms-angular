@@ -1,0 +1,66 @@
+<div class="d-flex justify-content-center">
+    <div class="card w-75 my-4">
+        <div class="card-header fs-6 fw-bold text-center">Update Email and Website</div>
+      
+        <div class="card-body">
+            <h6 class="mt-2">Your Email: <span class="text-success fw-bold">{{loggedEmployer?.email}}</span> </h6>
+            <h6 class="mt-2">Your Website: <span class="text-success fw-bold">{{loggedEmployer?.website}}</span> </h6>
+            <hr class="dropdown-divider mt-4">
+          <form [formGroup]="websiteAndEmailUpdateForm" class="p-2">
+            <div class="row">
+              <div class="form-group col-md-12">
+                  <label>Update Email</label>
+                <input
+                  class="form-control"
+                  type="email"
+                  id="email"
+                  formControlName="email"
+                  placeholder="Please enter your email"
+                />
+                <small
+                  class="text-danger d-block"
+                  *ngIf="
+                  websiteAndEmailUpdateForm.get('email').hasError('required') &&
+                  websiteAndEmailUpdateForm.get('email').touched
+                  "
+                  >*Email is required.</small
+                >
+              </div>
+
+              <div class="form-group col-md-12">
+                <label>Update Website</label>
+              <input
+                class="form-control"
+                type="text"
+                id="website"
+                formControlName="website"
+                placeholder="Please enter your website"
+              />
+              <small
+                class="text-danger d-block"
+                *ngIf="
+                websiteAndEmailUpdateForm.get('website').hasError('required') &&
+                websiteAndEmailUpdateForm.get('website').touched
+                "
+                >*Website is required.</small
+              >
+              
+              <label for="formFile" class="form-label text-warning small"
+                >*Your update will be applied after system employees verification.</label
+              >
+            </div>
+            </div>
+        
+            <div class="text-center">
+              <button
+              [disabled]="!websiteAndEmailUpdateForm.valid"
+              class="btn btn-success mt-3"
+              (click)="updateWebsiteAndEmail()"
+            >
+              Update
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>

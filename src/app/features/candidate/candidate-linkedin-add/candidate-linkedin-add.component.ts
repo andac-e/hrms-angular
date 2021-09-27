@@ -42,7 +42,6 @@ export class CandidateLinkedinAddComponent implements OnInit {
         .subscribe((response: any) => {
           this.toastrService.success('Successfully added');
           this.linkedinAddForm.reset();
-          console.log(response);
         });
     }
   }
@@ -52,7 +51,6 @@ export class CandidateLinkedinAddComponent implements OnInit {
       .getCandidateById(this.getUserId())
       .subscribe((response: any) => {
         this.loggedCandidate = response.data;
-        console.log(this.loggedCandidate);
       });
   }
 

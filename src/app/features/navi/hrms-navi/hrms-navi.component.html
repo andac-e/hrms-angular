@@ -1,6 +1,8 @@
 <nav class="navbar navbar-dark bg-dark" *ngIf="checkSystemEmployee()">
   <div class="container">
-    <span class="text-secondary">Notice: You have currently logged as system employee.</span>
+    <span class="text-secondary"
+      >Notice: You have currently logged as system employee.</span
+    >
   </div>
 </nav>
 
@@ -67,121 +69,11 @@
         </ul>
       </li>
 
-      <div class="collapse navbar-collapse" *ngIf="checkSystemEmployee()">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            routerLink="/unverified-job-list"
-            >Unverified Jobs <p-badge *ngIf="unverifiedJobs.length > 0" [value]="unverifiedJobs.length.toString()" severity="success" styleClass="p-mr-2"></p-badge>
-            </a
-            >
-            
-        </li>
-      </div>
-        
+      <app-navi-system-employee></app-navi-system-employee>
 
-      <div class="collapse navbar-collapse" *ngIf="checkEmployer()">
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            routerLink="/position-add"
-            >Add Position</a
-          >
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" routerLink="/job-add"
-            >Add Job</a
-          >
-        </li>
-        <li><hr class="dropdown-divider" /></li>
-        <li class="nav-item">
-          <a
-            class="nav-link active"
-            aria-current="page"
-            routerLink="/employer-job-list"
-            >My Job Ads</a
-          >
-        </li>
-      </div>
+      <app-navi-employer></app-navi-employer>
 
-      <div class="collapse navbar-collapse" *ngIf="checkCandidate()">
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link active dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Resume
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <a class="dropdown-item" routerLink="/resume-add">Add Resume</a>
-            </li>
-            <li><hr class="dropdown-divider" /></li>
-            <li>
-              <a class="dropdown-item" routerLink="/resume-view"
-                >View my Resume</a
-              >
-            </li>
-          </ul>
-        </li>
-
-        <li class="nav-item dropdown">
-          <a
-            class="nav-link active dropdown-toggle"
-            href="#"
-            id="navbarDropdown"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            Personal Information
-          </a>
-          <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-experience-add"
-                ><i class="bi bi-briefcase"></i>Job Experience</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-language-add"
-                ><i class="bi bi-translate"></i>Language</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-school-add"
-                ><i class="bi bi-book"></i>School</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-skill-add"
-                ><i class="bi bi-gem"></i>Skill</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-photo-upload"
-                ><i class="bi bi-cloud-arrow-up"></i>Photo</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-github-add"
-                ><i class="bi bi-github"></i>Github</a
-              >
-            </li>
-            <li>
-              <a class="dropdown-item" routerLink="/candidate-linkedin-add"
-                ><i class="bi bi-linkedin"></i>Linkedin</a
-              >
-            </li>
-          </ul>
-        </li>
-      </div>
+      <app-navi-candidate></app-navi-candidate>
     </ul>
 
     <div class="d-flex text-end">
@@ -219,12 +111,6 @@
           </div>
         </ng-template>
       </div>
-
-      <ng-template #candidateUser>
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Add Cv</a>
-        </li>
-      </ng-template>
     </div>
   </div>
 </nav>

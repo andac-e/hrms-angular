@@ -15,8 +15,9 @@ export class ResumeViewComponent implements OnInit {
   candidateJobExperiences: any;
   candidateSchools: any;
   candidateSkills: any;
-
   loggedUser: any;
+  loading: boolean = true;
+
   constructor(
     private candidateService: CandidateService,
     private candidateExperienceService: CandidateJobExperienceService,
@@ -36,7 +37,7 @@ export class ResumeViewComponent implements OnInit {
         this.loggedCandidate = response.data;
         this.candidateLanguages = response.data.candidateLanguages;
         this.candidateSkills = response.data.candidateSkills;
-        console.log(this.loggedCandidate);
+        this.loading = false;
       });
   }
 
@@ -57,8 +58,8 @@ export class ResumeViewComponent implements OnInit {
       .subscribe((response: any) => {
         response.data = response.data.filter(
           (r) => r.candidate.id === this.getUserId()
-          );
-          this.candidateSchools = response.data;
+        );
+        this.candidateSchools = response.data;
       });
   }
 

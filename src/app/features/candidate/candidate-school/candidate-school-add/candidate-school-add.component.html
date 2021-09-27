@@ -1,0 +1,107 @@
+<div class="container w-75 mt-3">
+  <div class="card mb-4">
+    <div class="card-header fs-6 fw-bold text-center">Add School</div>
+
+    <div class="card-body">
+      <form [formGroup]="schoolAddForm" class="p-2">
+        <div class="row mb-3">
+          <div class="form-group col-md-6">
+            <label>School</label>
+            <select
+              name="schoolId"
+              id="schoolId"
+              class="form-select"
+              formControlName="schoolId"
+            >
+              <option value="" disabled selected>Please select school</option>
+              <option *ngFor="let school of schools" value="{{ school.id }}">
+                {{ school.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                schoolAddForm.get('schoolId').hasError('required') &&
+                schoolAddForm.get('schoolId').touched
+              "
+              >*School is required.</small
+            >
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Department</label>
+            <select
+              name="departmentId"
+              id="departmentId"
+              class="form-select"
+              formControlName="departmentId"
+            >
+              <option value="" disabled selected>
+                Please select department
+              </option>
+              <option
+                *ngFor="let department of departments"
+                value="{{ department.id }}"
+              >
+                {{ department.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                schoolAddForm.get('departmentId').hasError('required') &&
+                schoolAddForm.get('departmentId').touched
+              "
+              >*Department is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group col-md-6">
+            <label>Start Year</label>
+            <input
+              class="form-control"
+              type="number"
+              id="startYear"
+              formControlName="startYear"
+              placeholder="Please enter start year"
+            />
+            <small
+              class="text-danger"
+              *ngIf="
+                schoolAddForm.get('startYear').hasError('required') &&
+                schoolAddForm.get('startYear').touched
+              "
+              >*Start year is required.</small
+            >
+          </div>
+
+          <div class="form-group col-md-6">
+            <label>Graduation Year</label>
+            <input
+              class="form-control"
+              type="number"
+              id="graduationYear"
+              formControlName="graduationYear"
+              placeholder="Please enter graduation year (optional)"
+            />
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!schoolAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addSchool()"
+          >
+            Add School
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <app-candidate-school-list></app-candidate-school-list>
+</div>
+

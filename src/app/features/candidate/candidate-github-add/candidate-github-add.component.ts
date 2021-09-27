@@ -37,7 +37,6 @@ export class CandidateGithubAddComponent implements OnInit {
       this.candidateService.updateGithub(this.loggedCandidate, this.githubAddForm.value["githubAccount"]).subscribe((response:any)=>{
         this.toastrService.success("Successfully added")
         this.githubAddForm.reset()
-        console.log(response)
       })
     }
   }
@@ -45,7 +44,6 @@ export class CandidateGithubAddComponent implements OnInit {
   getCandidateById() {
     this.candidateService.getCandidateById(this.getUserId()).subscribe((response:any)=>{
       this.loggedCandidate = response.data;
-      console.log(this.loggedCandidate)
     })
   }
 

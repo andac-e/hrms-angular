@@ -1,0 +1,48 @@
+<div class="container w-75 mt-3">
+  <div class="card mb-4">
+    <div class="card-header fs-6 fw-bold text-center">Add Skill</div>
+
+    <div class="card-body">
+      <form [formGroup]="skillAddForm" class="p-2">
+        <div class="row">
+          <div class="form-group col-md-12">
+            <label>Skill</label>
+            <select
+              name="skillId"
+              id="skillId"
+              class="form-select"
+              formControlName="skillId"
+            >
+              <option value="" disabled selected>Please select skill</option>
+              <option *ngFor="let skill of skills" value="{{ skill.id }}">
+                {{ skill.name }}
+              </option>
+            </select>
+            <small
+              class="text-danger"
+              *ngIf="
+                skillAddForm.get('skillId').hasError('required') &&
+                skillAddForm.get('skillId').touched
+              "
+              >*Skill is required.</small
+            >
+          </div>
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!skillAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addSkill()"
+          >
+            Add Skill
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <app-candidate-skill-list></app-candidate-skill-list>
+</div>
+
+

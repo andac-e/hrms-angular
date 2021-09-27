@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
 
     this.userService.login(user).subscribe(
       (response:any) => {
-        this.toastrService.success('Sisteme giriş yapıldı.');
+        this.toastrService.success('Successfully logged in.');
         localStorage.setItem('user', JSON.stringify(response));
         this.router.navigate(['home']);
       },
@@ -43,7 +43,7 @@ export class LoginComponent implements OnInit {
         let message = JSON.stringify(responseError.error.message);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
-          'Doğrulama hatası'
+          'Validation error'
         );
       }
     );

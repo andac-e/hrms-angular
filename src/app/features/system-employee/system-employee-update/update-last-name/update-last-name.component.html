@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+    <div class="card w-75 my-4">
+        <div class="card-header fs-6 fw-bold text-center">Update Last Name</div>
+      
+        <div class="card-body">
+            <h6 class="mt-2">Your last name: <span class="text-success fw-bold">{{loggedSystemEmployee?.lastName}}</span> </h6>
+            <hr class="dropdown-divider mt-4">
+          <form [formGroup]="lastNameUpdateForm" class="p-2">
+            <div class="row">
+              <div class="form-group col-md-12">
+                  <label>Update Last Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="lastName"
+                  formControlName="lastName"
+                  placeholder="Please enter last name"
+                />
+                <small
+                  class="text-danger d-block"
+                  *ngIf="
+                  lastNameUpdateForm.get('lastName').hasError('required') &&
+                  lastNameUpdateForm.get('lastName').touched
+                  "
+                  >*Last name is required.</small
+                >
+              </div>
+            </div>
+        
+            <div class="text-center">
+              <button
+              [disabled]="!lastNameUpdateForm.valid"
+              class="btn btn-success mt-3"
+              (click)="updateLastName()"
+            >
+              Update
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>

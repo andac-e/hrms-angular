@@ -49,7 +49,7 @@ export class CandidateSignupComponent implements OnInit {
         .addCandidate(this.candidateSignForm.value)
         .subscribe(
           (response: any) => {
-            this.toastrService.success(response.message, 'Başarılı');
+            this.toastrService.success(response.message, 'Successfully registered');
             this.router.navigate(['home']);
           },
           (responseError) => {

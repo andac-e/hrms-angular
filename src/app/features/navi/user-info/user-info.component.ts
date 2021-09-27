@@ -18,6 +18,56 @@ export class UserInfoComponent implements OnInit {
     return this.user;
   }
 
+  checkUser(): boolean {
+    if (localStorage.getItem('user')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  checkEmployer(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('employer')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  checkCandidate(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('candidate')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
+  checkSystemEmployee(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('systemEmployee')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
+  }
+
   signOut() {
     localStorage.clear();
     this.router.navigate(['login']);

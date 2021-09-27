@@ -1,0 +1,25 @@
+<div class="collapse navbar-collapse" *ngIf="checkEmployer()">
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        aria-current="page"
+        routerLink="/position-add"
+        >Add Position</a
+      >
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li class="nav-item">
+      <a class="nav-link active" aria-current="page" routerLink="/job-add"
+        >Add Job</a
+      >
+    </li>
+    <li><hr class="dropdown-divider" /></li>
+    <li class="nav-item">
+      <a
+        class="nav-link active"
+        aria-current="page"
+        routerLink="/employer-job-list"
+        >My Job Ads</a
+      >
+    </li>
+  </div>

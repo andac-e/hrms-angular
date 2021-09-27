@@ -1,4 +1,47 @@
-<div class="nav-item">
-  Welcome <b>{{ getUserInfo().data.email }}</b>
-  <button class="btn btn-sm btn-danger ms-2" (click)="signOut()">Logout</button>
+<div class="nav-item dropdown">
+  <a
+    class="nav-link link-dark active dropdown-toggle"
+    href="#"
+    id="navbarDropdown"
+    role="button"
+    data-bs-toggle="dropdown"
+    aria-expanded="false"
+  >
+    <span *ngIf="checkEmployer()"
+      >Welcome <b>{{ getUserInfo().data.companyName }}</b></span
+    >
+    <span *ngIf="checkCandidate()"
+      >Welcome <b>{{ getUserInfo().data.firstName }}</b></span
+    >
+    <span *ngIf="checkSystemEmployee()"
+      >Welcome <b>{{ getUserInfo().data.email }}</b></span
+    >
+  </a>
+  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+    <div *ngIf="checkEmployer()">
+      <li>
+        <a class="dropdown-item" routerLink="/update-employer-info"
+          >Update Company Info</a
+        >
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+    </div>
+
+    <div *ngIf="checkSystemEmployee()">
+      <li>
+        <a class="dropdown-item" routerLink="/update-system-employee-info"
+          >Update Profile</a
+        >
+      </li>
+      <li><hr class="dropdown-divider" /></li>
+    </div>
+    <li>
+      <a
+        class="dropdown-item link-danger"
+        style="cursor: pointer"
+        (click)="signOut()"
+        >Logout <i class="bi bi-box-arrow-right ms-1"></i
+      ></a>
+    </li>
+  </ul>
 </div>

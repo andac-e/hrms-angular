@@ -41,7 +41,7 @@ export class ResumeAddComponent implements OnInit {
       candidateLanguageIds: [this.getCandidateLanguageIds()],
       candidateSchoolIds: [this.getCandidateSchoolIds()],
       candidateSkillIds: [this.getCandidateSkillIds()],
-      coverLetter: ['', Validators.required],
+      coverLetter: [''],
       title: ['', Validators.required],
     });
   }
@@ -50,9 +50,8 @@ export class ResumeAddComponent implements OnInit {
     this.cvService
       .addCv(this.resumeAddForm.value)
       .subscribe((response: any) => {
-        console.log(response);
         this.toastrService.success('Resume added successfully');
-        this.resumeAddForm.reset();
+        this.pageReloadDelay();
       });
   }
 
@@ -104,5 +103,9 @@ export class ResumeAddComponent implements OnInit {
   getUserId(): number {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     return this.loggedUser.data.id;
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

@@ -53,7 +53,7 @@ export class EmployerSignupComponent implements OnInit {
       if (this.checkPasswordMatch()) {
         this.employerService.addEmployer(this.employerSignForm.value).subscribe(
           (response: any) => {
-            this.toastrService.success('Başarılı');
+            this.toastrService.success('Successfully registered');
             this.router.navigate(['home']);
           },
           (responseError) => {
@@ -61,7 +61,7 @@ export class EmployerSignupComponent implements OnInit {
             console.log(responseError);
             this.toastrService.error(
               message.replace(/{|}|"/gi, ''),
-              'Doğrulama hatası'
+              'Validation error'
             );
           }
         );

@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center">
+    <div class="card w-75 my-4">
+        <div class="card-header fs-6 fw-bold text-center">Update Company Name</div>
+      
+        <div class="card-body">
+            <h6 class="mt-2">Your company name: <span class="text-success fw-bold">{{loggedEmployer?.companyName}}</span> </h6>
+            <hr class="dropdown-divider mt-4">
+          <form [formGroup]="companyNameUpdateForm" class="p-2">
+            <div class="row">
+              <div class="form-group col-md-12">
+                  <label>Update Company Name</label>
+                <input
+                  class="form-control"
+                  type="text"
+                  id="companyName"
+                  formControlName="companyName"
+                  placeholder="Please enter your company name"
+                />
+                <small
+                  class="text-danger d-block"
+                  *ngIf="
+                  companyNameUpdateForm.get('companyName').hasError('required') &&
+                  companyNameUpdateForm.get('companyName').touched
+                  "
+                  >*Company name is required.</small
+                >
+
+                
+                <label for="formFile" class="form-label text-warning small"
+                  >*Your update will be applied after system employees verification.</label
+                >
+              </div>
+            </div>
+        
+            <div class="text-center">
+              <button
+              [disabled]="!companyNameUpdateForm.valid"
+              class="btn btn-success mt-3"
+              (click)="updateCompanyName()"
+            >
+              Update
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>

@@ -1,0 +1,41 @@
+<div class="container w-75 mt-3">
+  <div class="card">
+    <div class="card-header bg-success fs-6 text-light fw-bold text-center">
+      Add Cover Letter
+    </div>
+
+    <div class="card-body">
+      <form [formGroup]="coverLetterAddForm" class="p-2">
+        <div class="form-group">
+          <label>Cover Letter</label>
+          <textarea
+            class="form-control"
+            type="text"
+            id="coverLetter"
+            formControlName="coverLetter"
+            placeholder="Please enter your cover letter"
+          >
+          </textarea>
+          <small
+            class="text-danger"
+            *ngIf="
+              coverLetterAddForm.get('coverLetter').hasError('required') &&
+              coverLetterAddForm.get('coverLetter').touched
+            "
+            >*Cover letter is required.</small
+          >
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!coverLetterAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addCoverLetter()"
+          >
+            Add Cover Letter
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

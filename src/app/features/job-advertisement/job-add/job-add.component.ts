@@ -56,6 +56,7 @@ export class JobAddComponent implements OnInit {
     if (this.jobAddForm.valid) {
       this.jobAdvertisementService.add(this.jobAddForm.value).subscribe((response)=>{
         this.toastrService.success('Successfully added');
+        this.pageReloadDelay();
       })
     }
   }
@@ -75,5 +76,9 @@ export class JobAddComponent implements OnInit {
     this.positionService.getAll().subscribe((response: any) => {
       this.positions = response.data;
     });
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

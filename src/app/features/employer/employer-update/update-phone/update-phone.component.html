@@ -1,0 +1,47 @@
+<div class="d-flex justify-content-center">
+    <div class="card w-75 my-4">
+        <div class="card-header fs-6 fw-bold text-center">Update Phone Number</div>
+      
+        <div class="card-body">
+            <h6 class="mt-2">Your phone number: <span class="text-success fw-bold">{{loggedEmployer?.phoneNumber}}</span> </h6>
+            <hr class="dropdown-divider mt-4">
+          <form [formGroup]="phoneUpdateForm" class="p-2">
+            <div class="row">
+              <div class="form-group col-md-12">
+                  <label>Update Phone Number</label>
+                <input
+                  class="form-control"
+                  type="number"
+                  id="phoneNumber"
+                  formControlName="phoneNumber"
+                  placeholder="Please enter your phone number"
+                />
+                <small
+                  class="text-danger d-block"
+                  *ngIf="
+                  phoneUpdateForm.get('phoneNumber').hasError('required') &&
+                  phoneUpdateForm.get('phoneNumber').touched
+                  "
+                  >*Phone number is required.</small
+                >
+
+                
+                <label for="formFile" class="form-label text-warning small"
+                  >*Your update will be applied after system employees verification.</label
+                >
+              </div>
+            </div>
+        
+            <div class="text-center">
+              <button
+              [disabled]="!phoneUpdateForm.valid"
+              class="btn btn-success mt-3"
+              (click)="updatePhoneNumber()"
+            >
+              Update
+            </button>
+            </div>
+          </form>
+        </div>
+      </div>
+</div>
