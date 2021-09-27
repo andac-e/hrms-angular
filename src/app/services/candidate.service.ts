@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Candidate } from '../models/candidate/candidate';
 import { CandidateListResponse } from '../models/candidate/candidateListResponse';
+import { JobAdvertisement } from '../models/job-advertisement/job-advertisement';
 
 @Injectable({
   providedIn: 'root',
@@ -26,7 +27,10 @@ export class CandidateService {
     );
   }
 
-  updateGithub(candidate: Candidate, githubLink:string): Observable<Candidate> {
+  updateGithub(
+    candidate: Candidate,
+    githubLink: string
+  ): Observable<Candidate> {
     return this.httpClient.put<Candidate>(
       this.apiUrl +
         '/update/githubAccount?candId=' +
@@ -37,13 +41,44 @@ export class CandidateService {
     );
   }
 
-  updateLinkedin(candidate: Candidate, linkedinLink:string): Observable<Candidate> {
+  updateLinkedin(
+    candidate: Candidate,
+    linkedinLink: string
+  ): Observable<Candidate> {
     return this.httpClient.put<Candidate>(
       this.apiUrl +
         '/update/linkedinAccount?candId=' +
         candidate.id +
         '&linkedinAccount=' +
         linkedinLink,
+      candidate
+    );
+  }
+
+  addFavoriteJob(
+    candidate: Candidate,
+    jobAdvId: number
+  ): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(
+      this.apiUrl +
+        '/update/favoriteJobAdvs/add?candId=' +
+        candidate.id +
+        '&jobAdvId=' +
+        jobAdvId,
+      candidate
+    );
+  }
+
+  removeFavoriteJob(
+    candidate: Candidate,
+    jobAdvId: number
+  ): Observable<JobAdvertisement> {
+    return this.httpClient.put<JobAdvertisement>(
+      this.apiUrl +
+        '/update/favoriteJobAdvs/remove?candId=' +
+        candidate.id +
+        '&jobAdvId=' +
+        jobAdvId,
       candidate
     );
   }

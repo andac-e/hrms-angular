@@ -8,13 +8,13 @@
     aria-expanded="false"
   >
     <span *ngIf="checkEmployer()"
-      >Welcome <b>{{ getUserInfo().data.companyName }}</b></span
+      >Welcome back <b>{{ getUserInfo().data.companyName }}</b></span
     >
     <span *ngIf="checkCandidate()"
-      >Welcome <b>{{ getUserInfo().data.firstName }}</b></span
+      >Welcome back <b>{{ getUserInfo().data.firstName }}</b></span
     >
     <span *ngIf="checkSystemEmployee()"
-      >Welcome <b>{{ getUserInfo().data.email }}</b></span
+      >Welcome back <b>{{ getUserInfo().data.email }}</b></span
     >
   </a>
   <ul class="dropdown-menu" aria-labelledby="navbarDropdown">

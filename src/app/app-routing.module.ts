@@ -19,20 +19,16 @@ import { EmployerProfileComponent } from './features/employer/employer-profile/e
 import { EmployerSignupComponent } from './features/employer/employer-signup/employer-signup.component';
 import { PositionAddComponent } from './features/employer/position-add/position-add.component';
 import { HomeComponent } from './features/home/home/home.component';
+import { FavoriteJobListComponent } from './features/job-advertisement/favorite-job-list/favorite-job-list.component';
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
 import { LoginComponent } from './features/navi/login/login.component';
 import { SystemEmployeeProfileComponent } from './features/system-employee/system-employee-profile/system-employee-profile.component';
 import { UnverifiedJobListComponent } from './features/system-employee/unverified-job-list/unverified-job-list.component';
 import { UnverifiedUpdateListComponent } from './features/system-employee/unverified-update-list/unverified-update-list.component';
-import { CandidateExperienceAddGuard } from './guards/candidate-information/candidate-experience-add.guard';
-import { CandidateImageUploadGuard } from './guards/candidate-information/candidate-image-upload.guard';
-import { CandidateLanguageAddGuard } from './guards/candidate-information/candidate-language-add.guard';
 import { CandidateResumeAddGuard } from './guards/candidate-information/candidate-resume-add.guard';
 import { CandidateResumeViewGuard } from './guards/candidate-information/candidate-resume-view.guard';
-import { CandidateSchoolAddGuard } from './guards/candidate-information/candidate-school-add.guard';
-import { CandidateSkillAddGuard } from './guards/candidate-information/candidate-skill-add.guard';
-import { CandidateSocialGuard } from './guards/candidate-information/candidate-social.guard';
+import { FavoriteJobListGuard } from './guards/candidate-information/favorite-job-list.guard';
 import { EmployerProfileUpdateGuard } from './guards/employer-information/employer-profile-update.guard';
 import { EmployerJobListGuard } from './guards/job/employer-job-list.guard';
 import { JobAddGuard } from './guards/job/job-add.guard';
@@ -68,41 +64,6 @@ const routes: Routes = [
     component: JobAddComponent,
     canActivate: [JobAddGuard],
   },
-  // {
-  //   path: 'candidate-experience-add',
-  //   component: CandidateExperienceAddComponent,
-  //   canActivate: [CandidateExperienceAddGuard],
-  // },
-  // {
-  //   path: 'candidate-language-add',
-  //   component: CandidateLanguageAddComponent,
-  //   canActivate: [CandidateLanguageAddGuard],
-  // },
-  // {
-  //   path: 'candidate-school-add',
-  //   component: CandidateSchoolAddComponent,
-  //   canActivate: [CandidateSchoolAddGuard],
-  // },
-  // {
-  //   path: 'candidate-skill-add',
-  //   component: CandidateSkillAddComponent,
-  //   canActivate: [CandidateSkillAddGuard],
-  // },
-  // {
-  //   path: 'candidate-photo-upload',
-  //   component: CandidateImageUploadComponent,
-  //   canActivate: [CandidateImageUploadGuard],
-  // },
-  // {
-  //   path: 'candidate-github-add',
-  //   component: CandidateGithubAddComponent,
-  //   canActivate: [CandidateSocialGuard],
-  // },
-  // {
-  //   path: 'candidate-linkedin-add',
-  //   component: CandidateLinkedinAddComponent,
-  //   canActivate: [CandidateSocialGuard],
-  // },
   {
     path: 'resume-add',
     component: CandidateInformationComponent,
@@ -112,6 +73,11 @@ const routes: Routes = [
     path: 'resume-view',
     component: ResumeViewComponent,
     canActivate: [CandidateResumeViewGuard],
+  },
+  {
+    path: 'favorite-job-list',
+    component: FavoriteJobListComponent,
+    canActivate: [FavoriteJobListGuard],
   },
   {
     path: 'unverified-job-list',

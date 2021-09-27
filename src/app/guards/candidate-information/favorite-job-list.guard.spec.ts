@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { CandidateSocialGuard } from './candidate-social.guard';
+import { FavoriteJobListGuard } from './favorite-job-list.guard';
 
-describe('CandidateSocialGuard', () => {
-  let guard: CandidateSocialGuard;
+describe('FavoriteJobListGuard', () => {
+  let guard: FavoriteJobListGuard;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    guard = TestBed.inject(CandidateSocialGuard);
+    guard = TestBed.inject(FavoriteJobListGuard);
   });
 
   it('should be created', () => {

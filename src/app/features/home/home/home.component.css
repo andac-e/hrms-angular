@@ -64,10 +64,13 @@ label {
   margin-top: 70px;
 }
 
+h1 {
+  color: #202a4d;
+}
+
 .pane > h1 {
   font-size: 3.7rem;
   line-height: 4rem;
-  color: #202a4d;
 }
 
 .form-floating {
@@ -103,12 +106,27 @@ section {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
   min-height: 400px;
-  padding-top: 100px;
+  padding-bottom: 100px;
 }
 
 .green {
   background-color: #009473;
+}
+
+.bi-arrow-right {
+  position: relative;
+  right: 0px;
+  transition: all 300ms;
+  font-size: 16px;
+}
+
+.offers {
+  margin-left: 60px;
+  font-size: 16px;
+}
+
+.offers:hover .bi-arrow-right {
+  right: -10px;
 }
 

@@ -52,6 +52,9 @@ import { UpdateFirstNameComponent } from './features/system-employee/system-empl
 import { UpdateLastNameComponent } from './features/system-employee/system-employee-update/update-last-name/update-last-name.component';
 import { SystemEmployeeProfileComponent } from './features/system-employee/system-employee-profile/system-employee-profile.component';
 import { CoverLetterAddComponent } from './features/candidate/candidate-resume/cover-letter-add/cover-letter-add.component';
+import { StoreModule } from '@ngrx/store';
+import { favoriteReducer } from './store/reducers/favorite-reducer';
+import { FavoriteJobListComponent } from './features/job-advertisement/favorite-job-list/favorite-job-list.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +98,8 @@ import { CoverLetterAddComponent } from './features/candidate/candidate-resume/c
     UpdateFirstNameComponent,
     UpdateLastNameComponent,
     SystemEmployeeProfileComponent,
-    CoverLetterAddComponent
+    CoverLetterAddComponent,
+    FavoriteJobListComponent
   ],
   imports: [
     BrowserModule,
@@ -110,6 +114,14 @@ import { CoverLetterAddComponent } from './features/candidate/candidate-resume/c
     ProgressSpinnerModule,
     BadgeModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
+    StoreModule.forRoot(
+      { favoriteReducer },
+      {
+        runtimeChecks: {
+          strictStateImmutability: false,
+        },
+      }
+    ),
   ],
   providers: [],
   bootstrap: [AppComponent],

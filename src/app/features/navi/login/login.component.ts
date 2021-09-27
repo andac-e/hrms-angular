@@ -38,6 +38,8 @@ export class LoginComponent implements OnInit {
         this.toastrService.success('Successfully logged in.');
         localStorage.setItem('user', JSON.stringify(response));
         this.router.navigate(['home']);
+        this.pageReloadDelay();
+
       },
       (responseError) => {
         let message = JSON.stringify(responseError.error.message);
@@ -47,5 +49,9 @@ export class LoginComponent implements OnInit {
         );
       }
     );
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1);
   }
 }

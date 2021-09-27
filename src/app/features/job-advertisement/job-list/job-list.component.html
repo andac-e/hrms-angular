@@ -89,6 +89,8 @@
             <p-sortIcon field="deadline"></p-sortIcon>
           </div>
         </th>
+
+        <th></th>
       </tr>
     </ng-template>
     <ng-template pTemplate="body" let-job>
@@ -127,6 +129,16 @@
           <span class="p-column-title">Deadline</span>
           {{ job.deadline | date: "MMMM d, y" }}
         </td>
+
+        <td
+        class="text-end"
+        (click)="addToFavorites(job.id)"
+        style="cursor: pointer"
+      >
+        <a>
+          <i class="bi bi-star fs-5 text-warning"></i>
+        </a>
+      </td>
       </tr>
     </ng-template>
     <ng-template pTemplate="emptymessage">

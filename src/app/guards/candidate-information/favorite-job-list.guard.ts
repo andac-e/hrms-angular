@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CandidateLanguageAddGuard implements CanActivate {
+export class FavoriteJobListGuard implements CanActivate {
   constructor(private toastrService: ToastrService, private router: Router) {}
   canActivate(
     route: ActivatedRouteSnapshot,

@@ -1,19 +1,29 @@
 <div class="collapse navbar-collapse" *ngIf="checkCandidate()">
-    <li class="nav-item">
-      <a
-        class="nav-link active"
-        aria-current="page"
-        routerLink="/resume-add"
-        >Create Resume</a
-      >
-    </li>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" routerLink="/resume-add"
+      >Create Resume</a
+    >
+  </li>
 
-    <li class="nav-item">
-      <a
-        class="nav-link active"
-        aria-current="page"
-        routerLink="/resume-view"
-        >View my Resume</a
-      >
-    </li>
-  </div>
+  <li class="nav-item">
+    <a class="nav-link active" aria-current="page" routerLink="/resume-view"
+      >View my Resume</a
+    >
+  </li>
+
+  <li class="nav-item" *ngIf="loading === false">
+    <a
+      
+      class="nav-link active"
+      aria-current="page"
+      routerLink="/favorite-job-list"
+      >My Favorite Ads
+      <p-badge
+        *ngIf="favoriteJobs.length > 0"
+        [value]="favoriteJobs.length.toString()"
+        severity="info"
+        styleClass="p-mr-2"
+      ></p-badge
+    ></a>
+  </li>
+</div>
