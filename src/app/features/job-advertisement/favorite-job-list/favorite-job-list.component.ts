@@ -17,6 +17,7 @@ export class FavoriteJobListComponent implements OnInit {
   favoriteJobs: JobAdvertisement[] = [];
   loggedUser: any;
   loggedCandidate: Candidate;
+  loading: boolean = true;
   constructor(
     private toastrService: ToastrService,
     private candidateService: CandidateService, // private store: Store<any>
@@ -32,10 +33,8 @@ export class FavoriteJobListComponent implements OnInit {
     this.candidateService
       .removeFavoriteJob(this.loggedCandidate, id)
       .subscribe((response: any) => {
-        
         this.toastrService.info('Removed from favorites successfully.');
         this.pageReloadDelay();
-        
       });
   }
 
@@ -45,6 +44,7 @@ export class FavoriteJobListComponent implements OnInit {
       .subscribe((response: any) => {
         this.loggedCandidate = response.data;
         this.favoriteJobs = response.data.favoriteJobAdvertisements;
+        this.loading = false;
       });
   }
 

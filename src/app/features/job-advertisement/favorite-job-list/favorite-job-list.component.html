@@ -1,12 +1,17 @@
-<div class="container my-4">
-  <div *ngIf="favoriteJobs.length>0;else emptyFavorites" class="row d-flex justify-content-center align-items-center">
+<div *ngIf="loading == false; else loadingInfo" class="container">
+  <div
+    *ngIf="favoriteJobs.length > 0; else emptyFavorites"
+    class="row d-flex justify-content-center align-items-center"
+  >
     <div *ngFor="let job of favoriteJobs" class="col-md-4 my-4">
       <div class="card" style="width: 25rem">
         <div class="card-header main-color">
           <div class="d-flex py-1 justify-content-between align-items-center">
             <div>
               <h5 class="card-title fw-bold">{{ job.employer.companyName }}</h5>
-              <h6 class="card-subtitle mb-2 fw-light text-muted"><i class="bi bi-geo-alt"></i> {{ job.city.name }}</h6>
+              <h6 class="card-subtitle mb-2 fw-light text-muted">
+                <i class="bi bi-geo-alt"></i> {{ job.city.name }}
+              </h6>
             </div>
             <a (click)="removeFromFavorites(job.id)" style="cursor: pointer"
               ><i class="bi bi-trash text-danger"></i
@@ -16,7 +21,9 @@
         <div class="card-body">
           <div class="d-flex justify-content-center flex-column">
             <h5 class="card-title">{{ job.position.title }}</h5>
-            <h6 class="card-text fw-light"><i class="bi bi-telephone"></i> {{ job.employer.phoneNumber }}</h6>
+            <h6 class="card-text fw-light">
+              <i class="bi bi-telephone"></i> {{ job.employer.phoneNumber }}
+            </h6>
 
             <div class="mt-4">
               <span class="badge bg-success">{{ job.workTime }}</span>
@@ -25,13 +32,28 @@
           </div>
         </div>
         <div class="card-footer main-color text-muted">
-          <span class="fw-bold">Deadline:</span>  {{ job.deadline | date: "MMMM d, y" }}
+          <span class="fw-bold">Deadline:</span>
+          {{ job.deadline | date: "MMMM d, y" }}
         </div>
       </div>
     </div>
   </div>
 
-  <ng-template #emptyFavorites>
-    Your favorites are empty.
-  </ng-template>
+  <ng-template #emptyFavorites> Your favorites are empty. </ng-template>
 </div>
+
+<ng-template #loadingInfo>
+  <div
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
+    style="height: 500px"
+  >
+    <p-progressSpinner></p-progressSpinner>
+    <h6 class="mt-2">Loading...</h6>
+  </div>
+</ng-template>

@@ -56,25 +56,20 @@
           </p>
   
           <p class="card-text">
-            LinkedIn:
-            <a
-              target="_blank"
-              class="link-dark"
-              href="{{ loggedCandidate.linkedinAccount }}"
-              ><span class="fw-bold">{{
-                loggedCandidate.linkedinAccount
-              }}</span></a
-            >
-          </p>
-          <p class="card-text">
-            Github:
-            <a
-              target="_blank"
-              class="link-dark"
-              href="{{ loggedCandidate.githubAccount }}"
-              ><span class="fw-bold">{{ loggedCandidate.githubAccount }}</span></a
-            >
-          </p>
+            Social Links: 
+            <a class="link-dark"
+            *ngIf="loggedCandidate.githubAccount"
+            href="{{ loggedCandidate.githubAccount }}"
+            target="_blank"
+            ><i class="me-2 bi bi-github"></i
+          ></a>
+          <a class="link-primary"
+            *ngIf="loggedCandidate.linkedinAccount"
+            href="{{ loggedCandidate.linkedinAccount }}"
+            target="_blank"
+            ><i class="bi bi-linkedin"></i
+          ></a>
+        </p>
         </div>
       </div>
   

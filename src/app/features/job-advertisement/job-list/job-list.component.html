@@ -1,154 +1,157 @@
 <div class="container">
   <div class="card my-4 border-bottom-0">
-    <div class="card-header fs-5 bg-success text-light text-center">List of Jobs</div>
+    <div class="card-header fs-5 bg-success text-light text-center">
+      List of Jobs
+    </div>
     <p-table
-    *ngIf="loading == false; else loadingInfo"
-    id="myTable"
-    #dt
-    [value]="jobs"
-    dataKey="id"
-    styleClass="p-datatable-striped"
-    [rowHover]="true"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [filterDelay]="0"
-    sortField="createdAt" 
-    [sortOrder]="-1"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="employer.companyName">
-          <div class="d-flex justify-content-between align-items-center">
-            Company Name
-            <p-sortIcon field="employer.companyName"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="employer.companyName"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
-          </div>
-        </th>
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="jobs"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+      sortField="createdAt"
+      [sortOrder]="-1"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="employer.companyName">
+            <div class="d-flex justify-content-between align-items-center">
+              Company Name
+              <p-sortIcon field="employer.companyName"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="employer.companyName"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
 
-        <th pSortableColumn="city.name">
-          <div class="d-flex justify-content-between align-items-center">
-            Location
-            <p-sortIcon field="city.name"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="city.name"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
-          </div>
-        </th>
+          <th pSortableColumn="city.name">
+            <div class="d-flex justify-content-between align-items-center">
+              Location
+              <p-sortIcon field="city.name"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="city.name"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
 
-        <th pSortableColumn="position.title">
-          <div class="d-flex justify-content-between align-items-center">
-            Position
-            <p-sortIcon field="position.title"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="position.title"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
-          </div>
-        </th>
+          <th pSortableColumn="position.title">
+            <div class="d-flex justify-content-between align-items-center">
+              Position
+              <p-sortIcon field="position.title"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="position.title"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
 
-        <th pSortableColumn="workTime">
-          <div class="d-flex justify-content-between align-items-center">
-            Work Time
-            <p-sortIcon field="workTime"></p-sortIcon>
-          </div>
-        </th>
+          <th pSortableColumn="workTime">
+            <div class="d-flex justify-content-between align-items-center">
+              Work Time
+              <p-sortIcon field="workTime"></p-sortIcon>
+            </div>
+          </th>
 
-        <!-- <th pSortableColumn="openPositions">
+          <!-- <th pSortableColumn="openPositions">
           <div class="d-flex justify-content-between align-items-center">
             Open Positions
             <p-sortIcon field="openPositions"></p-sortIcon>
           </div>
         </th> -->
 
-        <th pSortableColumn="createdAt">
-          <div class="d-flex justify-content-between align-items-center">
-            Release Date
-            <p-sortIcon field="createdAt"></p-sortIcon>
-          </div>
-        </th>
+          <th pSortableColumn="createdAt">
+            <div class="d-flex justify-content-between align-items-center">
+              Release Date
+              <p-sortIcon field="createdAt"></p-sortIcon>
+            </div>
+          </th>
 
-        <th pSortableColumn="deadline">
-          <div class="d-flex justify-content-between align-items-center">
-            Deadline
-            <p-sortIcon field="deadline"></p-sortIcon>
-          </div>
-        </th>
+          <th pSortableColumn="deadline">
+            <div class="d-flex justify-content-between align-items-center">
+              Deadline
+              <p-sortIcon field="deadline"></p-sortIcon>
+            </div>
+          </th>
 
-        <th></th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-job>
-      <tr routerLink="/job-detail/{{job.id}}" class="p-selectable-row">
-        <td>
-          <span class="p-column-title">Company Name</span>
-          {{ job.employer.companyName }}
-        </td>
+          <th></th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-job>
+        <tr>
+          <td class="p-selectable-row" routerLink="/job-detail/{{ job.id }}">
+            <span class="p-column-title">Company Name</span>
+            {{ job.employer.companyName }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Location</span>
-          {{ job.city.name }}
-        </td>
+          <td>
+            <span class="p-column-title">Location</span>
+            {{ job.city.name }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Position</span>
-          {{ job.position.title }}
-        </td>
+          <td>
+            <span class="p-column-title">Position</span>
+            {{ job.position.title }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Position</span>
-          {{ job.workTime }}
-        </td>
+          <td>
+            <span class="p-column-title">Position</span>
+            {{ job.workTime }}
+          </td>
 
-        <!-- <td>
-          <span class="p-column-title">Open Positions</span>
-          {{ job.openPositions }}
-        </td> -->
+          <td>
+            <span class="p-column-title">Release Date</span>
+            {{ job.createdAt | date: "MMMM d, y" }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Release Date</span>
-          {{ job.createdAt | date: "MMMM d, y" }}
-        </td>
+          <td>
+            <span class="p-column-title">Deadline</span>
+            {{ job.deadline | date: "MMMM d, y" }}
+          </td>
 
-        <td>
-          <span class="p-column-title">Deadline</span>
-          {{ job.deadline | date: "MMMM d, y" }}
-        </td>
-
-        <td
-        class="text-end"
-        (click)="addToFavorites(job.id)"
-        style="cursor: pointer"
-      >
-        <a>
-          <i class="bi bi-star fs-5 text-warning"></i>
-        </a>
-      </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8">No jobs found.</td>
-      </tr>
-    </ng-template>
-  </p-table>
+          <td
+            class="text-end"
+            (click)="addToFavorites(job.id)"
+            style="cursor: pointer"
+          >
+            <a>
+              <i class="bi bi-star fs-5 text-warning"></i>
+            </a>
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No jobs found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
 <ng-template #loadingInfo>
   <div
-    class="text-center d-flex flex-column align-items-center justify-content-center"
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
     style="height: 500px"
   >
     <p-progressSpinner></p-progressSpinner>

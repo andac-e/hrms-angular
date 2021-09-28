@@ -58,6 +58,7 @@ import { FavoriteJobListComponent } from './features/job-advertisement/favorite-
 import { CandidateDetailComponent } from './features/candidate/candidate-detail/candidate-detail.component';
 import { JobDetailComponent } from './features/job-advertisement/job-detail/job-detail.component';
 import { JobCardComponent } from './features/home/job-card/job-card.component';
+import { FooterComponent } from './features/home/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -105,7 +106,8 @@ import { JobCardComponent } from './features/home/job-card/job-card.component';
     FavoriteJobListComponent,
     CandidateDetailComponent,
     JobDetailComponent,
-    JobCardComponent
+    JobCardComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

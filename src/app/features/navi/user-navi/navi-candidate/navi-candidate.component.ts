@@ -42,13 +42,15 @@ export class NaviCandidateComponent implements OnInit {
   }
 
   getCandidateById() {
-    this.candidateService
+    if (this.checkCandidate()) {
+      this.candidateService
       .getCandidateById(this.getUserId())
       .subscribe((response: any) => {
         this.loggedCandidate = response.data;
         this.favoriteJobs = response.data.favoriteJobAdvertisements;
         this.loading = false;
       });
+    }
   }
 
   getUserId(): number {
