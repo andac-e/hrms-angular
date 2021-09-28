@@ -1,0 +1,14 @@
+.card {
+  height: 17rem;
+  transition: all 300ms;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #f5f7f8;
+  transform: scale(1.05);
+}
+
+.blue {
+  background-color: #202a4d;
+}

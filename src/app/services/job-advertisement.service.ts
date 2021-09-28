@@ -24,6 +24,12 @@ export class JobAdvertisementService {
     );
   }
 
+  getByCreatedAt(sortDirection:number): Observable<JobAdvertisementListResponse> {
+    return this.httpClient.get<JobAdvertisementListResponse>(
+      this.apiUrl + '/get/activeVerifiedByCreatedAt?sortDirection=' + sortDirection
+    );
+  }
+
   getUnverifieds(
     sortDirection: number
   ): Observable<JobAdvertisementListResponse> {

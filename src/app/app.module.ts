@@ -57,6 +57,7 @@ import { favoriteReducer } from './store/reducers/favorite-reducer';
 import { FavoriteJobListComponent } from './features/job-advertisement/favorite-job-list/favorite-job-list.component';
 import { CandidateDetailComponent } from './features/candidate/candidate-detail/candidate-detail.component';
 import { JobDetailComponent } from './features/job-advertisement/job-detail/job-detail.component';
+import { JobCardComponent } from './features/home/job-card/job-card.component';
 
 @NgModule({
   declarations: [
@@ -103,7 +104,8 @@ import { JobDetailComponent } from './features/job-advertisement/job-detail/job-
     CoverLetterAddComponent,
     FavoriteJobListComponent,
     CandidateDetailComponent,
-    JobDetailComponent
+    JobDetailComponent,
+    JobCardComponent
   ],
   imports: [
     BrowserModule,

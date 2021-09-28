@@ -38,10 +38,10 @@
     <span
       >• Work Time: <b>{{ jobAdvertisement?.workTime }}</b></span
     >
-    <span
+    <span *ngIf="jobAdvertisement?.minSalary"
       >• Min Salary: <b>${{ jobAdvertisement?.minSalary }}</b></span
     >
-    <span
+    <span *ngIf="jobAdvertisement?.maxSalary"
       >• Max Salary: <b>${{ jobAdvertisement?.maxSalary }}</b></span
     >
     <span
