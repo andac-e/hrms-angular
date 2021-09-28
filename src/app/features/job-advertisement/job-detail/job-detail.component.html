@@ -1,0 +1,57 @@
+<div class="container p-5 w-75">
+  <div class="row d-flex justify-content-center align-items-center">
+    <div class="col-md-8">
+      <h2 class="fw-bold">{{ jobAdvertisement?.position.title }}</h2>
+    </div>
+    <div class="col-md-4 text-end">
+      <h5>
+        <span class="badge fw-light bg-success">{{
+          jobAdvertisement?.createdAt | date: "MMMM d, y"
+        }}</span>
+      </h5>
+    </div>
+  </div>
+  <h5 class="fw-light">{{ jobAdvertisement?.employer.companyName }}</h5>
+  <div class="row mt-1">
+    <h6 class="fw-light">
+      <i class="bi bi-link-45deg"></i> {{ jobAdvertisement?.employer.website }}
+    </h6>
+    <h6 class="fw-light">
+      <i class="bi bi-envelope"></i> {{ jobAdvertisement?.employer.email }}
+    </h6>
+    <h6 class="fw-light">
+      <i class="bi bi-telephone"></i>
+      {{ jobAdvertisement?.employer.phoneNumber }}
+    </h6>
+  </div>
+  <hr class="dropdown-divider" />
+  <div class="row pt-4 pb-2">
+    <p>{{ jobAdvertisement?.jobDescription }}</p>
+  </div>
+  <div class="row px-3">
+    <span
+      >• City: <b>{{ jobAdvertisement?.city.name }}</b></span
+    >
+    <span
+      >• Work Model: <b>{{ jobAdvertisement?.workModel }}</b></span
+    >
+    <span
+      >• Work Time: <b>{{ jobAdvertisement?.workTime }}</b></span
+    >
+    <span
+      >• Min Salary: <b>${{ jobAdvertisement?.minSalary }}</b></span
+    >
+    <span
+      >• Max Salary: <b>${{ jobAdvertisement?.maxSalary }}</b></span
+    >
+    <span
+      >• Open Positions: <b>{{ jobAdvertisement?.openPositions }}</b></span
+    >
+    
+  </div>
+  <h5>
+    <span class="badge mt-3 fw-light bg-danger"
+      >Deadline: <b>{{ jobAdvertisement?.deadline | date: "MMMM d, y" }}</b>
+    </span>
+  </h5>
+</div>

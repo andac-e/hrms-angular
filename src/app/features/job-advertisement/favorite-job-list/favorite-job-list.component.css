@@ -5,3 +5,11 @@
 .main-color {
     background-color: #ecf3f5;
 }
+
+i {
+    transition: all 300ms;
+}
+
+i:hover {
+    transform: scale(1.5);
+}

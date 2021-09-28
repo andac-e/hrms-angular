@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from 'src/app/models/candidate/candidate';
@@ -18,9 +19,9 @@ export class FavoriteJobListComponent implements OnInit {
   loggedCandidate: Candidate;
   constructor(
     private toastrService: ToastrService,
-    private candidateService: CandidateService
-  ) // private store: Store<any>
-  {}
+    private candidateService: CandidateService, // private store: Store<any>
+    private router: Router
+  ) {}
 
   ngOnInit(): void {
     // this.getFavorites();
@@ -31,8 +32,10 @@ export class FavoriteJobListComponent implements OnInit {
     this.candidateService
       .removeFavoriteJob(this.loggedCandidate, id)
       .subscribe((response: any) => {
+        
         this.toastrService.info('Removed from favorites successfully.');
         this.pageReloadDelay();
+        
       });
   }
 

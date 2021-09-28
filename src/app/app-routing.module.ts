@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CandidateDetailComponent } from './features/candidate/candidate-detail/candidate-detail.component';
 import { CandidateExperienceAddComponent } from './features/candidate/candidate-experience/candidate-experience-add/candidate-experience-add.component';
 import { CandidateGithubAddComponent } from './features/candidate/candidate-github-add/candidate-github-add.component';
 import { CandidateImageUploadComponent } from './features/candidate/candidate-image-upload/candidate-image-upload.component';
@@ -21,6 +22,7 @@ import { PositionAddComponent } from './features/employer/position-add/position-
 import { HomeComponent } from './features/home/home/home.component';
 import { FavoriteJobListComponent } from './features/job-advertisement/favorite-job-list/favorite-job-list.component';
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
+import { JobDetailComponent } from './features/job-advertisement/job-detail/job-detail.component';
 import { JobListComponent } from './features/job-advertisement/job-list/job-list.component';
 import { LoginComponent } from './features/navi/login/login.component';
 import { SystemEmployeeProfileComponent } from './features/system-employee/system-employee-profile/system-employee-profile.component';
@@ -43,7 +45,9 @@ const routes: Routes = [
   { path: 'employer-sign', component: EmployerSignupComponent },
   { path: 'employer-list', component: EmployerListComponent },
   { path: 'candidate-list', component: CandidateListComponent },
+  { path: 'candidate/:id', component: CandidateDetailComponent },
   { path: 'job-list', component: JobListComponent },
+  { path: 'job-detail/:id', component: JobDetailComponent },
   {
     path: 'employer-job-list',
     component: EmployerJobListComponent,

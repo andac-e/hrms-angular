@@ -55,6 +55,8 @@ import { CoverLetterAddComponent } from './features/candidate/candidate-resume/c
 import { StoreModule } from '@ngrx/store';
 import { favoriteReducer } from './store/reducers/favorite-reducer';
 import { FavoriteJobListComponent } from './features/job-advertisement/favorite-job-list/favorite-job-list.component';
+import { CandidateDetailComponent } from './features/candidate/candidate-detail/candidate-detail.component';
+import { JobDetailComponent } from './features/job-advertisement/job-detail/job-detail.component';
 
 @NgModule({
   declarations: [
@@ -99,7 +101,9 @@ import { FavoriteJobListComponent } from './features/job-advertisement/favorite-
     UpdateLastNameComponent,
     SystemEmployeeProfileComponent,
     CoverLetterAddComponent,
-    FavoriteJobListComponent
+    FavoriteJobListComponent,
+    CandidateDetailComponent,
+    JobDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,5 @@
 <div class="container my-4">
-  <div class="row d-flex justify-content-center align-items-center">
+  <div *ngIf="favoriteJobs.length>0;else emptyFavorites" class="row d-flex justify-content-center align-items-center">
     <div *ngFor="let job of favoriteJobs" class="col-md-4 my-4">
       <div class="card" style="width: 25rem">
         <div class="card-header main-color">
@@ -30,4 +30,8 @@
       </div>
     </div>
   </div>
+
+  <ng-template #emptyFavorites>
+    Your favorites are empty.
+  </ng-template>
 </div>

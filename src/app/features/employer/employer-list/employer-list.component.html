@@ -1,5 +1,7 @@
 <div class="container">
-  <p-table
+  <div class="card my-4 border-bottom-0">
+    <div class="card-header fs-5 bg-warning text-center">List of Employers</div>
+    <p-table
     *ngIf="loading == false; else loadingInfo"
     id="myTable"
     #dt
@@ -13,13 +15,7 @@
     [paginator]="true"
     currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
     [filterDelay]="0"
-    [globalFilterFields]="['companyName', 'website', 'email', 'phoneNumber']"
   >
-    <ng-template pTemplate="caption">
-      <div class="table-header">
-        List of Employers
-      </div>
-    </ng-template>
     <ng-template pTemplate="header">
       <tr>
         <th pSortableColumn="companyName">
@@ -83,6 +79,7 @@
       </tr>
     </ng-template>
   </p-table>
+  </div>
 </div>
 
 <ng-template #loadingInfo>
