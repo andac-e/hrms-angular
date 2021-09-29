@@ -35,7 +35,6 @@ export class UnverifiedUpdateListComponent implements OnInit {
       .subscribe((response: any) => {
         this.toastrService.success('Verification changed successfully.');
         this.pageReloadDelay();
-        console.log(response)
       });
   }
 

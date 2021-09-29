@@ -20,6 +20,7 @@ import { EmployerProfileComponent } from './features/employer/employer-profile/e
 import { EmployerSignupComponent } from './features/employer/employer-signup/employer-signup.component';
 import { PositionAddComponent } from './features/employer/position-add/position-add.component';
 import { HomeComponent } from './features/home/home/home.component';
+import { NotFoundComponent } from './features/home/not-found/not-found.component';
 import { FavoriteJobListComponent } from './features/job-advertisement/favorite-job-list/favorite-job-list.component';
 import { JobAddComponent } from './features/job-advertisement/job-add/job-add.component';
 import { JobDetailComponent } from './features/job-advertisement/job-detail/job-detail.component';
@@ -97,6 +98,10 @@ const routes: Routes = [
     path: 'update-system-employee-info',
     component: SystemEmployeeProfileComponent,
     canActivate: [JobVerificationGuard],
+  },
+  {
+    path: '**',
+    component: NotFoundComponent,
   },
 ];
 

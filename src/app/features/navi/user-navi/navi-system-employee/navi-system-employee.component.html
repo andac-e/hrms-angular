@@ -1,23 +1,33 @@
 <div class="collapse navbar-collapse" *ngIf="checkSystemEmployee()">
-    <li class="nav-item">
-      <a
-        class="nav-link active"
-        aria-current="page"
-        routerLink="/unverified-job-list"
-        >Unverified Jobs <p-badge *ngIf="unverifiedJobs.length > 0" [value]="unverifiedJobs.length.toString()" severity="success" styleClass="p-mr-2"></p-badge>
-        </a
-        >
-        
-    </li>
+  <li class="nav-item">
+    <a
+      routerLinkActive="active-item"
+      class="nav-link"
+      aria-current="page"
+      routerLink="/unverified-job-list"
+      >Unverified Jobs
+      <p-badge
+        *ngIf="unverifiedJobs.length > 0"
+        [value]="unverifiedJobs.length.toString()"
+        severity="success"
+        styleClass="p-mr-2"
+      ></p-badge>
+    </a>
+  </li>
 
-    <li class="nav-item">
-      <a
-        class="nav-link active"
-        aria-current="page"
-        routerLink="/unverified-update-list"
-        >Unverified Updates <p-badge *ngIf="unverifiedEmployers.length > 0" [value]="unverifiedEmployers.length.toString()" severity="info" styleClass="p-mr-2"></p-badge>
-        </a
-        >
-        
-    </li>
-  </div>
+  <li class="nav-item">
+    <a
+      routerLinkActive="active-item"
+      class="nav-link"
+      aria-current="page"
+      routerLink="/unverified-update-list"
+      >Unverified Updates
+      <p-badge
+        *ngIf="unverifiedEmployers.length > 0"
+        [value]="unverifiedEmployers.length.toString()"
+        severity="info"
+        styleClass="p-mr-2"
+      ></p-badge>
+    </a>
+  </li>
+</div>

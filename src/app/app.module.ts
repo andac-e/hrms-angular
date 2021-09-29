@@ -59,6 +59,7 @@ import { CandidateDetailComponent } from './features/candidate/candidate-detail/
 import { JobDetailComponent } from './features/job-advertisement/job-detail/job-detail.component';
 import { JobCardComponent } from './features/home/job-card/job-card.component';
 import { FooterComponent } from './features/home/footer/footer.component';
+import { NotFoundComponent } from './features/home/not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { FooterComponent } from './features/home/footer/footer.component';
     CandidateDetailComponent,
     JobDetailComponent,
     JobCardComponent,
-    FooterComponent
+    FooterComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,17 @@
+.spacer {
+    position: relative;
+    aspect-ratio: 960/300;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .layer {
+    background-image: url('../../../../assets/404-bg.svg');
+    opacity: 1;
+  }
+
+  h1 {
+      margin-top: 400px;
+  }
