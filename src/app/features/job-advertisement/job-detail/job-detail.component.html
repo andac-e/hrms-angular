@@ -9,6 +9,13 @@
           jobAdvertisement?.createdAt | date: "MMMM d, y"
         }}</span>
       </h5>
+        <a
+          *ngIf="checkCandidate()"
+          (click)="addToFavorites(jobAdvertisement.id)"
+          style="cursor: pointer"
+        >
+          <i class="bi bi-star fs-5 text-warning"></i>
+        </a>
     </div>
   </div>
   <h5 class="fw-light">{{ jobAdvertisement?.employer.companyName }}</h5>
@@ -47,7 +54,6 @@
     <span
       >• Open Positions: <b>{{ jobAdvertisement?.openPositions }}</b></span
     >
-    
   </div>
   <h5>
     <span class="badge mt-3 fw-light bg-danger"

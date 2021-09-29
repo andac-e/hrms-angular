@@ -1,8 +1,14 @@
 <div *ngIf="loading == false; else loadingInfo" class="container">
+
+  <div [ngStyle]="{backgroundColor:'var(--blue-600)'}" class="card-header mt-3 text-light text-center">
+    My Favorite Ads
+  </div>
+
   <div
     *ngIf="favoriteJobs.length > 0; else emptyFavorites"
     class="row d-flex justify-content-center align-items-center"
   >
+  
     <div *ngFor="let job of favoriteJobs" class="col-md-4 my-4">
       <div class="card" style="width: 25rem">
         <div class="card-header main-color">

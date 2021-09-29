@@ -35,6 +35,7 @@ export class CandidateDetailComponent implements OnInit {
   getCandidateById(id: number) {
     this.candidateService.getCandidateById(id).subscribe((response: any) => {
       this.candidate = response.data;
+      console.log(typeof(response.data.id))
       this.candidateLanguages = response.data.candidateLanguages;
       this.candidateSkills = response.data.candidateSkills;
       this.loading = false;
@@ -47,7 +48,6 @@ export class CandidateDetailComponent implements OnInit {
       .subscribe((response: any) => {
         response.data = response.data.filter((r) => r.candidate.id == id);
         this.candidateJobExperiences = response.data;
-        console.log(this.candidateJobExperiences)
       });
   }
 
@@ -57,7 +57,6 @@ export class CandidateDetailComponent implements OnInit {
       .subscribe((response: any) => {
         response.data = response.data.filter((r) => r.candidate.id == id);
         this.candidateSchools = response.data;
-        console.log(id)
       });
   }
 
