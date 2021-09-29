@@ -1,13 +1,5 @@
 # <p align="center"> 🚀 job4u - Human Resources Management System 🚀 </p>
 ## 💡 About The Project
-### 📁 Folder Structure
-![tree](https://user-images.githubusercontent.com/65905654/135242691-5c3df58e-bafb-4bc9-9248-ae0cfde446e0.png)
-
-### 🤖 Built With
-![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
-![](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
-![](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
-![](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
 ### 🖍📐 Design
 
@@ -20,7 +12,14 @@
 ![10](https://user-images.githubusercontent.com/65905654/135239280-e487bd8c-0cc7-4fcf-9068-f4980fc2fe1a.png)
 ![14](https://user-images.githubusercontent.com/65905654/135239383-dbac4371-eff0-4850-999e-f26119f28c0d.png)
 
+### 🤖 Built With
+![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
+![](https://img.shields.io/badge/Angular-DD0031?style=for-the-badge&logo=angular&logoColor=white)
+![](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)
+![](https://img.shields.io/badge/Bootstrap-563D7C?style=for-the-badge&logo=bootstrap&logoColor=white)
 
+### 📁 Folder Structure
+<img src="https://user-images.githubusercontent.com/65905654/135244313-ca634eb0-1ebf-427b-891c-0da458bfcaac.png" width="500">
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.2.
 
