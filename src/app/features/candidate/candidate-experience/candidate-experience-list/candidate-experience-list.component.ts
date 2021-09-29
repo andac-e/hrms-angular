@@ -9,9 +9,9 @@ import { CandidateJobExperienceService } from 'src/app/services/candidate-inform
   styleUrls: ['./candidate-experience-list.component.css'],
 })
 export class CandidateExperienceListComponent implements OnInit {
-  loading: boolean = true;
   loggedUser: any;
   candidateExperiences: CandidateJobExperience[] = [];
+  loading: boolean = true;
 
   constructor(
     private candidateExperienceService: CandidateJobExperienceService,

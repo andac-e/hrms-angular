@@ -43,10 +43,6 @@ export class UpdateCompanyNameComponent implements OnInit {
       });
   }
 
-  pageReloadDelay() {
-    setTimeout(location.reload.bind(location), 1000);
-  }
-
   getEmployerById() {
     this.employerService
       .getEmployerById(this.getUserId())
@@ -58,5 +54,9 @@ export class UpdateCompanyNameComponent implements OnInit {
   getUserId(): number {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     return this.loggedUser.data.id;
+  }
+  
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

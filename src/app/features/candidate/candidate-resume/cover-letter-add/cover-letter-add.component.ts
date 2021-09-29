@@ -15,7 +15,7 @@ export class CoverLetterAddComponent implements OnInit {
   coverLetterAddForm: FormGroup;
   loggedCandidate: Candidate;
   loggedUser: any;
-  toUpdatedCv: any;
+  toUpdatedCv: Cv;
   updatedCvId: number;
   constructor(
     private candidateService: CandidateService,
@@ -49,13 +49,13 @@ export class CoverLetterAddComponent implements OnInit {
   }
 
   getCvById() {
-    if (this.loggedCandidate.cvs.length>0) {
+    if (this.loggedCandidate.cvs.length > 0) {
       this.cvService
-      .getCvById(this.loggedCandidate.cvs[0].id)
-      .subscribe((response: any) => {
-        this.toUpdatedCv = response.data;
-        this.updatedCvId = response.data.candidate.cvs[0].id;
-      });
+        .getCvById(this.loggedCandidate.cvs[0].id)
+        .subscribe((response: any) => {
+          this.toUpdatedCv = response.data;
+          this.updatedCvId = response.data.candidate.cvs[0].id;
+        });
     }
   }
 

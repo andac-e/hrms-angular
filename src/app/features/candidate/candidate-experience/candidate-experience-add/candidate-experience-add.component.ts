@@ -45,7 +45,7 @@ export class CandidateExperienceAddComponent implements OnInit {
         .add(this.experienceAddForm.value)
         .subscribe((response: any) => {
           this.toastrService.success('Successfully added');
-          window.location.reload();
+          this.pageReloadDelay();
         });
     }
   }
@@ -59,5 +59,9 @@ export class CandidateExperienceAddComponent implements OnInit {
     this.positionService.getAll().subscribe((response: any) => {
       this.positions = response.data;
     });
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

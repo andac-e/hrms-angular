@@ -58,7 +58,6 @@ export class EmployerSignupComponent implements OnInit {
           },
           (responseError) => {
             let message = JSON.stringify(responseError.error.data.errors);
-            console.log(responseError);
             this.toastrService.error(
               message.replace(/{|}|"/gi, ''),
               'Validation error'
@@ -67,7 +66,7 @@ export class EmployerSignupComponent implements OnInit {
         );
       }
     } else {
-      this.toastrService.error('Formunuz eksik', 'Dikkat!');
+      this.toastrService.error('Your form is invalid');
     }
   }
 
@@ -79,7 +78,7 @@ export class EmployerSignupComponent implements OnInit {
       return true;
     } else {
       this.toastrService.error(
-        'Your password and confirm password does not match!'
+        'Your password and confirm password do not match!'
       );
       return false;
     }

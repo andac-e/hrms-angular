@@ -16,7 +16,7 @@ export class JobDetailComponent implements OnInit {
   loggedUser: any;
   loggedCandidate: Candidate;
   constructor(
-    private candidateService:CandidateService,
+    private candidateService: CandidateService,
     private jobAdvertisementService: JobAdvertisementService,
     private toastrService: ToastrService,
     private activatedRoute: ActivatedRoute
@@ -27,7 +27,21 @@ export class JobDetailComponent implements OnInit {
       this.getJobById(params['id']);
     });
 
-    this.getCandidateById()
+    this.getCandidateById();
+  }
+
+  addToFavorites(id: number) {
+    this.candidateService.addFavoriteJob(this.loggedCandidate, id).subscribe(
+      (response: any) => {
+        this.toastrService.success('Added to favorite successfully.');
+        this.pageReloadDelay();
+      },
+      (responseError) => {
+        this.toastrService.error(
+          'This job advertisement exists in your favorites.'
+        );
+      }
+    );
   }
 
   getJobById(id: number) {
@@ -36,26 +50,14 @@ export class JobDetailComponent implements OnInit {
     });
   }
 
-  addToFavorites(id:number) {
-    this.candidateService.addFavoriteJob(this.loggedCandidate,id).subscribe((response:any)=>{
-      this.toastrService.success("Added to favorite successfully.")
-      this.pageReloadDelay()
-    },((responseError)=>{
-      this.toastrService.error("This job advertisement exists in your favorites.")
-    }))
-  }
-
   getCandidateById() {
     if (this.checkCandidate()) {
-      this.candidateService.getCandidateById(this.getUserId()).subscribe((response:any)=>{
-        this.loggedCandidate = response.data;
-      })
+      this.candidateService
+        .getCandidateById(this.getUserId())
+        .subscribe((response: any) => {
+          this.loggedCandidate = response.data;
+        });
     }
-  }
-
-  getUserId(): number {
-    this.loggedUser = JSON.parse(localStorage.getItem('user'));
-    return this.loggedUser.data.id;
   }
 
   checkUser(): boolean {
@@ -78,6 +80,11 @@ export class JobDetailComponent implements OnInit {
     } else {
       return false;
     }
+  }
+
+  getUserId(): number {
+    this.loggedUser = JSON.parse(localStorage.getItem('user'));
+    return this.loggedUser.data.id;
   }
 
   pageReloadDelay() {

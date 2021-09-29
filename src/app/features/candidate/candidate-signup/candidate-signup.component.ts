@@ -54,7 +54,6 @@ export class CandidateSignupComponent implements OnInit {
           },
           (responseError) => {
             let message = JSON.stringify(responseError.error.data.errors);
-            console.log(message);
             this.toastrService.error(
               message.replace(/{|}|"/gi, ''),
               'Validation error'
@@ -63,7 +62,7 @@ export class CandidateSignupComponent implements OnInit {
         );
       }
     } else {
-      this.toastrService.error('Invalid form');
+      this.toastrService.error('Your form is invalid');
     }
   }
 
@@ -75,7 +74,7 @@ export class CandidateSignupComponent implements OnInit {
       return true;
     } else {
       this.toastrService.error(
-        'Your password and confirm password does not match!'
+        'Your password and confirm password do not match!'
       );
       return false;
     }
