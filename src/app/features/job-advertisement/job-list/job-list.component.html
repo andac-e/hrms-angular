@@ -89,7 +89,7 @@
             </div>
           </th>
 
-          <th></th>
+          <th *ngIf="checkCandidate()"></th>
         </tr>
       </ng-template>
       <ng-template pTemplate="body" let-job>
@@ -124,7 +124,7 @@
             {{ job.deadline | date: "MMMM d, y" }}
           </td>
 
-          <td
+          <td *ngIf="checkCandidate()"
             class="text-end"
             (click)="addToFavorites(job.id)"
             style="cursor: pointer"

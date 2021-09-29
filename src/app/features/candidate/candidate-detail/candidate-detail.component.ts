@@ -35,7 +35,6 @@ export class CandidateDetailComponent implements OnInit {
   getCandidateById(id: number) {
     this.candidateService.getCandidateById(id).subscribe((response: any) => {
       this.candidate = response.data;
-      console.log(typeof(response.data.id))
       this.candidateLanguages = response.data.candidateLanguages;
       this.candidateSkills = response.data.candidateSkills;
       this.loading = false;

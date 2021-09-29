@@ -46,14 +46,38 @@ export class JobListComponent implements OnInit {
   }
 
   getCandidateById() {
-    this.candidateService.getCandidateById(this.getUserId()).subscribe((response:any)=>{
-      this.loggedCandidate = response.data;
-    })
+    if (this.checkCandidate()) {
+      this.candidateService.getCandidateById(this.getUserId()).subscribe((response:any)=>{
+        this.loggedCandidate = response.data;
+      })
+    }
   }
 
   getUserId(): number {
     this.loggedUser = JSON.parse(localStorage.getItem('user'));
     return this.loggedUser.data.id;
+  }
+
+  checkUser(): boolean {
+    if (localStorage.getItem('user')) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  checkCandidate(): boolean {
+    if (this.checkUser()) {
+      let user = JSON.parse(localStorage.getItem('user'));
+      let role = user.message;
+      if (role.includes('candidate')) {
+        return true;
+      } else {
+        return false;
+      }
+    } else {
+      return false;
+    }
   }
 
   pageReloadDelay() {
