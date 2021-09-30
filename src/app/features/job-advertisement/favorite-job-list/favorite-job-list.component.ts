@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { Store } from '@ngrx/store';
 import { ToastrService } from 'ngx-toastr';
 import { Candidate } from 'src/app/models/candidate/candidate';
 import { JobAdvertisement } from 'src/app/models/job-advertisement/job-advertisement';
-import { FavoriteJob } from 'src/app/models/states/favorite-job';
 import { CandidateService } from 'src/app/services/candidate.service';
+// import { Store } from '@ngrx/store';
 // import * as AllFavoriteActions from '../../../store/actions/favorite-actions';
 
 @Component({
@@ -21,7 +19,6 @@ export class FavoriteJobListComponent implements OnInit {
   constructor(
     private toastrService: ToastrService,
     private candidateService: CandidateService, // private store: Store<any>
-    private router: Router
   ) {}
 
   ngOnInit(): void {

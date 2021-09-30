@@ -168,6 +168,15 @@
                     >
                       *National ID is required.
                     </small>
+
+                    <small
+                      class="form-text text-danger"
+                      *ngIf="
+                        candidateSignForm.get('nationalityId').errors?.minlength
+                      "
+                    >
+                      *National ID must be have at least 11 characters long.
+                    </small>
                   </div>
                 </div>
 

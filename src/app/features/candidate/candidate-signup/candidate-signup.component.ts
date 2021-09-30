@@ -29,7 +29,7 @@ export class CandidateSignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]], //email tipinde
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      nationalityId: ['', Validators.required],
+      nationalityId: ['', [Validators.required, Validators.minLength(11)]],
       password: [
         '',
         [
