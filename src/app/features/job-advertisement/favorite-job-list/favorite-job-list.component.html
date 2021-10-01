@@ -24,7 +24,7 @@
             ></a>
           </div>
         </div>
-        <div class="card-body">
+        <div class="card-body" routerLink="/job-detail/{{job.id}}" style="cursor: pointer;">
           <div class="d-flex justify-content-center flex-column">
             <h5 class="card-title">{{ job.position.title }}</h5>
             <h6 class="card-text fw-light">
@@ -32,8 +32,8 @@
             </h6>
 
             <div class="mt-4">
-              <span class="badge bg-success">{{ job.workTime }}</span>
-              <span class="badge bg-success ms-1">{{ job.workModel }}</span>
+              <span [ngStyle]="{ backgroundColor: 'var(--blue-600)' }" class="badge">{{ job.workTime }}</span>
+              <span [ngStyle]="{ backgroundColor: 'var(--blue-600)' }" class="badge ms-1">{{ job.workModel }}</span>
             </div>
           </div>
         </div>
@@ -45,7 +45,21 @@
     </div>
   </div>
 
-  <ng-template #emptyFavorites> Your favorites are empty. </ng-template>
+  <ng-template #emptyFavorites> <div class="row text-center mt-5 pt-5">
+    <div class="col-md-12">
+      <h2>
+        Your favorites are empty.
+      </h2>
+    </div>
+    <div class="col-md-12 mt-4">
+      <a
+      routerLink="/job-list"
+        class="btn w-25 text-light route"
+        [ngStyle]="{ backgroundColor: 'var(--blue-600)' }"
+        ><i class="me-1 bi bi-arrow-left"></i> Go back to jobs</a
+      >
+    </div>
+  </div> </ng-template>
 </div>
 
 <ng-template #loadingInfo>

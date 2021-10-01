@@ -7,17 +7,21 @@
         <div class="row mb-3">
           <div class="form-group col-md-6">
             <label>School</label>
-            <select
-              name="schoolId"
-              id="schoolId"
-              class="form-select"
-              formControlName="schoolId"
-            >
-              <option value="" disabled selected>Please select school</option>
-              <option *ngFor="let school of schools" value="{{ school.id }}">
-                {{ school.name }}
-              </option>
-            </select>
+
+            <div class="p-grid p-fluid">
+              <p-dropdown
+                [options]="schools"
+                [(ngModel)]="selectedSchool"
+                placeholder="Select a School"
+                [filter]="true"
+                filterBy="name"
+                optionLabel="name"
+                optionValue="id"
+                [showClear]="true"
+                formControlName="schoolId"
+              ></p-dropdown>
+            </div>
+
             <small
               class="text-danger"
               *ngIf="
@@ -30,22 +34,21 @@
 
           <div class="form-group col-md-6">
             <label>Department</label>
-            <select
-              name="departmentId"
-              id="departmentId"
-              class="form-select"
-              formControlName="departmentId"
-            >
-              <option value="" disabled selected>
-                Please select department
-              </option>
-              <option
-                *ngFor="let department of departments"
-                value="{{ department.id }}"
-              >
-                {{ department.name }}
-              </option>
-            </select>
+
+            <div class="p-grid p-fluid">
+              <p-dropdown
+                [options]="departments"
+                [(ngModel)]="selectedDepartment"
+                placeholder="Select a Department"
+                [filter]="true"
+                filterBy="name"
+                optionLabel="name"
+                optionValue="id"
+                [showClear]="true"
+                formControlName="departmentId"
+              ></p-dropdown>
+            </div>
+
             <small
               class="text-danger"
               *ngIf="
@@ -60,13 +63,11 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label>Start Year</label>
-            <input
-              class="form-control"
-              type="number"
-              id="startYear"
-              formControlName="startYear"
-              placeholder="Please enter start year"
-            />
+
+            <div class="p-grid p-fluid">
+              <p-dropdown [options]="years" [(ngModel)]="selectedStartYear" formControlName="startYear" placeholder="Select a start year" [showClear]="true"></p-dropdown>
+            </div>
+            
             <small
               class="text-danger"
               *ngIf="
@@ -79,13 +80,9 @@
 
           <div class="form-group col-md-6">
             <label>Graduation Year</label>
-            <input
-              class="form-control"
-              type="number"
-              id="graduationYear"
-              formControlName="graduationYear"
-              placeholder="Please enter graduation year (optional)"
-            />
+            <div class="p-grid p-fluid">
+              <p-dropdown [options]="years" [(ngModel)]="selectedGradYear" formControlName="graduationYear" placeholder="Select a graduation year" [showClear]="true"></p-dropdown>
+            </div>
           </div>
         </div>
 

@@ -8,14 +8,13 @@
       <form [formGroup]="coverLetterAddForm" class="p-2">
         <div class="form-group">
           <label>Cover Letter</label>
-          <textarea
-            class="form-control"
-            type="text"
-            id="coverLetter"
-            formControlName="coverLetter"
-            placeholder="Please enter your cover letter"
-          >
-          </textarea>
+          <div class="p-grid p-fluid">
+            <textarea
+              pInputTextarea
+              placeholder="Please enter cover letter"
+              formControlName="coverLetter"
+            ></textarea>
+          </div>
           <small
             class="text-danger"
             *ngIf="

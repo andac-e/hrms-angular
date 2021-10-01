@@ -17,6 +17,11 @@ import { PositionService } from 'src/app/services/position.service';
 export class JobAddComponent implements OnInit {
   jobAddForm: FormGroup;
   loggedUser: any;
+  selectedPosition: Position;
+  selectedCity: City;
+  selectedWorkTime: string;
+  selectedWorkModel: string;
+  date: Date;
   positions: Position[] = [];
   cities: City[] = [];
   workModels = WorkModels;

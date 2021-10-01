@@ -9,13 +9,14 @@
             <div class="row">
               <div class="form-group col-md-12">
                   <label>Update Last Name</label>
-                <input
-                  class="form-control"
-                  type="text"
-                  id="lastName"
-                  formControlName="lastName"
-                  placeholder="Please enter last name"
-                />
+                  <div class="p-grid p-fluid">
+                    <input
+                      type="text"
+                      pInputText
+                      formControlName="lastName"
+                      placeholder="Please enter your last name"
+                    />
+                  </div>
                 <small
                   class="text-danger d-block"
                   *ngIf="

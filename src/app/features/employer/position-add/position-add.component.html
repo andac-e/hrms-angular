@@ -18,13 +18,14 @@
           <form [formGroup]="positionAddForm">
             <div class="form-group">
               <label>Position title</label>
-              <input
-                class="form-control w-100"
-                type="text"
-                id="title"
-                formControlName="title"
-                placeholder="Please enter position title"
-              />
+              <div class="p-grid p-fluid">
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="title"
+                  placeholder="Please enter position title"
+                />
+              </div>
               <small
                 class="text-danger"
                 *ngIf="

@@ -14,12 +14,13 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
 })
 export class JobListComponent implements OnInit {
   jobs: JobAdvertisement[] = [];
+  favoriteJobs: JobAdvertisement[] = [];
   loading: boolean = true;
   loggedUser: any;
   loggedCandidate: Candidate;
   constructor(
     private jobAdvertisementService: JobAdvertisementService,
-    private candidateService:CandidateService,
+    private candidateService: CandidateService,
     //private store: Store<any>,
     private toastrService: ToastrService
   ) {}
@@ -29,6 +30,16 @@ export class JobListComponent implements OnInit {
     this.getCandidateById();
   }
 
+  checkFavoriteExists(job: JobAdvertisement): boolean {
+    let item = this.favoriteJobs.find((f) => f.id === job.id);
+
+    if (!item) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   getActiveJobs() {
     this.jobAdvertisementService.getActives().subscribe((response: any) => {
       this.jobs = response.data;
@@ -36,20 +47,37 @@ export class JobListComponent implements OnInit {
     });
   }
 
-  addToFavorites(id:number) {
-    this.candidateService.addFavoriteJob(this.loggedCandidate,id).subscribe((response:any)=>{
-      this.toastrService.success("Added to favorite successfully.")
-      this.pageReloadDelay()
-    },((responseError)=>{
-      this.toastrService.error("This job advertisement exists in your favorites.")
-    }))
+  addToFavorites(id: number) {
+    this.candidateService.addFavoriteJob(this.loggedCandidate, id).subscribe(
+      (response: any) => {
+        this.toastrService.success('Added to favorite successfully.');
+        this.pageReloadDelay();
+      },
+      (responseError) => {
+        this.toastrService.error(
+          'This job advertisement exists in your favorites.'
+        );
+      }
+    );
+  }
+
+  removeFromFavorites(id: number) {
+    this.candidateService
+      .removeFavoriteJob(this.loggedCandidate, id)
+      .subscribe((response: any) => {
+        this.toastrService.info('Removed from favorites successfully.');
+        this.pageReloadDelay();
+      });
   }
 
   getCandidateById() {
     if (this.checkCandidate()) {
-      this.candidateService.getCandidateById(this.getUserId()).subscribe((response:any)=>{
-        this.loggedCandidate = response.data;
-      })
+      this.candidateService
+        .getCandidateById(this.getUserId())
+        .subscribe((response: any) => {
+          this.loggedCandidate = response.data;
+          this.favoriteJobs = response.data.favoriteJobAdvertisements;
+        });
     }
   }
 

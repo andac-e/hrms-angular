@@ -1,11 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { Candidate } from 'src/app/models/candidate/candidate';
 import { Department } from 'src/app/models/department/department';
 import { School } from 'src/app/models/school/school';
 import { CandidateSchoolService } from 'src/app/services/candidate-information/candidate-school.service';
-import { CandidateService } from 'src/app/services/candidate.service';
 import { DepartmentService } from 'src/app/services/department.service';
 import { SchoolService } from 'src/app/services/school.service';
 
@@ -18,7 +16,12 @@ export class CandidateSchoolAddComponent implements OnInit {
   schoolAddForm: FormGroup;
   loggedUser: any;
   schools: School[] = [];
+  selectedSchool: School;
   departments: Department[] = [];
+  selectedDepartment: Department;
+  years: number[] = [];
+  selectedStartYear: number;
+  selectedGradYear: number;
 
   constructor(
     private schoolService: SchoolService,
@@ -32,6 +35,7 @@ export class CandidateSchoolAddComponent implements OnInit {
     this.createSchoolAddForm();
     this.getAllDepartments();
     this.getAllSchools();
+    this.createYears();
   }
 
   createSchoolAddForm() {
@@ -50,7 +54,7 @@ export class CandidateSchoolAddComponent implements OnInit {
         .add(this.schoolAddForm.value)
         .subscribe((response: any) => {
           this.toastrService.success('Successfully added');
-          window.location.reload();
+          this.pageReloadDelay();
         });
     }
   }
@@ -70,5 +74,16 @@ export class CandidateSchoolAddComponent implements OnInit {
     this.departmentService.getAll().subscribe((response: any) => {
       this.departments = response.data;
     });
+  }
+
+  createYears() {
+    this.years = [];
+    for (let i = 2021; i > 1970; i--) {
+      this.years.push(i);
+    }
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

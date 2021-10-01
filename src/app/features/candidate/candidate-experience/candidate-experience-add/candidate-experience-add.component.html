@@ -7,20 +7,19 @@
         <div class="row mb-3">
           <div class="form-group col-md-6">
             <label>Position</label>
-            <select
-              name="positionId"
-              id="positionId"
-              class="form-select"
-              formControlName="positionId"
-            >
-              <option value="" disabled selected>Please select position</option>
-              <option
-                *ngFor="let position of positions"
-                value="{{ position.id }}"
-              >
-                {{ position.title }}
-              </option>
-            </select>
+            <div class="p-grid p-fluid">
+              <p-dropdown
+                [options]="positions"
+                [(ngModel)]="selectedPosition"
+                placeholder="Select a Position"
+                [filter]="true"
+                filterBy="title"
+                optionLabel="title"
+                optionValue="id"
+                [showClear]="true"
+                formControlName="positionId"
+              ></p-dropdown>
+            </div>
             <small
               class="text-danger"
               *ngIf="
@@ -33,13 +32,15 @@
 
           <div class="form-group col-md-6">
             <label>Work Place</label>
-            <input
-              class="form-control"
-              type="text"
-              id="workPlace"
-              formControlName="workPlace"
-              placeholder="Please enter work place"
-            />
+
+            <div class="p-grid p-fluid">
+              <input
+                type="text"
+                pInputText
+                formControlName="workPlace"
+                placeholder="Please enter work place"
+              />
+            </div>
             <small
               class="text-danger"
               *ngIf="
@@ -54,13 +55,9 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label>Start Year</label>
-            <input
-              class="form-control"
-              type="number"
-              id="startYear"
-              formControlName="startYear"
-              placeholder="Please enter start year"
-            />
+            <div class="p-grid p-fluid">
+              <p-dropdown [options]="years" [(ngModel)]="selectedStartYear" formControlName="startYear" placeholder="Select a start year" [showClear]="true"></p-dropdown>
+            </div>
             <small
               class="text-danger"
               *ngIf="
@@ -73,13 +70,9 @@
 
           <div class="form-group col-md-6">
             <label>Quit Year</label>
-            <input
-              class="form-control"
-              type="number"
-              id="quitYear"
-              formControlName="quitYear"
-              placeholder="Please enter quit year (optional)"
-            />
+            <div class="p-grid p-fluid">
+              <p-dropdown [options]="years" [(ngModel)]="selectedQuitYear" formControlName="quitYear" placeholder="Select a quit year (optional)" [showClear]="true"></p-dropdown>
+            </div>
           </div>
         </div>
 

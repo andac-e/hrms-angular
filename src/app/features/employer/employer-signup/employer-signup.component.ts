@@ -54,7 +54,7 @@ export class EmployerSignupComponent implements OnInit {
         this.employerService.addEmployer(this.employerSignForm.value).subscribe(
           (response: any) => {
             this.toastrService.success('Successfully registered');
-            this.router.navigate(['home']);
+            this.router.navigate(['login']);
           },
           (responseError) => {
             let message = JSON.stringify(responseError.error.data.errors);

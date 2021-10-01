@@ -7,6 +7,10 @@ import { CardModule } from 'primeng/card';
 import { ProgressBarModule } from 'primeng/progressbar';
 import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { BadgeModule } from 'primeng/badge';
+import { DropdownModule } from 'primeng/dropdown';
+import {CalendarModule} from 'primeng/calendar';
+import {InputTextModule} from 'primeng/inputtext';
+import {InputTextareaModule} from 'primeng/inputtextarea';
 import { AppRoutingModule } from './app-routing.module';
 
 import { AppComponent } from './app.component';
@@ -109,7 +113,7 @@ import { NotFoundComponent } from './features/home/not-found/not-found.component
     JobDetailComponent,
     JobCardComponent,
     FooterComponent,
-    NotFoundComponent
+    NotFoundComponent,
   ],
   imports: [
     BrowserModule,
@@ -123,6 +127,10 @@ import { NotFoundComponent } from './features/home/not-found/not-found.component
     ProgressBarModule,
     ProgressSpinnerModule,
     BadgeModule,
+    DropdownModule,
+    CalendarModule,
+    InputTextModule,
+    InputTextareaModule,
     ToastrModule.forRoot({ positionClass: 'toast-bottom-right' }),
     StoreModule.forRoot(
       { favoriteReducer },

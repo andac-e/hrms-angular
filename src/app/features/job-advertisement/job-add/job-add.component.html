@@ -3,193 +3,206 @@
     <div class="card-header bg-success fs-6 fw-bold text-light text-center">
       Add Job Advertisement
     </div>
-  <div class="card-body">
-    <form [formGroup]="jobAddForm" class="px-2">
-      <div class="form-group">
-        <label>Position</label>
-        <select
-          name="positionId"
-          id="positionId"
-          class="form-select"
-          formControlName="positionId"
-        >
-          <option value="" disabled selected>Please select position</option>
-          <option *ngFor="let position of positions" value="{{ position.id }}">
-            {{ position.title }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('positionId').hasError('required') &&
-            jobAddForm.get('positionId').touched
-          "
-          >*Position is required.</small
-        >
-      </div>
-  
-      <div class="form-group">
-        <label>Job Description</label>
-        <textarea
-          class="form-control"
-          type="text"
-          id="jobDescription"
-          formControlName="jobDescription"
-          placeholder="Please enter job description"
-        >
-        </textarea>
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('jobDescription').hasError('required') &&
-            jobAddForm.get('jobDescription').touched
-          "
-          >*Job description is required.</small
-        >
-      </div>
-  
-      <div class="form-group">
-        <label>City</label>
-        <select
-          name="cityId"
-          id="cityId"
-          class="form-select"
-          formControlName="cityId"
-        >
-        <option value="" disabled selected>Please select city</option>
-          <option *ngFor="let city of cities" value="{{ city.id }}">
-            {{ city.name }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('cityId').hasError('required') &&
-            jobAddForm.get('cityId').touched
-          "
-          >*City is required.</small
-        >
-      </div>
-  
-      <div class="form-group">
-        <label>Work Time</label>
-        <select
-          name="workTime"
-          id="workTime"
-          class="form-select"
-          formControlName="workTime"
-        >
-        <option value="" disabled selected>Please select work time</option>
-          <option *ngFor="let workTime of workTimes" value="{{ workTime.title }}">
-            {{ workTime.title }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('workTime').hasError('required') &&
-            jobAddForm.get('workTime').touched
-          "
-          >*Work time is required.</small
-        >
-      </div>
-  
-      <div class="form-group">
-        <label>Work Model</label>
-        <select
-          name="workModel"
-          id="workModel"
-          class="form-select"
-          formControlName="workModel"
-        >
-        <option value="" disabled selected>Please select work model</option>
-          <option
-            *ngFor="let workModel of workModels"
-            value="{{ workModel.title }}"
+    <div class="card-body">
+      <form [formGroup]="jobAddForm" class="px-2">
+        <div class="form-group">
+          <label>Position</label>
+          <div class="p-grid p-fluid">
+            <p-dropdown
+              [options]="positions"
+              [(ngModel)]="selectedPosition"
+              placeholder="Select a Position"
+              [filter]="true"
+              filterBy="title"
+              optionLabel="title"
+              optionValue="id"
+              [showClear]="true"
+              formControlName="positionId"
+            ></p-dropdown>
+          </div>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('positionId').hasError('required') &&
+              jobAddForm.get('positionId').touched
+            "
+            >*Position is required.</small
           >
-            {{ workModel.title }}
-          </option>
-        </select>
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('workModel').hasError('required') &&
-            jobAddForm.get('workModel').touched
-          "
-          >*Work model is required.</small
-        >
-      </div>
-  
-      <div class="form-group">
-        <label>Open Positions</label>
-        <input
-          class="form-control"
-          type="number"
-          id="openPositions"
-          formControlName="openPositions"
-          placeholder="Please enter open position count"
-        />
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('openPositions').hasError('required') &&
-            jobAddForm.get('openPositions').touched
-          "
-          >*Open positions is required.</small
-        >
-      </div>
-  
-      <div class="form-group">
-        <label>Minimum Salary</label>
-        <input
-          class="form-control"
-          type="number"
-          id="minSalary"
-          formControlName="minSalary"
-          placeholder="Please enter minimum salary"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label>Maximum Salary</label>
-        <input
-          class="form-control"
-          type="number"
-          id="maxSalary"
-          formControlName="maxSalary"
-          placeholder="Please enter maximum salary"
-        />
-      </div>
-  
-      <div class="form-group">
-        <label>Deadline</label>
-        <input
-          class="form-control"
-          type="date"
-          id="deadline"
-          formControlName="deadline"
-          placeholder="Please enter open position count"
-        />
-        <small
-          class="text-danger"
-          *ngIf="
-            jobAddForm.get('deadline').hasError('required') &&
-            jobAddForm.get('deadline').touched
-          "
-          >*Deadline is required.</small
-        >
-      </div>
-  
-      <div class="text-center">
-        <button
-        [disabled]="!jobAddForm.valid"
-        class="btn btn-success mt-3"
-        (click)="addJob()"
-      >
-        Create Job Advertisement
-      </button>
-      </div>
-    </form>
-  </div>
+        </div>
+
+        <div class="form-group">
+          <label>Job Description</label>
+          <div class="p-grid p-fluid">
+            <textarea
+              pInputTextarea
+              placeholder="Please enter job description"
+              formControlName="jobDescription"
+            ></textarea>
+          </div>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('jobDescription').hasError('required') &&
+              jobAddForm.get('jobDescription').touched
+            "
+            >*Job description is required.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label>City</label>
+
+          <div class="p-grid p-fluid">
+            <p-dropdown
+              [options]="cities"
+              [(ngModel)]="selectedCity"
+              placeholder="Select a City"
+              [filter]="true"
+              filterBy="name"
+              optionLabel="name"
+              optionValue="id"
+              [showClear]="true"
+              formControlName="cityId"
+            ></p-dropdown>
+          </div>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('cityId').hasError('required') &&
+              jobAddForm.get('cityId').touched
+            "
+            >*City is required.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Work Time</label>
+
+          <div class="p-grid p-fluid">
+            <p-dropdown
+              [options]="workTimes"
+              [(ngModel)]="selectedWorkTime"
+              placeholder="Select a Work Time"
+              optionLabel="title"
+              optionValue="title"
+              [showClear]="true"
+              formControlName="workTime"
+            ></p-dropdown>
+          </div>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('workTime').hasError('required') &&
+              jobAddForm.get('workTime').touched
+            "
+            >*Work time is required.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Work Model</label>
+
+          <div class="p-grid p-fluid">
+            <p-dropdown
+              [options]="workModels"
+              [(ngModel)]="selectedWorkModel"
+              placeholder="Select a Work Model"
+              optionLabel="title"
+              optionValue="title"
+              [showClear]="true"
+              formControlName="workModel"
+            ></p-dropdown>
+          </div>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('workModel').hasError('required') &&
+              jobAddForm.get('workModel').touched
+            "
+            >*Work model is required.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Open Positions</label>
+          
+          <div class="p-grid p-fluid">
+            <input
+              type="number"
+              pInputText
+              formControlName="openPositions"
+              placeholder="Please enter open position number"
+            />
+          </div>
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('openPositions').hasError('required') &&
+              jobAddForm.get('openPositions').touched
+            "
+            >*Open positions is required.</small
+          >
+        </div>
+
+        <div class="form-group">
+          <label>Minimum Salary</label>
+          <div class="p-grid p-fluid">
+            <input
+              type="number"
+              pInputText
+              formControlName="minSalary"
+              placeholder="Please enter open minimum salary (optional)"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Maximum Salary</label>
+          <div class="p-grid p-fluid">
+            <input
+              type="number"
+              pInputText
+              formControlName="maxSalary"
+              placeholder="Please enter open maximum salary (optional)"
+            />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Deadline</label>
+          <div class="p-grid p-fluid">
+            <p-calendar
+              inputId="deadline"
+              formControlName="deadline"
+              [(ngModel)]="date"
+            ></p-calendar>
+          </div>
+
+          <small
+            class="text-danger"
+            *ngIf="
+              jobAddForm.get('deadline').hasError('required') &&
+              jobAddForm.get('deadline').touched
+            "
+            >*Deadline is required.</small
+          >
+        </div>
+
+        <div class="text-center">
+          <button
+            [disabled]="!jobAddForm.valid"
+            class="btn btn-success mt-3"
+            (click)="addJob()"
+          >
+            Create Job Advertisement
+          </button>
+        </div>
+      </form>
+    </div>
   </div>
 </div>

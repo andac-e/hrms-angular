@@ -5,15 +5,16 @@ import { CandidateService } from 'src/app/services/candidate.service';
 @Component({
   selector: 'app-candidate-information',
   templateUrl: './candidate-information.component.html',
-  styleUrls: ['./candidate-information.component.css']
+  styleUrls: ['./candidate-information.component.css'],
 })
 export class CandidateInformationComponent implements OnInit {
   loggedCandidate: Candidate;
   loggedUser: any;
-  constructor(private candidateService: CandidateService) { }
+  constructor(private candidateService: CandidateService) {}
 
   ngOnInit(): void {
     this.getCandidateById();
+    this.showLastTab();
   }
 
   getCandidateById() {
@@ -29,4 +30,26 @@ export class CandidateInformationComponent implements OnInit {
     return this.loggedUser.data.id;
   }
 
+  saveTabSelect(tabName: string) {
+    localStorage.setItem('tagSelected', tabName);
+    return true;
+  }
+
+  showLastTab() {
+    if (localStorage.getItem('tagSelected')) {
+      this.getCurrentTab();
+    } else {
+      localStorage.setItem('tagSelected', 'experience');
+      this.getCurrentTab();
+    }
+  }
+
+  getCurrentTab() {
+    let currentTag = localStorage.getItem('tagSelected');
+    let content = document.getElementById(currentTag);
+    let tab = document.getElementById(currentTag + 'Tab');
+    content.classList.add('active');
+    content.classList.add('show');
+    tab.classList.add('active');
+  }
 }

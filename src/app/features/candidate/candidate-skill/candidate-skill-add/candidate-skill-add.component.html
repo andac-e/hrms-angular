@@ -7,17 +7,21 @@
         <div class="row">
           <div class="form-group col-md-12">
             <label>Skill</label>
-            <select
-              name="skillId"
-              id="skillId"
-              class="form-select"
-              formControlName="skillId"
-            >
-              <option value="" disabled selected>Please select skill</option>
-              <option *ngFor="let skill of skills" value="{{ skill.id }}">
-                {{ skill.name }}
-              </option>
-            </select>
+
+            <div class="p-grid p-fluid">
+              <p-dropdown
+                [options]="skills"
+                [(ngModel)]="selectedSkill"
+                placeholder="Select a Skill"
+                [filter]="true"
+                filterBy="name"
+                optionLabel="name"
+                optionValue="id"
+                [showClear]="true"
+                formControlName="skillId"
+              ></p-dropdown>
+            </div>
+
             <small
               class="text-danger"
               *ngIf="

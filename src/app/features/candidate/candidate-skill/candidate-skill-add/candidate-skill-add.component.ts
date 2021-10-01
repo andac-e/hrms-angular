@@ -13,6 +13,7 @@ import { SkillService } from 'src/app/services/skill.service';
 export class CandidateSkillAddComponent implements OnInit {
   skillAddForm: FormGroup;
   skills: Skill[] = [];
+  selectedSkill: Skill;
   loggedUser: any;
 
   constructor(
@@ -39,7 +40,7 @@ export class CandidateSkillAddComponent implements OnInit {
       this.candidateSkillService.add(this.skillAddForm.value).subscribe(
         (response: any) => {
           this.toastrService.success('Skill added successfully.');
-          window.location.reload();
+          this.pageReloadDelay();
         },
         (responseError) => {
           let message = JSON.stringify(responseError.error.data.errors);
@@ -62,5 +63,9 @@ export class CandidateSkillAddComponent implements OnInit {
     this.skillService.getAll().subscribe((response: any) => {
       this.skills = response.data;
     });
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

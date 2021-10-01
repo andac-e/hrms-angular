@@ -13,6 +13,7 @@ import { JobAdvertisementService } from 'src/app/services/job-advertisement.serv
 })
 export class JobDetailComponent implements OnInit {
   jobAdvertisement: JobAdvertisement;
+  favoriteJobs: JobAdvertisement[] = [];
   loggedUser: any;
   loggedCandidate: Candidate;
   constructor(
@@ -30,6 +31,16 @@ export class JobDetailComponent implements OnInit {
     this.getCandidateById();
   }
 
+  checkFavoriteExists(job: JobAdvertisement): boolean {
+    let item = this.favoriteJobs.find((f) => f.id === job.id);
+
+    if (!item) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   addToFavorites(id: number) {
     this.candidateService.addFavoriteJob(this.loggedCandidate, id).subscribe(
       (response: any) => {
@@ -44,6 +55,15 @@ export class JobDetailComponent implements OnInit {
     );
   }
 
+  removeFromFavorites(id: number) {
+    this.candidateService
+      .removeFavoriteJob(this.loggedCandidate, id)
+      .subscribe((response: any) => {
+        this.toastrService.info('Removed from favorites successfully.');
+        this.pageReloadDelay();
+      });
+  }
+
   getJobById(id: number) {
     this.jobAdvertisementService.getJobById(id).subscribe((response: any) => {
       this.jobAdvertisement = response.data;
@@ -56,6 +76,7 @@ export class JobDetailComponent implements OnInit {
         .getCandidateById(this.getUserId())
         .subscribe((response: any) => {
           this.loggedCandidate = response.data;
+          this.favoriteJobs = response.data.favoriteJobAdvertisements;
         });
     }
   }

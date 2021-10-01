@@ -40,6 +40,13 @@ export class UpdateCompanyNameComponent implements OnInit {
       .subscribe((response: any) => {
         this.toastrService.success('Successfully updated');
         this.pageReloadDelay();
+      },
+      (responseError) => {
+        let message = JSON.stringify(responseError.error.message);
+        this.toastrService.error(
+          message.replace(/{|}|"/gi, ''),
+          'Update Error!'
+        );
       });
   }
 

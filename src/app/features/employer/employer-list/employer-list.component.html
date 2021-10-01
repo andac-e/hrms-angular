@@ -2,85 +2,91 @@
   <div class="card my-4 border-bottom-0">
     <div class="card-header fs-5 bg-warning text-center">List of Employers</div>
     <p-table
-    *ngIf="loading == false; else loadingInfo"
-    id="myTable"
-    #dt
-    [value]="employers"
-    dataKey="id"
-    styleClass="p-datatable-striped"
-    [rowHover]="true"
-    [rows]="10"
-    [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]"
-    [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [filterDelay]="0"
-  >
-    <ng-template pTemplate="header">
-      <tr>
-        <th pSortableColumn="companyName">
-          <div class="d-flex justify-content-between align-items-center">
-            Company Name
-            <p-sortIcon field="companyName"></p-sortIcon>
-            <p-columnFilter
-              type="text"
-              field="companyName"
-              display="menu"
-              class="ms-auto"
-            ></p-columnFilter>
-          </div>
-        </th>
+      *ngIf="loading == false; else loadingInfo"
+      id="myTable"
+      #dt
+      [value]="employers"
+      dataKey="id"
+      styleClass="p-datatable-striped"
+      [rowHover]="true"
+      [rows]="10"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+      [filterDelay]="0"
+    >
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="companyName">
+            <div class="d-flex justify-content-between align-items-center">
+              Company Name
+              <p-sortIcon field="companyName"></p-sortIcon>
+              <p-columnFilter
+                type="text"
+                field="companyName"
+                display="menu"
+                class="ms-auto"
+              ></p-columnFilter>
+            </div>
+          </th>
 
-        <th pSortableColumn="website">
-          <div class="d-flex justify-content-between align-items-center">
-            Website
-          </div>
-        </th>
+          <th pSortableColumn="website">
+            <div class="d-flex justify-content-between align-items-center">
+              Website
+            </div>
+          </th>
 
-        <th pSortableColumn="email">
-          <div class="d-flex justify-content-between align-items-center">
-            Email
-          </div>
-        </th>
+          <th pSortableColumn="email">
+            <div class="d-flex justify-content-between align-items-center">
+              Email
+            </div>
+          </th>
 
-        <th pSortableColumn="phoneNumber">
-          <div class="d-flex justify-content-between align-items-center">
-            Phone Number
-          </div>
-        </th>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-employer>
-      <tr class="p-selectable-row">
-        <td>
-          {{ employer.companyName }}
-        </td>
+          <th pSortableColumn="phoneNumber">
+            <div class="d-flex justify-content-between align-items-center">
+              Phone Number
+            </div>
+          </th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-employer>
+        <tr class="p-selectable-row">
+          <td>
+            {{ employer.companyName }}
+          </td>
 
-        <td>
-          {{ employer.website }}
-        </td>
+          <td>
+            {{ employer.website }}
+          </td>
 
-        <td>
-          {{ employer.email }}
-        </td>
+          <td>
+            {{ employer.email }}
+          </td>
 
-        <td>
-          {{ employer.phoneNumber }}
-        </td>
-      </tr>
-    </ng-template>
-    <ng-template pTemplate="emptymessage">
-      <tr>
-        <td colspan="8">No employers found.</td>
-      </tr>
-    </ng-template>
-  </p-table>
+          <td>
+            {{ employer.phoneNumber }}
+          </td>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+        <tr>
+          <td colspan="8">No employers found.</td>
+        </tr>
+      </ng-template>
+    </p-table>
   </div>
 </div>
 
 <ng-template #loadingInfo>
   <div
-    class="text-center d-flex flex-column align-items-center justify-content-center"
+    class="
+      text-center
+      d-flex
+      flex-column
+      align-items-center
+      justify-content-center
+    "
     style="height: 500px"
   >
     <p-progressSpinner></p-progressSpinner>

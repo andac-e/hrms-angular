@@ -26,6 +26,8 @@ export class FavoriteJobListComponent implements OnInit {
     this.getCandidateById();
   }
 
+  
+
   removeFromFavorites(id: number) {
     this.candidateService
       .removeFavoriteJob(this.loggedCandidate, id)

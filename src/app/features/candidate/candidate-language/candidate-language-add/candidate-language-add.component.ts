@@ -15,7 +15,9 @@ export class CandidateLanguageAddComponent implements OnInit {
   languageAddForm: FormGroup;
   loggedUser: any;
   languages: Language[] = [];
+  selectedLanguage: Language;
   languageLevels = LanguageLevels;
+  selectedLanguageLevel: string;
   
 
   constructor(

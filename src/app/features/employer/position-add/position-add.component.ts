@@ -42,6 +42,7 @@ export class PositionAddComponent implements OnInit {
           .addPosition(this.positionAddForm.value)
           .subscribe((response) => {
             this.toastrService.success('Successfully added');
+            this.pageReloadDelay();
           });
       }
     }
@@ -58,5 +59,9 @@ export class PositionAddComponent implements OnInit {
     } else {
       return true;
     }
+  }
+
+  pageReloadDelay() {
+    setTimeout(location.reload.bind(location), 1000);
   }
 }

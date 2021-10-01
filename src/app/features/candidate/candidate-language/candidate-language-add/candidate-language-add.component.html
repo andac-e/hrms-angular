@@ -7,20 +7,19 @@
         <div class="row">
           <div class="form-group col-md-6">
             <label>Language</label>
-            <select
-              name="languageId"
-              id="languageId"
-              class="form-select"
-              formControlName="languageId"
-            >
-              <option value="" disabled selected>Please select language</option>
-              <option
-                *ngFor="let language of languages"
-                value="{{ language.id }}"
-              >
-                {{ language.name }}
-              </option>
-            </select>
+            <div class="p-grid p-fluid">
+              <p-dropdown
+                [options]="languages"
+                [(ngModel)]="selectedLanguage"
+                placeholder="Select a Language"
+                [filter]="true"
+                filterBy="name"
+                optionLabel="name"
+                optionValue="id"
+                [showClear]="true"
+                formControlName="languageId"
+              ></p-dropdown>
+            </div>
             <small
               class="text-danger"
               *ngIf="
@@ -33,22 +32,17 @@
 
           <div class="form-group col-md-6">
             <label>Language Level</label>
-            <select
-              name="languageLevel"
-              id="languageLevel"
-              class="form-select"
-              formControlName="languageLevel"
-            >
-              <option value="" disabled selected>
-                Please select language level
-              </option>
-              <option
-                *ngFor="let languageLevel of languageLevels"
-                value="{{ languageLevel.title }}"
-              >
-                {{ languageLevel.title }}
-              </option>
-            </select>
+            <div class="p-grid p-fluid">
+              <p-dropdown
+                [options]="languageLevels"
+                [(ngModel)]="selectedLanguageLevel"
+                placeholder="Select a Language Level"
+                optionLabel="title"
+                optionValue="title"
+                [showClear]="true"
+                formControlName="languageLevel"
+              ></p-dropdown>
+            </div>
             <small
               class="text-danger"
               *ngIf="

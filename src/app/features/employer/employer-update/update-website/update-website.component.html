@@ -10,13 +10,14 @@
             <div class="row">
               <div class="form-group col-md-12">
                   <label>Update Email</label>
-                <input
-                  class="form-control"
-                  type="email"
-                  id="email"
-                  formControlName="email"
-                  placeholder="Please enter your email"
-                />
+                  <div class="p-grid p-fluid">
+                    <input
+                      type="email"
+                      pInputText
+                      formControlName="email"
+                      placeholder="Please enter your email"
+                    />
+                  </div>
                 <small
                   class="text-danger d-block"
                   *ngIf="
@@ -29,13 +30,14 @@
 
               <div class="form-group col-md-12">
                 <label>Update Website</label>
-              <input
-                class="form-control"
-                type="text"
-                id="website"
-                formControlName="website"
-                placeholder="Please enter your website"
-              />
+                <div class="p-grid p-fluid">
+                  <input
+                    type="text"
+                    pInputText
+                    formControlName="website"
+                    placeholder="Please enter your website"
+                  />
+                </div>
               <small
                 class="text-danger d-block"
                 *ngIf="

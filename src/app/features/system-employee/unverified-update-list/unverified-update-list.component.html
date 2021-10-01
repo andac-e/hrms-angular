@@ -78,9 +78,9 @@
           <span class="p-column-title">Verified Status</span>
           <button
             (click)="changeVerification(employer)"
-            pButton
+            [ngStyle]="{ backgroundColor: 'var(--blue-600)' }"
             type="button"
-            class="btn btn-sm btn-info"
+            class="btn btn-sm text-light"
           >
             <span>verify <i class="bi bi-shield-check"></i></span>
           </button>

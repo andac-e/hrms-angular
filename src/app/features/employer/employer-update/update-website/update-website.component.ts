@@ -44,7 +44,7 @@ export class UpdateWebsiteComponent implements OnInit {
         this.pageReloadDelay();
       },
       (responseError) => {
-        let message = JSON.stringify(responseError.error.data.errors);
+        let message = JSON.stringify(responseError.error.message);
         this.toastrService.error(
           message.replace(/{|}|"/gi, ''),
           'Verification error'

@@ -1,19 +1,22 @@
 <div class="container w-75 mt-3">
     <div class="card mb-4">
-      <div class="card-header fs-6 fw-bold text-center">Add Linkedin</div>
+      <div class="card-header fs-6 fw-bold text-center"><i class="text-primary fs-4 bi bi-linkedin"></i></div>
     
       <div class="card-body">
         <form [formGroup]="linkedinAddForm" class="p-2">
           <div class="row">
             <div class="form-group col-md-12">
               <label>Linkedin Account</label>
-              <input
-                class="form-control"
-                type="text"
-                id="linkedinAccount"
-                formControlName="linkedinAccount"
-                placeholder="Please enter your linkedin account"
-              />
+
+              <div class="p-grid p-fluid">
+                <input
+                  type="text"
+                  pInputText
+                  formControlName="linkedinAccount"
+                  placeholder="Please enter Linkedin account"
+                />
+              </div>
+
               <small
                 class="text-danger"
                 *ngIf="
@@ -31,7 +34,7 @@
             class="btn btn-success mt-3"
             (click)="addLinkedinAccount()"
           >
-            Add Linkedin Account
+            Add Account
           </button>
           </div>
         </form>

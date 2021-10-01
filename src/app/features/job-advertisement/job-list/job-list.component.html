@@ -117,15 +117,19 @@
             {{ job.deadline | date: "MMMM d, y" }}
           </td>
 
-          <td *ngIf="checkCandidate()"
+            <td *ngIf="checkCandidate()"
             class="text-end"
-            (click)="addToFavorites(job.id)"
             style="cursor: pointer"
           >
-            <a>
+            <a *ngIf="checkFavoriteExists(job)" (click)="addToFavorites(job.id)">
               <i class="bi bi-star fs-5 text-warning"></i>
             </a>
+            <a *ngIf="!checkFavoriteExists(job)" (click)="removeFromFavorites(job.id)">
+              <i class="bi bi-star-fill fs-5 text-warning"></i>
+            </a>
+            
           </td>
+          
         </tr>
       </ng-template>
       <ng-template pTemplate="emptymessage">

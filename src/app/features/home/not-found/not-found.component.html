@@ -1,3 +1,26 @@
-<div class="spacer layer d-flex justify-content-center align-items-center">
-  <h1 class="fw-bold" [ngStyle]="{color:'var(--blue-600)'}">We couldn't find this page.</h1>
+<div
+  class="
+    spacer
+    text-center
+    layer
+    d-flex
+    justify-content-center
+    align-items-center
+  "
+>
+  <div class="row">
+    <div class="col-md-12">
+      <h1 class="fw-bold" [ngStyle]="{ color: 'var(--blue-600)' }">
+        We couldn't find this page.
+      </h1>
+    </div>
+    <div class="col-md-12 mt-3">
+      <a
+      routerLink="/home"
+        class="btn w-25 text-light route"
+        [ngStyle]="{ backgroundColor: 'var(--blue-600)' }"
+        ><i class="me-1 bi bi-arrow-left"></i> Go back to home</a
+      >
+    </div>
+  </div>
 </div>

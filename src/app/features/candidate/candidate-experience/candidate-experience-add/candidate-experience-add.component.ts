@@ -1,10 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { CandidateJobExperience } from 'src/app/models/candidate/candidate-job-experience/candidate-job-experience';
 import { Position } from 'src/app/models/position/position';
 import { CandidateJobExperienceService } from 'src/app/services/candidate-information/candidate-job-experience.service';
-import { CandidateService } from 'src/app/services/candidate.service';
 import { PositionService } from 'src/app/services/position.service';
 
 @Component({
@@ -16,6 +14,10 @@ export class CandidateExperienceAddComponent implements OnInit {
   experienceAddForm: FormGroup;
   loggedUser: any;
   positions: Position[] = [];
+  selectedPosition: Position;
+  selectedStartYear: number;
+  selectedQuitYear: number;
+  years: number[] = [];
 
   constructor(
     private positionService: PositionService,
@@ -27,6 +29,7 @@ export class CandidateExperienceAddComponent implements OnInit {
   ngOnInit(): void {
     this.createExperienceAddForm();
     this.getAllPositions();
+    this.createYears();
   }
 
   createExperienceAddForm() {
@@ -59,6 +62,13 @@ export class CandidateExperienceAddComponent implements OnInit {
     this.positionService.getAll().subscribe((response: any) => {
       this.positions = response.data;
     });
+  }
+
+  createYears() {
+    this.years = [];
+    for (let i = 2021; i > 1970; i--) {
+      this.years.push(i);
+    }
   }
 
   pageReloadDelay() {

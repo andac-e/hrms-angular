@@ -29,7 +29,14 @@ export class CandidateSignupComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]], //email tipinde
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      nationalityId: ['', [Validators.required, Validators.minLength(11)]],
+      nationalityId: [
+        '',
+        [
+          Validators.required,
+          Validators.minLength(11),
+          Validators.maxLength(11),
+        ],
+      ],
       password: [
         '',
         [
@@ -46,20 +53,23 @@ export class CandidateSignupComponent implements OnInit {
     if (this.candidateSignForm.valid) {
       if (this.checkPasswordMatch()) {
         this.candidateService
-        .addCandidate(this.candidateSignForm.value)
-        .subscribe(
-          (response: any) => {
-            this.toastrService.success(response.message, 'Successfully registered');
-            this.router.navigate(['home']);
-          },
-          (responseError) => {
-            let message = JSON.stringify(responseError.error.data.errors);
-            this.toastrService.error(
-              message.replace(/{|}|"/gi, ''),
-              'Validation error'
-            );
-          }
-        );
+          .addCandidate(this.candidateSignForm.value)
+          .subscribe(
+            (response: any) => {
+              this.toastrService.success(
+                response.message,
+                'Successfully registered'
+              );
+              this.router.navigate(['login']);
+            },
+            (responseError) => {
+              let message = JSON.stringify(responseError.error.data.errors);
+              this.toastrService.error(
+                message.replace(/{|}|"/gi, ''),
+                'Validation error'
+              );
+            }
+          );
       }
     } else {
       this.toastrService.error('Your form is invalid');

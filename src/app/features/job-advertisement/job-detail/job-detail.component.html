@@ -9,13 +9,17 @@
           jobAdvertisement?.createdAt | date: "MMMM d, y"
         }}</span>
       </h5>
-        <a
-          *ngIf="checkCandidate()"
-          (click)="addToFavorites(jobAdvertisement.id)"
-          style="cursor: pointer"
-        >
+
+      <div *ngIf="checkCandidate()" style="cursor: pointer;">
+        <a *ngIf="checkFavoriteExists(jobAdvertisement)" (click)="addToFavorites(jobAdvertisement.id)">
           <i class="bi bi-star fs-5 text-warning"></i>
         </a>
+        <a *ngIf="!checkFavoriteExists(jobAdvertisement)" (click)="removeFromFavorites(jobAdvertisement.id)">
+          <i class="bi bi-star-fill fs-5 text-warning"></i>
+        </a>
+      </div>
+
+
     </div>
   </div>
   <h5 class="fw-light">{{ jobAdvertisement?.employer.companyName }}</h5>

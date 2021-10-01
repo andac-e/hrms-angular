@@ -1,46 +1,82 @@
 <ul class="mt-3 nav nav-tabs justify-content-center">
   <li class="nav-item">
     <a
+      id="experienceTab"
       href="#experience"
-      class="nav-link text-success active"
+      class="nav-link text-success"
       data-bs-toggle="tab"
+      (click)="saveTabSelect('experience')"
       ><i class="bi bi-briefcase"></i>Job Experience</a
     >
   </li>
 
   <li class="nav-item">
-    <a href="#language" class="nav-link link-success" data-bs-toggle="tab"
+    <a
+      id="languageTab"
+      href="#language"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
+      (click)="saveTabSelect('language')"
       ><i class="bi bi-translate"></i>Language</a
     >
   </li>
 
   <li class="nav-item">
-    <a href="#school" class="nav-link link-success" data-bs-toggle="tab"
+    <a
+      id="schoolTab"
+      href="#school"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
+      (click)="saveTabSelect('school')"
       ><i class="bi bi-book"></i>School</a
     >
   </li>
   <li class="nav-item">
-    <a href="#skill" class="nav-link link-success" data-bs-toggle="tab"
+    <a
+      id="skillTab"
+      href="#skill"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
+      (click)="saveTabSelect('skill')"
       ><i class="bi bi-gem"></i>Skill</a
     >
   </li>
   <li class="nav-item">
-    <a href="#photo" class="nav-link link-success" data-bs-toggle="tab"
+    <a
+      id="photoTab"
+      href="#photo"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
+      (click)="saveTabSelect('photo')"
       ><i class="bi bi-cloud-arrow-up"></i>Photo</a
     >
   </li>
   <li class="nav-item">
-    <a href="#Github" class="nav-link link-success" data-bs-toggle="tab"
-      ><i class="bi bi-github"></i>Github</a
+    <a
+      id="socialTab"
+      href="#social"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
+      (click)="saveTabSelect('social')"
+      ><i class="bi bi-link-45deg"></i>Social Links</a
     >
   </li>
-  <li class="nav-item">
-    <a href="#Linkedin" class="nav-link link-success" data-bs-toggle="tab"
+  <!-- <li id="linkedinTab" class="nav-item">
+    <a
+      id="linkedinTab"
+      href="#Linkedin"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
+      (click)="saveTabSelect('linkedin')"
       ><i class="bi bi-linkedin"></i>Linkedin</a
     >
-  </li>
+  </li> -->
   <li class="nav-item">
-    <a href="#CoverLetter" *ngIf="loggedCandidate?.cvs.length > 0" class="nav-link link-success" data-bs-toggle="tab"
+    <a
+      href="#CoverLetter"
+      *ngIf="loggedCandidate?.cvs.length > 0"
+      class="nav-link link-success"
+      data-bs-toggle="tab"
       ><i class="bi bi-textarea-t"></i>Cover Letter</a
     >
   </li>
@@ -52,7 +88,7 @@
 </ul>
 <div class="container">
   <div class="tab-content">
-    <div class="tab-pane fade show active" id="experience">
+    <div class="tab-pane fade" id="experience">
       <app-candidate-experience-add></app-candidate-experience-add>
     </div>
     <div class="tab-pane fade" id="language">
@@ -67,10 +103,8 @@
     <div class="tab-pane fade" id="photo">
       <app-candidate-image-upload></app-candidate-image-upload>
     </div>
-    <div class="tab-pane fade" id="Github">
+    <div class="tab-pane fade" id="social">
       <app-candidate-github-add></app-candidate-github-add>
-    </div>
-    <div class="tab-pane fade" id="Linkedin">
       <app-candidate-linkedin-add></app-candidate-linkedin-add>
     </div>
     <div class="tab-pane fade" id="CoverLetter">
