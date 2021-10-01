@@ -3,15 +3,16 @@
 
 ### 🖍📐 Design
 
-![1](https://user-images.githubusercontent.com/65905654/135237225-60f832f9-81b2-46d2-bf98-60fdaaff263b.png)
-![3](https://user-images.githubusercontent.com/65905654/135237399-b2408ac7-c16d-40f2-9752-5779c415f2e4.png)
-![6](https://user-images.githubusercontent.com/65905654/135239187-b5d3a7f7-c6e7-4b08-98bb-a7482c1c6576.png)
-![7](https://user-images.githubusercontent.com/65905654/135237544-f7024b51-b4fa-4aed-a52b-175b1fe6132f.png)
-![8](https://user-images.githubusercontent.com/65905654/135237566-38a18dbe-2954-49a8-b8e7-8c43039eb5e6.png)
-![9](https://user-images.githubusercontent.com/65905654/135239248-c1b2bfd3-7cc8-4dac-b04e-0cc005ec31d8.png)
-![10](https://user-images.githubusercontent.com/65905654/135239280-e487bd8c-0cc7-4fcf-9068-f4980fc2fe1a.png)
-![14](https://user-images.githubusercontent.com/65905654/135239383-dbac4371-eff0-4850-999e-f26119f28c0d.png)
-![15](https://user-images.githubusercontent.com/65905654/135353904-daa3c5b6-232f-4247-8231-ef0f7a1b98da.png)
+![1](https://user-images.githubusercontent.com/65905654/135597458-2d162ff1-966d-4bd0-a8a6-2befa4c304a2.png)
+![2](https://user-images.githubusercontent.com/65905654/135597463-875d1b6c-7f46-43e6-b33e-68a3f8d6b01e.png)
+![3](https://user-images.githubusercontent.com/65905654/135597465-1834bfab-d424-4721-acf2-bae8b5397969.png)
+![4](https://user-images.githubusercontent.com/65905654/135597469-2a09f363-5c4d-4106-9603-65acf0a6cf4f.png)
+![5](https://user-images.githubusercontent.com/65905654/135597472-4c94d996-4fc5-4bce-a034-f3d9c1895a1c.png)
+![6](https://user-images.githubusercontent.com/65905654/135597473-7467930a-17f2-4243-8c56-7836f65c7faf.png)
+![7](https://user-images.githubusercontent.com/65905654/135597475-6b8c25b2-a7b1-4628-b78b-49b78508dbe0.png)
+![8](https://user-images.githubusercontent.com/65905654/135597477-9efb4d5d-71fb-4788-8743-0ad80afb29c5.gif)
+![9](https://user-images.githubusercontent.com/65905654/135597480-c694b6a9-9970-4220-900f-af52f7ba3e1e.png)
+
 
 ### 🤖 Built With
 ![](https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white)
